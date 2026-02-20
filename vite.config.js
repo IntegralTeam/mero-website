@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@relume_io/relume-ui": path.resolve(__dirname, "src/lib/relume-ui.jsx"),
-    },
+    }
   },
+  base: "/mero-website"
 });
