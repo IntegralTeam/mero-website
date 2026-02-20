@@ -2,7 +2,7 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
 import logo from "../assets/PlaceholderImage.png";
 
 export function Layout89() {
@@ -31,7 +31,7 @@ export function Layout89() {
                 title="Learn more"
                 variant="link"
                 size="link"
-                iconRight={<RxChevronRight />}
+                iconRight={<MaterialIcon name="chevron_right" />}
               >
                 Learn more
               </Button>

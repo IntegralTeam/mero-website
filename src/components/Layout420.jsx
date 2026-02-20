@@ -2,7 +2,7 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
 import gold from "../assets/gold.jpg";
 import copper from "../assets/copper.jpg";
 import nickel from "../assets/nickel.jpg";
@@ -33,7 +33,7 @@ export function Layout420() {
                     title="Arrow"
                     variant="link"
                     size="link"
-                    iconRight={<RxChevronRight />}
+                    iconRight={<MaterialIcon name="chevron_right" />}
                   >
                     Arrow
                   </Button>

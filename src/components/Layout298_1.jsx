@@ -2,7 +2,7 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
 
 export function Layout298_1() {
   return (
@@ -27,11 +27,7 @@ export function Layout298_1() {
           <div className="grid grid-cols-1 items-start gap-y-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4">
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="network_cell" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Regulatory compliance built in
@@ -43,11 +39,7 @@ export function Layout298_1() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="privacy_tip" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Privacy without compromise
@@ -59,11 +51,7 @@ export function Layout298_1() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="scale" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Global scalability from day one
@@ -75,11 +63,7 @@ export function Layout298_1() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="security" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Institutional-grade security
@@ -98,7 +82,7 @@ export function Layout298_1() {
               title="Arrow"
               variant="link"
               size="link"
-              iconRight={<RxChevronRight />}
+              iconRight={<MaterialIcon name="chevron_right" />}
             >
               Arrow
             </Button>

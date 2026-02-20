@@ -2,7 +2,7 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
 
 export function Layout298() {
   return (
@@ -23,11 +23,7 @@ export function Layout298() {
           <div className="grid grid-cols-1 items-start gap-y-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4">
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="partner_reports" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Regulated yield products
@@ -39,11 +35,7 @@ export function Layout298() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="balance" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Over-collateralized reserves
@@ -55,11 +47,7 @@ export function Layout298() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="block" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 Privacy-preserving blockchain
@@ -71,11 +59,7 @@ export function Layout298() {
             </div>
             <div className="w-full">
               <div className="mb-5 flex justify-center md:mb-6">
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                  className="size-12"
-                  alt="Relume logo 1"
-                />
+                <MaterialIcon name="euro" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
                 No foreign exchange friction
@@ -94,7 +78,7 @@ export function Layout298() {
               title="Arrow"
               variant="link"
               size="link"
-              iconRight={<RxChevronRight />}
+              iconRight={<MaterialIcon name="chevron_right" />}
             >
               Arrow
             </Button>

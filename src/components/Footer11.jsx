@@ -1,13 +1,6 @@
 "use client";
 
 import React from "react";
-import {
-  BiLogoFacebookCircle,
-  BiLogoInstagram,
-  BiLogoLinkedinSquare,
-  BiLogoYoutube,
-} from "react-icons/bi";
-import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export function Footer11() {
@@ -46,19 +39,32 @@ export function Footer11() {
             </div>
             <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
               <a href="#">
-                <BiLogoFacebookCircle className="size-6" />
+                <img
+                  src="https://cdn.simpleicons.org/facebook/111111"
+                  alt="Facebook"
+                  className="size-5"
+                />
               </a>
               <a href="#">
-                <BiLogoInstagram className="size-6" />
+                <img
+                  src="https://cdn.simpleicons.org/instagram/111111"
+                  alt="Instagram"
+                  className="size-5"
+                />
               </a>
               <a href="#">
-                <FaXTwitter className="size-6 p-0.5" />
+                <img
+                  src="https://cdn.simpleicons.org/x/111111"
+                  alt="X"
+                  className="size-5"
+                />
               </a>
               <a href="#">
-                <BiLogoLinkedinSquare className="size-6" />
-              </a>
-              <a href="#">
-                <BiLogoYoutube className="size-6" />
+                <img
+                  src="https://cdn.simpleicons.org/youtube/111111"
+                  alt="YouTube"
+                  className="size-6"
+                />
               </a>
             </div>
           </div>

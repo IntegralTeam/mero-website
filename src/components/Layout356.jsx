@@ -2,7 +2,10 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React, { Fragment } from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
+import placeholder2 from "../assets/PlaceholderImage2.png";
+import placeholder3 from "../assets/PlaceholderImage3.png";
+import placeholder4 from "../assets/PlaceholderImage4.png";
 
 export function Layout356() {
   return (
@@ -39,7 +42,7 @@ export function Layout356() {
                           title="Arrow"
                           variant="link"
                           size="link"
-                          iconRight={<RxChevronRight />}
+                          iconRight={<MaterialIcon name="chevron_right" />}
                         >
                           Arrow
                         </Button>
@@ -47,7 +50,7 @@ export function Layout356() {
                     </div>
                     <div className="relative">
                       <img
-                        src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg"
+                        src={placeholder2}
                         className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
                         alt="Relume placeholder image 1"
                       />
@@ -74,12 +77,10 @@ export function Layout356() {
                     <div>
                       <p className="mb-3 font-semibold md:mb-4">Issuance</p>
                       <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
-                        Banks mint USDM backed by commodity reserves
+                        Deploy
                       </h2>
                       <p className="md:text-md">
-                        Deposit commodity collateral into Mero's institutional
-                        vaults. Receive USDM tokens at 1:1 parity, fully backed
-                        and ready to deploy.
+                        USDM flows into regulated yield products earning 5-15% APY through trusted partners like BlackRock BUIDL and Franklin Templeton BENJI.
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
@@ -89,7 +90,7 @@ export function Layout356() {
                           title="Arrow"
                           variant="link"
                           size="link"
-                          iconRight={<RxChevronRight />}
+                          iconRight={<MaterialIcon name="chevron_right" />}
                         >
                           Arrow
                         </Button>
@@ -97,7 +98,7 @@ export function Layout356() {
                     </div>
                     <div className="relative">
                       <img
-                        src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg"
+                        src={placeholder3}
                         className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
                         alt="Relume placeholder image 2"
                       />
@@ -124,12 +125,10 @@ export function Layout356() {
                     <div>
                       <p className="mb-3 font-semibold md:mb-4">Issuance</p>
                       <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
-                        Banks mint USDM backed by commodity reserves
+                        Redeem
                       </h2>
                       <p className="md:text-md">
-                        Deposit commodity collateral into Mero's institutional
-                        vaults. Receive USDM tokens at 1:1 parity, fully backed
-                        and ready to deploy.
+                        Banks redeem USDM for underlying commodity reserves anytime. No lock-in periods. Full transparency and control over capital.
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
@@ -139,7 +138,7 @@ export function Layout356() {
                           title="Arrow"
                           variant="link"
                           size="link"
-                          iconRight={<RxChevronRight />}
+                          iconRight={<MaterialIcon name="chevron_right" />}
                         >
                           Arrow
                         </Button>
@@ -147,7 +146,7 @@ export function Layout356() {
                     </div>
                     <div className="relative">
                       <img
-                        src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-3.svg"
+                        src={placeholder4}
                         className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
                         alt="Relume placeholder image 3"
                       />

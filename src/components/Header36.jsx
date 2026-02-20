@@ -2,7 +2,7 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
-import logo from "../assets/PlaceholderImage.png";
+import placeholder from "../assets/PlaceholderImage.png";
 
 export function Header36() {
   return (
@@ -28,7 +28,7 @@ export function Header36() {
       </div>
       <div>
         <img
-          src={logo}
+          src={placeholder}
           alt="Relume placeholder image"
           className="w-full object-cover lg:h-dvh"
         />

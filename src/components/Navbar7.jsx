@@ -3,7 +3,7 @@
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-import { RxChevronDown } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
 import { Link } from "react-router-dom";
 
 const useRelume = () => {
@@ -96,7 +96,7 @@ export function Navbar7() {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <RxChevronDown />
+                  <MaterialIcon name="expand_more" />
                 </motion.span>
               </button>
               <AnimatePresence>
@@ -131,11 +131,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 1"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="overview" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Overview</h5>
@@ -149,11 +145,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 2"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="sdk" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Integration</h5>
@@ -167,11 +159,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 3"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="security" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Security</h5>
@@ -186,11 +174,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 4"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="finance" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Compliance</h5>
@@ -210,11 +194,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 5"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="vpn_lock" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Pensions</h5>
@@ -228,11 +208,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 6"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="savings" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Savings</h5>
@@ -246,11 +222,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 7"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="partner_reports" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Yield</h5>
@@ -264,11 +236,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 8"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="savings" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Treasury</h5>
@@ -288,11 +256,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 9"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="token" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Indonesia</h5>
@@ -307,11 +271,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 10"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="expand" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">India</h5>
@@ -326,11 +286,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 11"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="video_stable" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Latin America</h5>
@@ -344,11 +300,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 12"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="mintmark" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Africa</h5>
@@ -367,11 +319,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 13"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="metro" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">About</h5>
@@ -385,11 +333,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 14"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="finance" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Careers</h5>
@@ -403,11 +347,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 15"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="contacts" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Contact</h5>
@@ -422,11 +362,7 @@ export function Navbar7() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 16"
-                                className="shrink-0"
-                              />
+                              <MaterialIcon name="news" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Press</h5>
@@ -454,32 +390,16 @@ export function Navbar7() {
                         title="Search"
                         variant="link"
                         size="link"
-                        image={{
-                          src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                          alt: "Button icon 1",
-                        }}
                       >
-                        <img
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Button icon 1"
-                          className="size-6 shrink-0"
-                        />
+                        <MaterialIcon name="search" className="mr-2" />
                         Search
                       </Button>
                       <Button
                         title="Menu"
                         variant="link"
                         size="link"
-                        image={{
-                          src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                          alt: "Button icon 2",
-                        }}
                       >
-                        <img
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Button icon 2"
-                          className="size-6 shrink-0"
-                        />
+                        <MaterialIcon name="menu" className="mr-2" />
                         Menu
                       </Button>
                     </div>
@@ -581,7 +501,7 @@ export function Navbar7() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <RxChevronDown />
+                    <MaterialIcon name="expand_more" />
                   </motion.span>
                 </button>
                 <AnimatePresence>

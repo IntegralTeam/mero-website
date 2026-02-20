@@ -14,84 +14,42 @@ export function Logo3() {
         <div className="flex shrink-0 animate-loop-horizontally items-center">
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+            src="https://cdn.simpleicons.org/linux/ffffff"
             alt="Webflow logo 1"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
+            src="https://cdn.simpleicons.org/uml/ffffff"
             alt="Relume logo 1"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+            src="https://cdn.simpleicons.org/clickup/ffffff"
             alt="Webflow logo 2"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
+            src="https://cdn.simpleicons.org/duolingo/ffffff"
             alt="Relume logo 2"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+            src="https://cdn.simpleicons.org/apple/ffffff"
             alt="Webflow logo 3"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
+            src="https://cdn.simpleicons.org/linux/ffffff"
             alt="Relume logo 3"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
+            src="https://cdn.simpleicons.org/clickup/ffffff"
             alt="Webflow logo 4"
           />
           <img
             className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
-            alt="Relume logo 4"
-          />
-        </div>
-        <div className="flex shrink-0 animate-loop-horizontally items-center">
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-            alt="Webflow logo 1"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
-            alt="Relume logo 1"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-            alt="Webflow logo 2"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
-            alt="Relume logo 2"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-            alt="Webflow logo 3"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
-            alt="Relume logo 3"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-            alt="Webflow logo 4"
-          />
-          <img
-            className="mx-7 max-h-12 shrink-0 md:mx-10 md:max-h-14"
-            src="https://d22po4pjz3o32e.cloudfront.net/relume-logo.svg"
+            src="https://cdn.simpleicons.org/9gag/ffffff"
             alt="Relume logo 4"
           />
         </div>

@@ -7,8 +7,11 @@ import { Layout89 } from "../components/Layout89";
 import { Layout420 } from "../components/Layout420";
 import { Layout356 } from "../components/Layout356";
 import { Layout298_1 } from "../components/Layout298_1";
+import { ProcessSection } from "../components/ProcessSection";
 import { Logo3 } from "../components/Logo3";
 import { Testimonial6 } from "../components/Testimonial6";
+import { ReadySection } from "../components/ReadySection";
+import { StayInformedSection } from "../components/StayInformedSection";
 import { Faq7 } from "../components/Faq7";
 import { Footer11 } from "../components/Footer11";
 
@@ -27,8 +30,11 @@ export function HomePage() {
       <Layout420 />
       <Layout356 />
       <Layout298_1 />
+      <ProcessSection />
       <Logo3 />
       <Testimonial6 />
+      <ReadySection />
+      <StayInformedSection />
       <Faq7 />
       <Footer11 />
     </>

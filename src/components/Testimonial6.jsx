@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { BiSolidStar } from "react-icons/bi";
+import { MaterialIcon } from "./MaterialIcon";
+import placeholder from "../assets/PlaceholderImage.png";
 
 export function Testimonial6() {
   return (
@@ -18,11 +19,11 @@ export function Testimonial6() {
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-8 lg:gap-x-12 lg:gap-y-16">
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
             <div className="mb-6 flex md:mb-8">
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
             </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Mero gives us the yield we need without the currency risk we
@@ -31,7 +32,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                  src={placeholder}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
@@ -52,11 +53,11 @@ export function Testimonial6() {
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
             <div className="mb-6 flex md:mb-8">
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
             </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Real commodities backing real returns. This is institutional
@@ -65,7 +66,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                  src={placeholder}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
@@ -86,11 +87,11 @@ export function Testimonial6() {
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
             <div className="mb-6 flex md:mb-8">
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
-              <BiSolidStar className="size-6" />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
+              <MaterialIcon name="star" filled size={24} />
             </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Finally, a stablecoin platform built for banks, not against
@@ -99,7 +100,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                  src={placeholder}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
