@@ -7,8 +7,24 @@
       name="description"
       content="Mero provides institutional stablecoin infrastructure for banks with commodity-backed reserves and regulated yield products."
     />
+    <script>
+      (function (location) {
+        if (location.search[1] === "/") {
+          const decoded = location.search
+            .slice(1)
+            .split("&")
+            .map((s) => s.replace(/~and~/g, "&"))
+            .join("?");
+          window.history.replaceState(
+            null,
+            "",
+            decoded + location.hash
+          );
+        }
+      })(window.location);
+    </script>
     <title>Mero | Institutional Stablecoin Infrastructure</title>
-    <link rel="canonical" href="https://www.mero.io/" />
+    <link rel="canonical" href="https://mero.tech/" />
   </head>
   <body>
     <div id="root"></div>
