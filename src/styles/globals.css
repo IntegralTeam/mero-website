@@ -33,3 +33,40 @@ a {
   max-width: 80rem;
   margin-inline: auto;
 }
+
+.logo-marquee {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+}
+
+.logo-marquee-group {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  flex-shrink: 0;
+  justify-content: space-around;
+  gap: 2.5rem;
+  animation: logo-marquee 24s linear infinite;
+}
+
+.logo-marquee-item {
+  flex: 0 0 auto;
+  width: auto;
+  height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .logo-marquee-item {
+    height: 3.5rem;
+  }
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

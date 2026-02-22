@@ -11,7 +11,7 @@ export function Layout298() {
         <div className="flex flex-col items-start">
           <div className="mx-auto mb-12 max-w-3xl md:mb-18 lg:mb-20">
             <p className="mb-3 text-center font-semibold md:mb-4">Platform</p>
-            <h2 className="mb-5 text-center text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+            <h2 className="mb-5 text-center text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
               Built for institutional-grade security and compliance
             </h2>
             <p className="text-center md:text-md">

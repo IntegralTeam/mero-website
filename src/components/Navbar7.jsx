@@ -478,21 +478,24 @@ export function Navbar7() {
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
           >
             <div className="flex flex-col">
+              <Link to="/platform" className="block py-3 text-md">
+                Platform
+              </Link>
+              <Link to="/about" className="block py-3 text-md">
+                About
+              </Link>
               <a href="#" className="block py-3 text-md">
-                Link One
+                Solutions
               </a>
               <a href="#" className="block py-3 text-md">
-                Link Two
-              </a>
-              <a href="#" className="block py-3 text-md">
-                Link Three
+                Partners
               </a>
               <div>
                 <button
                   className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
                   onClick={useActive.openOnMobileDropdownMenu}
                 >
-                  <span>Link Four</span>
+                  <span>Resources</span>
                   <motion.span
                     animate={useActive.animateDropdownMenuIcon}
                     variants={{
@@ -529,23 +532,19 @@ export function Navbar7() {
                         <div className="grid flex-1 grid-cols-1 content-start items-start gap-x-8 gap-y-6 py-4 md:grid-cols-2 md:py-8 lg:auto-cols-fr lg:grid-cols-4 lg:content-stretch lg:items-stretch lg:gap-y-0">
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group one
+                              Getting started
                             </h4>
                             <a
                               href="#"
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 1"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="overview" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page One</h5>
+                                <h5 className="font-semibold">Overview</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Learn how Mero works and what makes it different
                                 </p>
                               </div>
                             </a>
@@ -554,16 +553,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 2"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="sdk" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Two</h5>
+                                <h5 className="font-semibold">Integration</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Deploy USDM into your infrastructure today
                                 </p>
                               </div>
                             </a>
@@ -572,16 +567,13 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 3"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="security" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Three</h5>
+                                <h5 className="font-semibold">Security</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Privacy-preserving blockchain built on Canton
+                                  Network
                                 </p>
                               </div>
                             </a>
@@ -590,39 +582,32 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 4"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="finance" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page four</h5>
+                                <h5 className="font-semibold">Compliance</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Institutional-grade standards for regulated
+                                  banks
                                 </p>
                               </div>
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group two
+                              Use cases
                             </h4>
                             <a
                               href="#"
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 5"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="vpn_lock" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Five</h5>
+                                <h5 className="font-semibold">Pensions</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Unlock yield for emerging market pension funds
                                 </p>
                               </div>
                             </a>
@@ -631,16 +616,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 6"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="savings" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Six</h5>
+                                <h5 className="font-semibold">Savings</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Stable returns backed by commodity reserves
                                 </p>
                               </div>
                             </a>
@@ -649,16 +630,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 7"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="partner_reports" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Seven</h5>
+                                <h5 className="font-semibold">Yield</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Access 5-15% APY through regulated partners
                                 </p>
                               </div>
                             </a>
@@ -667,39 +644,33 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 8"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="savings" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Eight</h5>
+                                <h5 className="font-semibold">Treasury</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Preserve capital with 126%
+                                  over-collateralisation
                                 </p>
                               </div>
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group three
+                              Markets
                             </h4>
                             <a
                               href="#"
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 9"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="token" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Nine</h5>
+                                <h5 className="font-semibold">Indonesia</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  First market for institutional stablecoin
+                                  adoption
                                 </p>
                               </div>
                             </a>
@@ -708,16 +679,13 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 10"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="expand" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Ten</h5>
+                                <h5 className="font-semibold">India</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Expanding regional infrastructure and
+                                  partnerships
                                 </p>
                               </div>
                             </a>
@@ -726,16 +694,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 11"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="video_stable" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Eleven</h5>
+                                <h5 className="font-semibold">Latin America</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Building institutional-grade stablecoin rails
                                 </p>
                               </div>
                             </a>
@@ -744,39 +708,31 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 12"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="mintmark" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Twelve</h5>
+                                <h5 className="font-semibold">Africa</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Bringing stable currency to emerging markets
                                 </p>
                               </div>
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group four
+                              Company
                             </h4>
                             <a
                               href="#"
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 13"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="metro" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Thirteen</h5>
+                                <h5 className="font-semibold">About</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  The story behind Mero and our mission
                                 </p>
                               </div>
                             </a>
@@ -785,16 +741,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 14"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="finance" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Fourteen</h5>
+                                <h5 className="font-semibold">Careers</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Join a team building the future of finance
                                 </p>
                               </div>
                             </a>
@@ -803,16 +755,13 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 15"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="contacts" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Fifteen</h5>
+                                <h5 className="font-semibold">Contact</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Reach out to discuss partnerships and
+                                  integration
                                 </p>
                               </div>
                             </a>
@@ -821,16 +770,12 @@ export function Navbar7() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 16"
-                                  className="shrink-0"
-                                />
+                                <MaterialIcon name="news" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Sixteen</h5>
+                                <h5 className="font-semibold">Press</h5>
                                 <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
+                                  Latest news and announcements from Mero
                                 </p>
                               </div>
                             </a>
@@ -842,9 +787,9 @@ export function Navbar7() {
                       <div className="absolute -left-[50vw] -right-[50vw] bottom-0 top-0 w-[200vw] bg-background-secondary" />
                       <div className="relative mb-4 grid auto-cols-fr grid-cols-[max-content] grid-rows-[auto_auto] items-center gap-x-2 gap-y-4 lg:mb-0 lg:flex lg:items-center">
                         <p>
-                          Ready to get started?
+                          Ready to launch USDM?
                           <a href="#" className="ml-1 underline">
-                            Sign up for free
+                            Request a demo
                           </a>
                         </p>
                       </div>
@@ -853,33 +798,17 @@ export function Navbar7() {
                           title="Button"
                           variant="link"
                           size="link"
-                          image={{
-                            src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                            alt: "Button icon 1",
-                          }}
                         >
-                          <img
-                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                            alt="Button icon 1"
-                            className="size-6 shrink-0"
-                          />
-                          Button
+                          <MaterialIcon name="search" className="mr-2" />
+                          Search
                         </Button>
                         <Button
-                          title="Button"
+                          title="Menu"
                           variant="link"
                           size="link"
-                          image={{
-                            src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                            alt: "Button icon 2",
-                          }}
                         >
-                          <img
-                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                            alt="Button icon 2"
-                            className="size-6 shrink-0"
-                          />
-                          Button
+                          <MaterialIcon name="menu" className="mr-2" />
+                          Menu
                         </Button>
                       </div>
                     </div>
@@ -887,11 +816,11 @@ export function Navbar7() {
                 </AnimatePresence>
               </div>
               <div className="mt-6 flex flex-col gap-4">
-                <Button title="Button" variant="secondary" size="sm">
-                  Button
+                <Button title="Login" variant="secondary" size="sm">
+                  Login
                 </Button>
-                <Button title="Button" size="sm">
-                  Button
+                <Button title="Demo" size="sm">
+                  Demo
                 </Button>
               </div>
             </div>

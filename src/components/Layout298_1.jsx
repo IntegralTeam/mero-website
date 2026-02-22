@@ -14,7 +14,7 @@ export function Layout298_1() {
               <p className="mb-3 text-center font-semibold md:mb-4">
                 Advantages
               </p>
-              <h2 className="mb-5 text-center text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+              <h2 className="mb-5 text-center text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
                 Built for banks that demand more
               </h2>
               <p className="text-center md:text-md">

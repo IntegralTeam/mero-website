@@ -6,7 +6,7 @@ export function ReadySection() {
     <section id="ready" className="pb-16 md:pb-24 lg:pb-28">
       <div className="container overflow-hidden">
         <div className="py-14 text-center md:py-16 lg:py-20">
-          <h2 className="mb-4 text-5xl font-bold leading-[1.2] md:text-[60px] lg:text-[60px]">
+          <h2 className="mb-4 text-4xl font-bold leading-[1.2] md:text-[60px] lg:text-[60px]">
             Ready to get started
           </h2>
           <p className="mx-auto mb-6 max-w-2xl md:mb-8 md:text-md">

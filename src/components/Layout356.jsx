@@ -26,7 +26,7 @@ export function Layout356() {
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
                       <p className="mb-3 font-semibold md:mb-4">Issuance</p>
-                      <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
                         Banks mint USDM backed by commodity reserves
                       </h2>
                       <p className="md:text-md">
@@ -76,7 +76,7 @@ export function Layout356() {
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
                       <p className="mb-3 font-semibold md:mb-4">Issuance</p>
-                      <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
                         Deploy
                       </h2>
                       <p className="md:text-md">
@@ -124,7 +124,7 @@ export function Layout356() {
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
                       <p className="mb-3 font-semibold md:mb-4">Issuance</p>
-                      <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
                         Redeem
                       </h2>
                       <p className="md:text-md">
