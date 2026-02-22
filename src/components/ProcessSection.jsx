@@ -6,7 +6,7 @@ export function ProcessSection() {
       <div className="container">
         <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16 lg:mb-20">
           <p className="mb-4 text-sm font-semibold">Process</p>
-          <h2 className="mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-[60px] lg:text-[60px]">
+          <h2 className="mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
             How Mero works for banks
           </h2>
           <p className="md:text-md">

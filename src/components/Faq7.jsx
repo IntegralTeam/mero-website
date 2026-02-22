@@ -8,7 +8,7 @@ export function Faq7() {
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container w-full max-w-lg">
         <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
-          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
             FAQs
           </h2>
           <p className="md:text-md">

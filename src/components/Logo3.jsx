@@ -43,7 +43,7 @@ export function Logo3() {
                 aria-hidden="true"
               />
             ))}
-            <div className="w-1" />
+            <div />
           </div>
         ))}
       </div>

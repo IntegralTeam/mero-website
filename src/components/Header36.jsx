@@ -11,7 +11,7 @@ export function Header36() {
       className="grid grid-cols-1 items-center gap-y-16 pt-16 md:pt-24 lg:grid-cols-2 lg:pt-0 lg:h-dvh overflow-hidden"
     >
       <div className="mx-[5%] sm:max-w-md md:justify-self-start lg:ml-[5vw]">
-        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-[72px] lg:text-[84px]">
+        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-[4.5rem] lg:text-[5.25rem]">
           Institutional stablecoin infrastructure for banks
         </h1>
         <p className="md:text-md">

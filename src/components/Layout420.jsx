@@ -17,7 +17,7 @@ export function Layout420() {
             <div className="flex flex-col items-end md:h-screen md:justify-center">
               <div className="mx-[5%] md:ml-[5vw] md:mr-12 lg:mr-20">
                 <p className="mb-3 font-semibold md:mb-4">Reserves</p>
-                <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-[60px] lg:text-[60px]">
+                <h2 className="mb-5 text-4xl font-bold md:mb-6 leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
                   Real commodities backing every stablecoin
                 </h2>
                 <p className="md:text-md">

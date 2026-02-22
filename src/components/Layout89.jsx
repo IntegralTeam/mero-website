@@ -12,7 +12,7 @@ export function Layout89() {
         <div className="mb-12 grid grid-cols-1 items-start justify-between gap-x-12 gap-y-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4">Global Reach</p>
-            <h3 className="text-4xl font-bold leading-[1.2] md:text-[60px] lg:text-[60px]">
+            <h3 className="text-4xl font-bold leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
               Emerging markets demand real solutions
             </h3>
           </div>
