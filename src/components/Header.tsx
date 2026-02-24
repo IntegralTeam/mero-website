@@ -1,7 +1,7 @@
 import { Button } from "@relume_io/relume-ui";
 import placeholder from "../assets/PlaceholderImage.png";
 
-export function Header36() {
+export function Header() {
   return (
     <section
       id="relume"

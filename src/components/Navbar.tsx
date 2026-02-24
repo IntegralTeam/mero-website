@@ -36,7 +36,7 @@ const useRelume = () => {
   };
 };
 
-export function Navbar7() {
+export function Navbar() {
   const useActive = useRelume();
   return (
     <section
@@ -53,30 +53,29 @@ export function Navbar7() {
         <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row">
             <Link
-              to="/platform"
+              to="/#platform"
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Platform
             </Link>
             <Link
-              to="/about"
+              to="/#about"
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               About
             </Link>
-            <a
-              href="/#"
-              onClick={(event) => event.preventDefault()}
+            <Link
+              to="/#solutions"
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Solutions
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/#partners"
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Partners
-            </a>
+            </Link>
             <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
@@ -340,8 +339,8 @@ export function Navbar7() {
                               </p>
                             </div>
                           </a>
-                          <a
-                            href="#"
+                          <Link 
+                            to="/#stay-informed"
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
@@ -354,7 +353,7 @@ export function Navbar7() {
                                 integration
                               </p>
                             </div>
-                          </a>
+                          </Link>
                           <a
                             href="#"
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
@@ -408,7 +407,7 @@ export function Navbar7() {
           </div>
           <div className="flex items-center gap-4">
             <Button title="Login" variant="secondary" size="sm">
-              Login
+              <Link to="/#stay-informed">Contact Us</Link>
             </Button>
             <Button title="Demo" size="sm">
               Demo
@@ -476,18 +475,18 @@ export function Navbar7() {
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
           >
             <div className="flex flex-col">
-              <Link to="/platform" className="block py-3 text-md">
+              <Link to="/#platform" className="block py-3 text-md">
                 Platform
               </Link>
-              <Link to="/about" className="block py-3 text-md">
+              <Link to="/#about" className="block py-3 text-md">
                 About
               </Link>
-              <a href="#" className="block py-3 text-md">
+              <Link to="/#solutions" className="block py-3 text-md">
                 Solutions
-              </a>
-              <a href="#" className="block py-3 text-md">
+              </Link>
+              <Link to="/#partners" className="block py-3 text-md">
                 Partners
-              </a>
+              </Link>
               <div>
                 <button
                   className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
@@ -815,7 +814,7 @@ export function Navbar7() {
               </div>
               <div className="mt-6 flex flex-col gap-4">
                 <Button title="Login" variant="secondary" size="sm">
-                  Login
+                  Contact Us
                 </Button>
                 <Button title="Demo" size="sm">
                   Demo

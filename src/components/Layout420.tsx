@@ -7,7 +7,7 @@ import gemstones from "../assets/gemstones.jpg";
 
 export function Layout420() {
   return (
-    <section id="relume" className="pt-24 md:pt-0">
+    <section id="about" className="pt-24 md:pt-0">
       <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-y-0">
         <div>
           <div className="md:sticky md:top-0 md:gap-y-0">
@@ -27,12 +27,12 @@ export function Layout420() {
                     View reserves
                   </Button>
                   <Button
-                    title="Arrow"
+                    title="Learn more"
                     variant="link"
                     size="link"
                     iconRight={<MaterialIcon name="chevron_right" />}
                   >
-                    Arrow
+                    Learn more
                   </Button>
                 </div>
               </div>

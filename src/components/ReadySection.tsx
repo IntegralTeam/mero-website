@@ -1,4 +1,5 @@
 import { Button } from "@relume_io/relume-ui";
+import { Link } from "react-router-dom";
 
 export function ReadySection() {
   return (
@@ -14,7 +15,7 @@ export function ReadySection() {
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
             <Button size="sm">Request demo</Button>
             <Button variant="secondary" size="sm">
-              Contact us
+              <Link to="/#stay-informed">Contact Us</Link>
             </Button>
           </div>
         </div>

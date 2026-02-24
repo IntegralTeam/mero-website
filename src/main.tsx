@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { ScrollToHash } from "./ScrollToHash";
 import "./styles/globals.css";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter basename={basename}>
+        <ScrollToHash />
         <App />
       </BrowserRouter>
     </HelmetProvider>

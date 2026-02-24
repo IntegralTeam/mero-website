@@ -1,4 +1,5 @@
 import { Button } from "@relume_io/relume-ui";
+import { Link } from "react-router-dom";
 
 export function Faq7() {
   return (
@@ -74,7 +75,7 @@ export function Faq7() {
           <p className="md:text-md">Reach out to our institutional team.</p>
           <div className="mt-6 md:mt-8">
             <Button title="Contact" variant="secondary">
-              Contact
+              <Link to="/#stay-informed">Contact</Link>
             </Button>
           </div>
         </div>

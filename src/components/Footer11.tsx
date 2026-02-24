@@ -1,6 +1,51 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+type LegalModalKey = "privacy" | "terms" | "cookies";
+
+const modalContent: Record<LegalModalKey, { title: string; body: string[] }> = {
+  privacy: {
+    title: "Privacy Policy",
+    body: [
+      "Mero only collects information needed to operate our platform, provide support, and meet compliance requirements.",
+      "We process account and operational data under institutional security standards and never sell your personal data.",
+      "For privacy requests, contact hello@mero.io.",
+    ],
+  },
+  terms: {
+    title: "Terms of Service",
+    body: [
+      "By using Mero services, your institution agrees to our platform usage, compliance, and security requirements.",
+      "Access to products may depend on jurisdiction, onboarding, and risk approval.",
+      "Mero may update these terms as regulations evolve. Continued use indicates acceptance of updated terms.",
+    ],
+  },
+  cookies: {
+    title: "Cookie Settings",
+    body: [
+      "Mero uses essential cookies to keep the website functional and secure.",
+      "Analytics cookies help us improve product quality and user experience.",
+      "You can disable non-essential cookies in your browser settings at any time.",
+    ],
+  },
+};
+
 export function Footer11() {
+  const [activeModal, setActiveModal] = useState<LegalModalKey | null>(null);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveModal(null);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeModal]);
+
   return (
     <footer id="relume" className="px-[5%] py-12 md:py-18 lg:py-20">
       <div className="container">
@@ -91,7 +136,7 @@ export function Footer11() {
                 <a href="#">Documentation</a>
               </li>
               <li className="py-2 text-sm font-semibold">
-                <a href="#">Contact us</a>
+                <Link to="/#stay-informed">Contact us</Link>
               </li>
               <li className="py-2 text-sm font-semibold">
                 <a href="#">Careers</a>
@@ -106,17 +151,67 @@ export function Footer11() {
           <p className="mt-8 md:mt-0">© 2026 Mero. All rights reserved.</p>
           <ul className="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
             <li className="underline">
-              <a href="#">Privacy policy</a>
+              <button
+                type="button"
+                onClick={() => setActiveModal("privacy")}
+                className="underline"
+              >
+                Privacy policy
+              </button>
             </li>
             <li className="underline">
-              <a href="#">Terms of service</a>
+              <button
+                type="button"
+                onClick={() => setActiveModal("terms")}
+                className="underline"
+              >
+                Terms of service
+              </button>
             </li>
             <li className="underline">
-              <a href="#">Cookie settings</a>
+              <button
+                type="button"
+                onClick={() => setActiveModal("cookies")}
+                className="underline"
+              >
+                Cookie settings
+              </button>
             </li>
           </ul>
         </div>
       </div>
+      {activeModal ? (
+        <div
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 px-5"
+          onClick={() => setActiveModal(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="legal-modal-title"
+            className="w-full max-w-xl border border-border-primary bg-white p-6 md:p-8"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-5 flex items-start justify-between gap-4">
+              <h3 id="legal-modal-title" className="text-2xl font-bold">
+                {modalContent[activeModal].title}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setActiveModal(null)}
+                className="text-sm underline"
+              >
+                Close
+              </button>
+            </div>
+            <div className="space-y-3 text-sm md:text-base">
+              {modalContent[activeModal].body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </footer>
   );
 }

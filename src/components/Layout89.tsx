@@ -1,12 +1,81 @@
 import { Button } from "@relume_io/relume-ui";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { MaterialIcon } from "./MaterialIcon";
-import logo from "../assets/PlaceholderImage.png";
+
+const LazyWorldMap = lazy(() => import("./WorldMap"));
 
 export function Layout89() {
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const [mapFocusProgress, setMapFocusProgress] = useState(0);
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (shouldLoadMap) return;
+    const target = mapContainerRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [shouldLoadMap]);
+
+  useEffect(() => {
+    if (!shouldLoadMap) return;
+
+    const computeFocusProgress = () => {
+      const target = mapContainerRef.current;
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight || 1;
+
+      const enterY = viewportHeight * 0.95;
+      const exitY = -rect.height * 0.4;
+      const rawProgress = (enterY - rect.top) / (enterY - exitY);
+      const nextProgress = Math.min(1, Math.max(0, rawProgress));
+
+      setMapFocusProgress((current) =>
+        Math.abs(current - nextProgress) > 0.002 ? nextProgress : current
+      );
+    };
+
+    let rafId = 0;
+    let ticking = false;
+
+    const onScrollLike = () => {
+      if (ticking) return;
+      ticking = true;
+      rafId = window.requestAnimationFrame(() => {
+        computeFocusProgress();
+        ticking = false;
+      });
+    };
+
+    computeFocusProgress();
+    window.addEventListener("scroll", onScrollLike, { passive: true });
+    window.addEventListener("resize", onScrollLike);
+
+    return () => {
+      window.removeEventListener("scroll", onScrollLike);
+      window.removeEventListener("resize", onScrollLike);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
+  }, [shouldLoadMap]);
+
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="relume" className="h-[100vh] py-16 md:py-24 lg:py-28">
       <div className="container">
-        <div className="mb-12 grid grid-cols-1 items-start justify-between gap-x-12 gap-y-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
+        <div className="px-[5%] grid grid-cols-1 mb-5 items-start justify-between gap-x-12 gap-y-5 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4">Global Reach</p>
             <h3 className="text-4xl font-bold leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
@@ -35,11 +104,18 @@ export function Layout89() {
             </div>
           </div>
         </div>
-        <img
-          src={logo}
-          className="w-full object-cover h-[738px]"
-          alt="Relume placeholder image"
-        />
+        <div
+          ref={mapContainerRef}
+          className="h-[28rem] w-full overflow-hidden md:h-[32rem] lg:h-[37rem]"
+        >
+          {shouldLoadMap ? (
+            <Suspense fallback={<div className="h-full w-full bg-[#eef1f6]" />}>
+              <LazyWorldMap focusProgress={mapFocusProgress} />
+            </Suspense>
+          ) : (
+            <div className="h-full w-full bg-[#eef1f6]" />
+          )}
+        </div>
       </div>
     </section>
   );

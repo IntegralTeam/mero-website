@@ -3,7 +3,7 @@ import { MaterialIcon } from "./MaterialIcon";
 
 export function Layout298() {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#F2F2F2]">
+    <section id="platform" className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#F2F2F2]">
       <div className="container">
         <div className="flex flex-col items-start">
           <div className="mx-auto mb-12 max-w-3xl md:mb-18 lg:mb-20">
@@ -72,12 +72,12 @@ export function Layout298() {
               Explore features
             </Button>
             <Button
-              title="Arrow"
+              title="Learn more"
               variant="link"
               size="link"
               iconRight={<MaterialIcon name="chevron_right" />}
             >
-              Arrow
+              Learn more
             </Button>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import { Seo } from "../lib/seo";
-import { Navbar7 } from "../components/Navbar7";
-import { Header36 } from "../components/Header36";
+import { Navbar } from "../components/Navbar";
+import { Header } from "../components/Header";
 import { Layout298 } from "../components/Layout298";
 import { Layout89 } from "../components/Layout89";
 import { Layout420 } from "../components/Layout420";
 import { Layout356 } from "../components/Layout356";
 import { Layout298_1 } from "../components/Layout298_1";
 import { ProcessSection } from "../components/ProcessSection";
-import { Logo3 } from "../components/Logo3";
+import { Partners } from "../components/Partners";
 import { Testimonial6 } from "../components/Testimonial6";
 import { ReadySection } from "../components/ReadySection";
 import { StayInformedSection } from "../components/StayInformedSection";
@@ -22,15 +22,15 @@ export function HomePage() {
         description="Mero helps banks mint commodity-backed USD stablecoins and deploy into regulated yield products across global markets."
         path="/"
       />
-      <Navbar7 />
-      <Header36 />
+      <Navbar />
+      <Header />
       <Layout298 />
       <Layout89 />
       <Layout420 />
       <Layout356 />
       <Layout298_1 />
       <ProcessSection />
-      <Logo3 />
+      <Partners />
       <Testimonial6 />
       <ReadySection />
       <StayInformedSection />

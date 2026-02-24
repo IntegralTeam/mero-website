@@ -7,7 +7,7 @@ import placeholder4 from "../assets/PlaceholderImage4.png";
 
 export function Layout356() {
   return (
-    <section id="relume" className="bg-[#F2F2F2]">
+    <section id="solutions" className="bg-[#F2F2F2]">
       <div className="sticky top-0">
         <Fragment>
           <div className="relative -top-32 h-0" />
@@ -37,12 +37,12 @@ export function Layout356() {
                           Mint
                         </Button>
                         <Button
-                          title="Arrow"
+                          title="Learn more"
                           variant="link"
                           size="link"
                           iconRight={<MaterialIcon name="chevron_right" />}
                         >
-                          Arrow
+                          Learn more
                         </Button>
                       </div>
                     </div>
@@ -85,12 +85,12 @@ export function Layout356() {
                           Mint
                         </Button>
                         <Button
-                          title="Arrow"
+                          title="Learn more"
                           variant="link"
                           size="link"
                           iconRight={<MaterialIcon name="chevron_right" />}
                         >
-                          Arrow
+                          Learn more
                         </Button>
                       </div>
                     </div>
@@ -133,12 +133,12 @@ export function Layout356() {
                           Mint
                         </Button>
                         <Button
-                          title="Arrow"
+                          title="Learn more"
                           variant="link"
                           size="link"
                           iconRight={<MaterialIcon name="chevron_right" />}
                         >
-                          Arrow
+                          Learn more
                         </Button>
                       </div>
                     </div>

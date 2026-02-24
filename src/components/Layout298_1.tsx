@@ -76,12 +76,12 @@ export function Layout298_1() {
               Learn
             </Button>
             <Button
-              title="Arrow"
+              title="Learn more"
               variant="link"
               size="link"
               iconRight={<MaterialIcon name="chevron_right" />}
             >
-              Arrow
+              Learn more
             </Button>
           </div>
         </div>

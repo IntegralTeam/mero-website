@@ -1,15 +1,18 @@
-export function Logo3() {
+import canton from '../assets/canton-logo-white.svg';
+import midnight from '../assets/midnight-logo.svg';
+
+export function Partners() {
   const logos = [
-    { src: "https://cdn.simpleicons.org/linux/ffffff", alt: "Linux" },
-    { src: "https://cdn.simpleicons.org/uml/ffffff", alt: "UML" },
-    { src: "https://cdn.simpleicons.org/clickup/ffffff", alt: "ClickUp" },
-    { src: "https://cdn.simpleicons.org/duolingo/ffffff", alt: "Duolingo" },
-    { src: "https://cdn.simpleicons.org/apple/ffffff", alt: "Apple" },
-    { src: "https://cdn.simpleicons.org/9gag/ffffff", alt: "9GAG" },
+    { src: canton, alt: "Linux" },
+    { src: midnight, alt: "UML" },
+    { src: canton, alt: "ClickUp" },
+    { src: midnight, alt: "Duolingo" },
+    { src: canton, alt: "Apple" },
+    { src: midnight, alt: "9GAG" },
   ];
 
   return (
-    <section id="relume" className="overflow-hidden py-12 md:py-16 lg:py-20 bg-black">
+    <section id="partners" className="overflow-hidden py-12 md:py-16 lg:py-20 bg-black">
       <div className="container mb-8 w-full max-w-lg px-[5%] md:mb-10 lg:mb-12">
         <h1 className="text-center text-base font-bold leading-[1.2] md:text-md md:leading-[1.2] text-white">
           Trusted by leading financial institutions
