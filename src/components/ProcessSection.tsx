@@ -1,3 +1,5 @@
+import financialReview from '../assets/financial-review.jpg';
+
 export function ProcessSection() {
   return (
     <section id="process" className="px-[5%] py-16 md:py-24 lg:py-28">
@@ -15,7 +17,7 @@ export function ProcessSection() {
 
         <div className="mb-8 overflow-hidden md:mb-10 lg:mb-12">
           <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80"
+            src={financialReview}
             alt="Two professionals reviewing financial information together"
             className="h-[22rem] w-full object-cover md:h-[32rem] lg:h-[40rem]"
           />

@@ -14,16 +14,20 @@ export function Layout356() {
           <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 top-0 lg:mb-32">
             <div className="px-[5%]">
               <div className="container">
-                <a href="#" className="flex h-16 w-full items-center underline">
+                {/* <a href="#" className="flex h-16 w-full items-center underline">
                   <span className="mr-5 font-semibold md:mr-6 md:text-md">
                     Mint
                   </span>
                   <h1 className="font-semibold md:text-md">Issue USDM</h1>
-                </a>
+                </a> */}
+                <span className="flex h-16 w-full items-center">
+                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
+                    Mint
+                  </span>
+                </span>
                 <div className="py-8 md:py-10 lg:py-12">
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
-                      <p className="mb-3 font-semibold md:mb-4">Issuance</p>
                       <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
                         Banks mint USDM backed by commodity reserves
                       </h2>
@@ -64,16 +68,20 @@ export function Layout356() {
           <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 lg:top-16 lg:-mt-16 lg:mb-16">
             <div className="px-[5%]">
               <div className="container">
-                <a href="#" className="flex h-16 w-full items-center underline">
+                {/* <a href="#" className="flex h-16 w-full items-center underline">
                   <span className="mr-5 font-semibold md:mr-6 md:text-md">
                     Deploy
                   </span>
                   <h1 className="font-semibold md:text-md">Earn yield</h1>
-                </a>
+                </a> */}
+                <span className="flex h-16 w-full items-center">
+                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
+                    Deploy & Earn
+                  </span>
+                </span>
                 <div className="py-8 md:py-10 lg:py-12">
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
-                      <p className="mb-3 font-semibold md:mb-4">Issuance</p>
                       <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
                         Deploy
                       </h2>
@@ -82,7 +90,7 @@ export function Layout356() {
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
-                          Mint
+                          Deploy
                         </Button>
                         <Button
                           title="Learn more"
@@ -112,16 +120,20 @@ export function Layout356() {
           <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 lg:top-32 lg:mb-16">
             <div className="px-[5%]">
               <div className="container">
-                <a href="#" className="flex h-16 w-full items-center underline">
+                {/* <a href="#" className="flex h-16 w-full items-center underline">
                   <span className="mr-5 font-semibold md:mr-6 md:text-md">
                     Convert back
                   </span>
                   <h1 className="font-semibold md:text-md">Redemption</h1>
-                </a>
+                </a> */}
+                <span className="flex h-16 w-full items-center">
+                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
+                    Redeem
+                  </span>
+                </span>
                 <div className="py-8 md:py-10 lg:py-12">
                   <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
                     <div>
-                      <p className="mb-3 font-semibold md:mb-4">Issuance</p>
                       <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
                         Redeem
                       </h2>
@@ -130,7 +142,7 @@ export function Layout356() {
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
-                          Mint
+                          Redeem
                         </Button>
                         <Button
                           title="Learn more"

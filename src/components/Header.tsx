@@ -1,11 +1,14 @@
 import { Button } from "@relume_io/relume-ui";
-import placeholder from "../assets/PlaceholderImage.png";
+import type { CSSProperties } from "react";
+import usdmCoin from "../assets/USDM.png";
 
 export function Header() {
+  const coins = Array.from({ length: 7 }, (_, index) => index);
+
   return (
     <section
       id="relume"
-      className="grid grid-cols-1 items-center gap-y-16 pt-16 md:pt-24 lg:grid-cols-2 lg:pt-0 lg:h-dvh overflow-hidden"
+      className="header-gradient-bg grid grid-cols-1 items-center gap-y-16 overflow-hidden pt-16 md:pt-24 lg:h-dvh lg:grid-cols-2 lg:pt-0"
     >
       <div className="mx-[5%] sm:max-w-md md:justify-self-start lg:ml-[5vw]">
         <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-[4.5rem] lg:text-[5.25rem]">
@@ -23,12 +26,24 @@ export function Header() {
           </Button>
         </div>
       </div>
-      <div>
-        <img
-          src={placeholder}
-          alt="Relume placeholder image"
-          className="w-full object-cover lg:h-dvh"
-        />
+      <div className="header-coin-scene">
+        <div className="header-coin-stack" aria-hidden="true">
+          {coins.map((coinIndex) => (
+            <img
+              key={coinIndex}
+              src={usdmCoin}
+              alt=""
+              className="header-coin"
+              style={
+                {
+                  "--coin-index": coinIndex,
+                  "--coin-stack-level": coins.length - 1 - coinIndex,
+                  "--coin-z": coinIndex + 1,
+                } as CSSProperties
+              }
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

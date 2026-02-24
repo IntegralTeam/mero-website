@@ -253,7 +253,7 @@ export function Navbar() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="token" size={24} />
+                              <MaterialIcon name="globe" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Indonesia</h5>
@@ -268,7 +268,7 @@ export function Navbar() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="expand" size={24} />
+                              <MaterialIcon name="globe" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">India</h5>
@@ -283,7 +283,7 @@ export function Navbar() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="video_stable" size={24} />
+                              <MaterialIcon name="globe" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Latin America</h5>
@@ -297,7 +297,7 @@ export function Navbar() {
                             className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                           >
                             <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="mintmark" size={24} />
+                              <MaterialIcon name="globe" size={24} />
                             </div>
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Africa</h5>
@@ -382,7 +382,7 @@ export function Navbar() {
                         </a>
                       </p>
                     </div>
-                    <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
+                    {/* <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
                       <Button
                         title="Search"
                         variant="link"
@@ -399,7 +399,7 @@ export function Navbar() {
                         <MaterialIcon name="menu" className="mr-2" />
                         Menu
                       </Button>
-                    </div>
+                    </div> */}
                   </div>
                 </motion.nav>
               </AnimatePresence>
@@ -661,7 +661,7 @@ export function Navbar() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="token" size={24} />
+                                <MaterialIcon name="globe" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Indonesia</h5>
@@ -676,7 +676,7 @@ export function Navbar() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="expand" size={24} />
+                                <MaterialIcon name="globe" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">India</h5>
@@ -691,7 +691,7 @@ export function Navbar() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="video_stable" size={24} />
+                                <MaterialIcon name="globe" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Latin America</h5>
@@ -705,7 +705,7 @@ export function Navbar() {
                               className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="mintmark" size={24} />
+                                <MaterialIcon name="globe" size={24} />
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Africa</h5>
@@ -790,7 +790,7 @@ export function Navbar() {
                           </a>
                         </p>
                       </div>
-                      <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
+                      {/* <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
                         <Button
                           title="Button"
                           variant="link"
@@ -807,7 +807,7 @@ export function Navbar() {
                           <MaterialIcon name="menu" className="mr-2" />
                           Menu
                         </Button>
-                      </div>
+                      </div> */}
                     </div>
                   </motion.nav>
                 </AnimatePresence>

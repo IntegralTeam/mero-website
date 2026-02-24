@@ -113,19 +113,16 @@ export function Footer11() {
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-10 sm:grid-cols-2 md:gap-x-8 md:gap-y-4">
             <ul>
               <li className="py-2 text-sm font-semibold">
-                <Link to="/about">About Mero</Link>
+                <Link to="/#platform">Platform</Link>
               </li>
               <li className="py-2 text-sm font-semibold">
-                <Link to="/platform">How it works</Link>
+                <Link to="/#about">About</Link>
               </li>
               <li className="py-2 text-sm font-semibold">
-                <a href="#">Features</a>
+                <Link to="/#solutions">Solutions</Link>
               </li>
               <li className="py-2 text-sm font-semibold">
-                <a href="#">Partners</a>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="#">Resources</a>
+                <Link to="/#partners">Partners</Link>
               </li>
             </ul>
             <ul>
@@ -134,9 +131,6 @@ export function Footer11() {
               </li>
               <li className="py-2 text-sm font-semibold">
                 <a href="#">Documentation</a>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <Link to="/#stay-informed">Contact us</Link>
               </li>
               <li className="py-2 text-sm font-semibold">
                 <a href="#">Careers</a>

@@ -41,7 +41,7 @@ export function Layout420() {
         </div>
         <div>
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative">
+            <div className="max-w-md text-text-alternative mb-[12rem]">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                 Gold
               </h3>
@@ -54,13 +54,13 @@ export function Layout420() {
               <img
                 src={gold}
                 className="size-full object-cover"
-                alt="Relume placeholder image 1"
+                alt="gold"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>
           </div>
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative">
+            <div className="max-w-md text-text-alternative mb-[12rem]">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                 Copper
               </h3>
@@ -72,13 +72,13 @@ export function Layout420() {
               <img
                 src={copper}
                 className="size-full object-cover"
-                alt="Relume placeholder image 2"
+                alt="copper"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>
           </div>
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative">
+            <div className="max-w-md text-text-alternative mb-[12rem]">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                 Nickel
               </h3>
@@ -90,13 +90,13 @@ export function Layout420() {
               <img
                 src={nickel}
                 className="size-full object-cover"
-                alt="Relume placeholder image 3"
+                alt="nickel"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>
           </div>
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative">
+            <div className="max-w-md text-text-alternative mb-[12rem]">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
                 Gemstones
               </h3>
@@ -108,7 +108,7 @@ export function Layout420() {
               <img
                 src={gemstones}
                 className="size-full object-cover"
-                alt="Relume placeholder image 4"
+                alt="gemstones"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>

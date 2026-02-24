@@ -151,3 +151,95 @@ a {
   fill: #14102f;
   opacity: 1;
 }
+
+.header-gradient-bg {
+  background: linear-gradient(175deg, #ffffff 0%, #f4f4f4 78%, #f2f2f2 100%);
+}
+
+.header-coin-scene {
+  position: relative;
+  min-height: 24rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header-coin-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header-coin {
+  --coin-size: clamp(10.4rem, 26vw, 17rem);
+  --stack-gap: clamp(1.56rem, 3.6vw, 2.3rem);
+  --target-y: calc((var(--coin-stack-level) - 3) * var(--stack-gap));
+  --coin-delay: calc(var(--coin-index) * 0.54s);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--coin-size);
+  height: var(--coin-size);
+  object-fit: contain;
+  z-index: var(--coin-z);
+  transform: translateX(-50%) translateY(calc(-50% - 42rem));
+  opacity: 0;
+  animation: coin-cycle 9.2s linear infinite;
+  animation-delay: var(--coin-delay);
+  filter: drop-shadow(0 0.65rem 1.1rem rgba(10, 9, 17, 0.24));
+  will-change: transform, opacity;
+}
+
+@keyframes coin-cycle {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(calc(-50% - 42rem));
+  }
+  6% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% - 42rem));
+  }
+  16% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% - 18rem));
+    animation-timing-function: cubic-bezier(0.28, 0.56, 0.62, 0.99);
+  }
+  34% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y) - 0.5rem));
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y)));
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y)));
+  }
+  76% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y) + 4.5rem));
+    animation-timing-function: cubic-bezier(0.41, 0.03, 0.79, 0.18);
+  }
+  88% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y) + 17rem));
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(calc(-50% + var(--target-y) + 38rem));
+  }
+}
+
+@media (max-width: 991px) {
+  .header-coin-scene {
+    min-height: 22rem;
+  }
+
+  .header-coin-stack {
+    width: 100%;
+    height: 100%;
+  }
+}
