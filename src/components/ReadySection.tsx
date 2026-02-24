@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@relume_io/relume-ui";
 
 export function ReadySection() {

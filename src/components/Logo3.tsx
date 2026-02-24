@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 export function Logo3() {
   const logos = [
     { src: "https://cdn.simpleicons.org/linux/ffffff", alt: "Linux" },

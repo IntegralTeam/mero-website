@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { MaterialIcon } from "./MaterialIcon";
 import placeholder from "../assets/PlaceholderImage.png";
 

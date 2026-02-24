@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "lint": "eslint .",
     "predeploy": "npm run build",
@@ -27,6 +28,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.13.10",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.21.0",
@@ -35,6 +37,7 @@
     "globals": "^15.15.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
+    "typescript": "^5.8.2",
     "vite": "^5.4.11"
   }
 }

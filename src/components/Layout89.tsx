@@ -1,8 +1,6 @@
-"use client";
-
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
+import logo from "../assets/PlaceholderImage.png";
 
 export function Layout89() {
   return (
@@ -11,7 +9,7 @@ export function Layout89() {
         <div className="mb-12 grid grid-cols-1 items-start justify-between gap-x-12 gap-y-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4">Global Reach</p>
-            <h3 className="text-5xl font-bold leading-[1.2] md:text-7xl lg:text-8xl">
+            <h3 className="text-4xl font-bold leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
               Emerging markets demand real solutions
             </h3>
           </div>
@@ -30,7 +28,7 @@ export function Layout89() {
                 title="Learn more"
                 variant="link"
                 size="link"
-                iconRight={<RxChevronRight />}
+                iconRight={<MaterialIcon name="chevron_right" />}
               >
                 Learn more
               </Button>
@@ -38,8 +36,8 @@ export function Layout89() {
           </div>
         </div>
         <img
-          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-          className="w-full object-cover"
+          src={logo}
+          className="w-full object-cover h-[738px]"
           alt="Relume placeholder image"
         />
       </div>

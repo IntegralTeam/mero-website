@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@relume_io/relume-ui": path.resolve(__dirname, "src/lib/relume-ui.jsx"),
+      "@relume_io/relume-ui": path.resolve(__dirname, "src/lib/relume-ui.tsx"),
     }
   },
   base: "/mero-website/"

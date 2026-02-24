@@ -1,14 +1,11 @@
-"use client";
-
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
 
 export function Faq7() {
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container w-full max-w-lg">
         <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
-          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
             FAQs
           </h2>
           <p className="md:text-md">
@@ -21,7 +18,7 @@ export function Faq7() {
               How is USDM backed?
             </h2>
             <p>
-              Every USDM token is backed 1:1 by physical commodity reserves held
+              Every USDM token is backed by physical commodity reserves held
               in institutional vaults. Gold, copper, nickel, and gemstones
               provide real value and stability. Collateralization exceeds 126%,
               ensuring capital protection at all times.

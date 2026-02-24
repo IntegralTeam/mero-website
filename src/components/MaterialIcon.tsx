@@ -1,12 +1,20 @@
 import React from "react";
 
+type MaterialIconProps = {
+  name: string;
+  className?: string;
+  filled?: boolean;
+  size?: number | string;
+  style?: React.CSSProperties;
+};
+
 export function MaterialIcon({
   name,
   className = "",
   filled = false,
   size,
   style,
-}) {
+}: MaterialIconProps) {
   const resolvedSize =
     typeof size === "number" ? `${size}px` : typeof size === "string" ? size : undefined;
 

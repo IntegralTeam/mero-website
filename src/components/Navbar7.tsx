@@ -1,8 +1,6 @@
-"use client";
-
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { MaterialIcon } from "./MaterialIcon";
 import { Link } from "react-router-dom";
 

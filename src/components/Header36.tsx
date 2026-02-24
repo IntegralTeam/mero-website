@@ -1,20 +1,18 @@
-"use client";
-
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
+import placeholder from "../assets/PlaceholderImage.png";
 
 export function Header36() {
   return (
     <section
       id="relume"
-      className="grid grid-cols-1 items-center gap-y-16 pt-16 md:pt-24 lg:grid-cols-2 lg:pt-0"
+      className="grid grid-cols-1 items-center gap-y-16 pt-16 md:pt-24 lg:grid-cols-2 lg:pt-0 lg:h-dvh overflow-hidden"
     >
-      <div className="mx-[5%] sm:max-w-md md:justify-self-start lg:ml-[5vw] lg:mr-20 lg:justify-self-end">
-        <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">
+      <div className="mx-[5%] sm:max-w-md md:justify-self-start lg:ml-[5vw]">
+        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-[4.5rem] lg:text-[5.25rem]">
           Institutional stablecoin infrastructure for banks
         </h1>
         <p className="md:text-md">
-          Mero enables banks to mint USD-denominated stablecoins backed 1:1 by
+          Mero enables banks to mint USD-denominated stablecoins backed by
           commodity reserves. Deploy capital into regulated yield products
           earning 5-15% APY with zero FX conversion required.
         </p>
@@ -27,9 +25,9 @@ export function Header36() {
       </div>
       <div>
         <img
-          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+          src={placeholder}
           alt="Relume placeholder image"
-          className="w-full object-cover lg:h-screen lg:max-h-[60rem]"
+          className="w-full object-cover lg:h-dvh"
         />
       </div>
     </section>

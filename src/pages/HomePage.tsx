@@ -1,4 +1,3 @@
-import React from "react";
 import { Seo } from "../lib/seo";
 import { Navbar7 } from "../components/Navbar7";
 import { Header36 } from "../components/Header36";

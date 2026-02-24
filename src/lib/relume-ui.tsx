@@ -14,6 +14,15 @@ const sizeClasses = {
   link: "h-auto px-0 text-sm",
 };
 
+type ButtonVariant = keyof typeof variantClasses;
+type ButtonSize = keyof typeof sizeClasses;
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  iconRight?: React.ReactNode;
+};
+
 export function Button({
   children,
   className = "",
@@ -21,7 +30,7 @@ export function Button({
   size = "default",
   iconRight,
   ...props
-}) {
+}: ButtonProps) {
   const vClass = variantClasses[variant] ?? variantClasses.primary;
   const sClass = sizeClasses[size] ?? sizeClasses.default;
 
@@ -37,7 +46,7 @@ export function Button({
   );
 }
 
-export function useMediaQuery(query) {
+export function useMediaQuery(query: string) {
   const getMatches = () =>
     typeof window !== "undefined" ? window.matchMedia(query).matches : false;
 
@@ -45,7 +54,7 @@ export function useMediaQuery(query) {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query);
-    const listener = (event) => setMatches(event.matches);
+    const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
     setMatches(mediaQuery.matches);
     mediaQuery.addEventListener("change", listener);
 

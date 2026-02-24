@@ -1,7 +1,5 @@
-"use client";
-
 import { Button } from "@relume_io/relume-ui";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { MaterialIcon } from "./MaterialIcon";
 import placeholder2 from "../assets/PlaceholderImage2.png";
 import placeholder3 from "../assets/PlaceholderImage3.png";
@@ -31,7 +29,7 @@ export function Layout356() {
                       </h2>
                       <p className="md:text-md">
                         Deposit commodity collateral into Mero's institutional
-                        vaults. Receive USDM tokens at 1:1 parity, fully backed
+                        vaults. Receive USDM tokens, fully backed
                         and ready to deploy.
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
@@ -80,7 +78,7 @@ export function Layout356() {
                         Deploy
                       </h2>
                       <p className="md:text-md">
-                        USDM flows into regulated yield products earning 5-15% APY through trusted partners like BlackRock BUIDL and Franklin Templeton BENJI.
+                        USDM flows into regulated yield products earning 5-15% APY through trusted partners like BlackRock BUIDL, Franklin Templeton BENJI, and Apollo ACRED.
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
@@ -128,7 +126,7 @@ export function Layout356() {
                         Redeem
                       </h2>
                       <p className="md:text-md">
-                        Banks redeem USDM for underlying commodity reserves anytime. No lock-in periods. Full transparency and control over capital.
+                        Banks redeem USDM for underlying commodity reserves. Full transparency and control over capital.
                       </p>
                       <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">

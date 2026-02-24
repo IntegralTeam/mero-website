@@ -1,8 +1,9 @@
-"use client";
-
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
-import { RxChevronRight } from "react-icons/rx";
+import { MaterialIcon } from "./MaterialIcon";
+import gold from "../assets/gold.jpg";
+import copper from "../assets/copper.jpg";
+import nickel from "../assets/nickel.jpg";
+import gemstones from "../assets/gemstones.jpg";
 
 export function Layout420() {
   return (
@@ -11,9 +12,9 @@ export function Layout420() {
         <div>
           <div className="md:sticky md:top-0 md:gap-y-0">
             <div className="flex flex-col items-end md:h-screen md:justify-center">
-              <div className="mx-[5%] max-w-md md:ml-[5vw] md:mr-12 lg:mr-20">
+              <div className="mx-[5%] md:ml-[5vw] md:mr-12 lg:mr-20">
                 <p className="mb-3 font-semibold md:mb-4">Reserves</p>
-                <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+                <h2 className="mb-5 text-4xl font-bold md:mb-6 leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
                   Real commodities backing every stablecoin
                 </h2>
                 <p className="md:text-md">
@@ -29,7 +30,7 @@ export function Layout420() {
                     title="Arrow"
                     variant="link"
                     size="link"
-                    iconRight={<RxChevronRight />}
+                    iconRight={<MaterialIcon name="chevron_right" />}
                   >
                     Arrow
                   </Button>
@@ -51,7 +52,7 @@ export function Layout420() {
             </div>
             <div className="absolute inset-0 -z-10">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-1.svg"
+                src={gold}
                 className="size-full object-cover"
                 alt="Relume placeholder image 1"
               />
@@ -61,16 +62,15 @@ export function Layout420() {
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
             <div className="max-w-md text-text-alternative">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Gold
+                Copper
               </h3>
               <p>
-                Precious metal reserves provide stability and long-term value
-                preservation for institutional investors.
+                Industrial commodity backing reflects real economic demand and tangible asset value.
               </p>
             </div>
             <div className="absolute inset-0 -z-10">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-2.svg"
+                src={copper}
                 className="size-full object-cover"
                 alt="Relume placeholder image 2"
               />
@@ -80,16 +80,15 @@ export function Layout420() {
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
             <div className="max-w-md text-text-alternative">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Gold
+                Nickel
               </h3>
               <p>
-                Precious metal reserves provide stability and long-term value
-                preservation for institutional investors.
+                Strategic metal reserves support energy transition and emerging market growth.
               </p>
             </div>
             <div className="absolute inset-0 -z-10">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-3.svg"
+                src={nickel}
                 className="size-full object-cover"
                 alt="Relume placeholder image 3"
               />
@@ -99,16 +98,15 @@ export function Layout420() {
           <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
             <div className="max-w-md text-text-alternative">
               <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Gold
+                Gemstones
               </h3>
               <p>
-                Precious metal reserves provide stability and long-term value
-                preservation for institutional investors.
+                Rare asset reserves add diversification and hedge against currency volatility.
               </p>
             </div>
             <div className="absolute inset-0 -z-10">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-4.svg"
+                src={gemstones}
                 className="size-full object-cover"
                 alt="Relume placeholder image 4"
               />

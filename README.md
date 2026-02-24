@@ -10,7 +10,7 @@ This project is now a working React + Vite application with static routes and SE
 
 ## SEO setup
 
-- Per-page metadata via `react-helmet-async` in `/src/lib/seo.jsx`
+- Per-page metadata via `react-helmet-async` in `/src/lib/seo.tsx`
 - Canonical URLs and Open Graph/Twitter tags on each page
 - `public/robots.txt`
 - `public/sitemap.xml`
@@ -38,5 +38,5 @@ This project is now a working React + Vite application with static routes and SE
 
 ## Notes
 
-- The original Relume component imports (`@relume_io/relume-ui`) are mapped to a local compatibility module at `/src/lib/relume-ui.jsx` through `vite.config.js`.
+- The original Relume component imports (`@relume_io/relume-ui`) are mapped to a local compatibility module at `/src/lib/relume-ui.tsx` through `vite.config.ts`.
 - Tailwind is configured in `tailwind.config.js` and styles are in `/src/styles/globals.css`.

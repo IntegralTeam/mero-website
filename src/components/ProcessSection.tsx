@@ -1,5 +1,3 @@
-import React from "react";
-
 export function ProcessSection() {
   return (
     <section id="process" className="px-[5%] py-16 md:py-24 lg:py-28">
