@@ -13,9 +13,9 @@ export function ReadySection() {
             Request a demo and see how Mero works for your institution.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            <Button size="sm">Request demo</Button>
-            <Button variant="secondary" size="sm">
-              <Link to="/#stay-informed">Contact Us</Link>
+            {/* <Button size="sm">Request demo</Button> */}
+            <Button variant="secondary">
+              <Link to="/#footer">Contact Us</Link>
             </Button>
           </div>
         </div>

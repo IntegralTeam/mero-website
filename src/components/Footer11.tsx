@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from '../assets/logo.svg';
 
 type LegalModalKey = "privacy" | "terms" | "cookies";
 
@@ -9,7 +10,7 @@ const modalContent: Record<LegalModalKey, { title: string; body: string[] }> = {
     body: [
       "Mero only collects information needed to operate our platform, provide support, and meet compliance requirements.",
       "We process account and operational data under institutional security standards and never sell your personal data.",
-      "For privacy requests, contact hello@mero.io.",
+      "For privacy requests, contact info@mero.tech.",
     ],
   },
   terms: {
@@ -47,36 +48,31 @@ export function Footer11() {
   }, [activeModal]);
 
   return (
-    <footer id="relume" className="px-[5%] py-12 md:py-18 lg:py-20">
+    <footer id="footer" className="px-[5%] py-12 md:py-18 lg:py-20">
       <div className="container">
         <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 border border-border-primary p-8 md:gap-y-16 md:p-12 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4">
           <div>
             <div className="mb-6 md:mb-8">
               <a href="#">
                 <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
+                  src={logo}
                   alt="Logo image"
                   className="inline-block"
+                  width={75}
                 />
               </a>
             </div>
             <div className="mb-6 md:mb-8">
-              <p className="mb-1 text-sm font-semibold">Address</p>
+              {/* <p className="mb-1 text-sm font-semibold">Address</p>
               <p className="mb-5 text-sm md:mb-6">
                 Singapore, Indonesia, India, and beyond
-              </p>
+              </p> */}
               <p className="mb-1 text-sm font-semibold">Contact</p>
               <a
                 href="tel:1800 123 4567"
                 className="block text-sm underline decoration-black underline-offset-1"
               >
-                hello@mero.io
-              </a>
-              <a
-                href="mailto:info@relume.io"
-                className="block text-sm underline decoration-black underline-offset-1"
-              >
-                info@relume.io
+                info@mero.tech
               </a>
             </div>
             <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
@@ -125,7 +121,7 @@ export function Footer11() {
                 <Link to="/#partners">Partners</Link>
               </li>
             </ul>
-            <ul>
+            {/* <ul>
               <li className="py-2 text-sm font-semibold">
                 <a href="#">Blog</a>
               </li>
@@ -138,7 +134,7 @@ export function Footer11() {
               <li className="py-2 text-sm font-semibold">
                 <a href="#">Press</a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="flex flex-col-reverse items-start justify-between pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">

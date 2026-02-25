@@ -1,8 +1,9 @@
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { MaterialIcon } from "./MaterialIcon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import logo from '../assets/logo.svg';
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,6 +39,26 @@ const useRelume = () => {
 
 export function Navbar() {
   const useActive = useRelume();
+  const location = useLocation();
+
+  const scrollToSectionOnRepeatedClick =
+    (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      const targetHash = `#${sectionId}`;
+      const isSamePath = location.pathname === "/";
+      const isSameHash = location.hash === targetHash;
+
+      if (!isSamePath || !isSameHash) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
   return (
     <section
       id="relume"
@@ -46,37 +67,42 @@ export function Navbar() {
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
         <Link to="/">
           <img
-            src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
+            src={logo}
             alt="Logo image"
+            width={75}
           />
         </Link>
         <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row">
             <Link
               to="/#platform"
+              onClick={scrollToSectionOnRepeatedClick("platform")}
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Platform
             </Link>
             <Link
               to="/#about"
+              onClick={scrollToSectionOnRepeatedClick("about")}
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               About
             </Link>
             <Link
               to="/#solutions"
+              onClick={scrollToSectionOnRepeatedClick("solutions")}
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Solutions
             </Link>
             <Link
               to="/#partners"
+              onClick={scrollToSectionOnRepeatedClick("partners")}
               className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
             >
               Partners
             </Link>
-            <div
+            {/* <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
             >
@@ -382,7 +408,7 @@ export function Navbar() {
                         </a>
                       </p>
                     </div>
-                    {/* <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
+                    <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
                       <Button
                         title="Search"
                         variant="link"
@@ -399,19 +425,24 @@ export function Navbar() {
                         <MaterialIcon name="menu" className="mr-2" />
                         Menu
                       </Button>
-                    </div> */}
+                    </div>
                   </div>
                 </motion.nav>
               </AnimatePresence>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center gap-4">
-            <Button title="Login" variant="secondary" size="sm">
-              <Link to="/#stay-informed">Contact Us</Link>
+            <Button title="Login" size="sm">
+              <Link
+                to="/#footer"
+                onClick={scrollToSectionOnRepeatedClick("footer")}
+              >
+                Contact Us
+              </Link>
             </Button>
-            <Button title="Demo" size="sm">
+            {/* <Button title="Demo" size="sm">
               Demo
-            </Button>
+            </Button> */}
           </div>
         </div>
         <button
@@ -487,7 +518,7 @@ export function Navbar() {
               <Link to="/#partners" className="block py-3 text-md">
                 Partners
               </Link>
-              <div>
+              {/* <div >
                 <button
                   className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
                   onClick={useActive.openOnMobileDropdownMenu}
@@ -790,7 +821,7 @@ export function Navbar() {
                           </a>
                         </p>
                       </div>
-                      {/* <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
+                      <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
                         <Button
                           title="Button"
                           variant="link"
@@ -807,18 +838,23 @@ export function Navbar() {
                           <MaterialIcon name="menu" className="mr-2" />
                           Menu
                         </Button>
-                      </div> */}
+                      </div>
                     </div>
                   </motion.nav>
                 </AnimatePresence>
-              </div>
+              </div> */}
               <div className="mt-6 flex flex-col gap-4">
-                <Button title="Login" variant="secondary" size="sm">
-                  Contact Us
+                <Button title="Login" size="sm">
+                  <Link
+                    to="/#footer"
+                    onClick={scrollToSectionOnRepeatedClick("footer")}
+                  >
+                    Contact Us
+                  </Link>
                 </Button>
-                <Button title="Demo" size="sm">
+                {/* <Button title="Demo" size="sm">
                   Demo
-                </Button>
+                </Button> */}
               </div>
             </div>
           </motion.div>

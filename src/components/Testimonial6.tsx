@@ -15,13 +15,6 @@ export function Testimonial6() {
         </div>
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-8 lg:gap-x-12 lg:gap-y-16">
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
-            <div className="mb-6 flex md:mb-8">
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-            </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Mero gives us the yield we need without the currency risk we
               don't."
@@ -42,20 +35,13 @@ export function Testimonial6() {
               <div>
                 <img
                   src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="Webflow logo 1"
+                  alt="logo"
                   className="max-h-12"
                 />
               </div>
             </div>
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
-            <div className="mb-6 flex md:mb-8">
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-            </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Real commodities backing real returns. This is institutional
               infrastructure done right."
@@ -76,20 +62,13 @@ export function Testimonial6() {
               <div>
                 <img
                   src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="Webflow logo 1"
+                  alt="logo"
                   className="max-h-12"
                 />
               </div>
             </div>
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
-            <div className="mb-6 flex md:mb-8">
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-              <MaterialIcon name="star" filled size={24} />
-            </div>
             <blockquote className="text-md font-bold leading-[1.4] md:text-xl">
               "Finally, a stablecoin platform built for banks, not against
               them."
@@ -110,7 +89,7 @@ export function Testimonial6() {
               <div>
                 <img
                   src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="Webflow logo 1"
+                  alt="logo"
                   className="max-h-12"
                 />
               </div>

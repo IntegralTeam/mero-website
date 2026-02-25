@@ -1,10 +1,11 @@
 import { Button } from "@relume_io/relume-ui";
 import type { CSSProperties } from "react";
 import usdmCoin from "../assets/USDM.png";
+import { Link } from "react-router-dom";
+
+const COINS = Array.from({ length: 7 }, (_, index) => index);
 
 export function Header() {
-  const coins = Array.from({ length: 7 }, (_, index) => index);
-
   return (
     <section
       id="relume"
@@ -20,15 +21,15 @@ export function Header() {
           earning 5-15% APY with zero FX conversion required.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
-          <Button title="Get started">Get started</Button>
+          {/* <Button title="Get started">Get started</Button> */}
           <Button title="Learn more" variant="secondary">
-            Learn more
+            <Link to="/#platform">Learn more</Link>
           </Button>
         </div>
       </div>
       <div className="header-coin-scene">
         <div className="header-coin-stack" aria-hidden="true">
-          {coins.map((coinIndex) => (
+          {COINS.map((coinIndex) => (
             <img
               key={coinIndex}
               src={usdmCoin}
@@ -37,7 +38,7 @@ export function Header() {
               style={
                 {
                   "--coin-index": coinIndex,
-                  "--coin-stack-level": coins.length - 1 - coinIndex,
+                  "--coin-stack-level": COINS.length - 1 - coinIndex,
                   "--coin-z": coinIndex + 1,
                 } as CSSProperties
               }

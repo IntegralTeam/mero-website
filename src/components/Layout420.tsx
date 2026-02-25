@@ -7,8 +7,8 @@ import gemstones from "../assets/gemstones.jpg";
 
 export function Layout420() {
   return (
-    <section id="about" className="pt-24 md:pt-0">
-      <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-y-0">
+    <section id="about" className="relative z-10 min-h-screen bg-white pt-0">
+      <div className="grid grid-cols-1 gap-y-0 md:grid-cols-2">
         <div>
           <div className="md:sticky md:top-0 md:gap-y-0">
             <div className="flex flex-col items-end md:h-screen md:justify-center">
@@ -22,18 +22,18 @@ export function Layout420() {
                   commodities. Each token represents genuine value held in
                   reserve.
                 </p>
-                <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+                <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8 mb-5">
                   <Button title="View reserves" variant="secondary">
                     View reserves
                   </Button>
-                  <Button
+                  {/* <Button
                     title="Learn more"
                     variant="link"
                     size="link"
                     iconRight={<MaterialIcon name="chevron_right" />}
                   >
                     Learn more
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>

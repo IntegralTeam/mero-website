@@ -1,5 +1,6 @@
 import { Button } from "@relume_io/relume-ui";
 import { Link } from "react-router-dom";
+import { MaterialIcon } from "./MaterialIcon";
 
 export function Faq7() {
   return (
@@ -75,7 +76,7 @@ export function Faq7() {
           <p className="md:text-md">Reach out to our institutional team.</p>
           <div className="mt-6 md:mt-8">
             <Button title="Contact" variant="secondary">
-              <Link to="/#stay-informed">Contact</Link>
+              <Link to="/#footer">Contact <MaterialIcon name="south" size="small" /></Link>
             </Button>
           </div>
         </div>

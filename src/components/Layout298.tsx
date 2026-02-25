@@ -68,7 +68,7 @@ export function Layout298() {
             </div>
           </div>
           <div className="mt-12 flex w-full flex-wrap items-center justify-center gap-4 md:mt-18 lg:mt-20">
-            <Button title="Explore features" variant="secondary">
+            {/* <Button title="Explore features" variant="secondary">
               Explore features
             </Button>
             <Button
@@ -78,7 +78,7 @@ export function Layout298() {
               iconRight={<MaterialIcon name="chevron_right" />}
             >
               Learn more
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

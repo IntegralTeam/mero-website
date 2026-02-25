@@ -22,7 +22,7 @@ export function StayInformedSection() {
                 placeholder="Enter your email"
                 className="h-10 flex-1 border-0 border-b border-[#bdbdc2] bg-transparent px-0 text-base text-[#111111] outline-none placeholder:text-[#6b6b70]"
               />
-              <Button size="sm" type="submit">
+              <Button type="submit">
                 Subscribe
               </Button>
             </div>

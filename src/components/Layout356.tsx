@@ -36,7 +36,7 @@ export function Layout356() {
                         vaults. Receive USDM tokens, fully backed
                         and ready to deploy.
                       </p>
-                      <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
                           Mint
                         </Button>
@@ -48,7 +48,7 @@ export function Layout356() {
                         >
                           Learn more
                         </Button>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="relative">
                       <img
@@ -88,7 +88,7 @@ export function Layout356() {
                       <p className="md:text-md">
                         USDM flows into regulated yield products earning 5-15% APY through trusted partners like BlackRock BUIDL, Franklin Templeton BENJI, and Apollo ACRED.
                       </p>
-                      <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
                           Deploy
                         </Button>
@@ -100,7 +100,7 @@ export function Layout356() {
                         >
                           Learn more
                         </Button>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="relative">
                       <img
@@ -140,7 +140,7 @@ export function Layout356() {
                       <p className="md:text-md">
                         Banks redeem USDM for underlying commodity reserves. Full transparency and control over capital.
                       </p>
-                      <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                         <Button title="Mint" variant="secondary">
                           Redeem
                         </Button>
@@ -152,7 +152,7 @@ export function Layout356() {
                         >
                           Learn more
                         </Button>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="relative">
                       <img

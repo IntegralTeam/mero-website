@@ -19,12 +19,19 @@ const REGION_CODES: Record<RegionKey, string[]> = {
   uae: ["AE"],
 };
 
-const REGION_LABELS: Record<RegionKey, string> = {
-  africa: "Africa",
-  indonesia: "Indonesia",
-  india: "India",
-  latinAmerica: "Latin America",
-  uae: "UAE",
+const RegionDescription = ({name, volume}: {name: string, volume: number}) => (
+  <div>
+    <p className="mb-2 text-sm">{name}</p>
+    <p>{`Commodity: $${volume} Billion`}</p>
+  </div>
+);
+
+const REGION_LABELS: Record<RegionKey, any> = {
+  africa: <RegionDescription name="Africa" volume={58.1} />,
+  indonesia: <RegionDescription name="Indonesia" volume={5.9} />,
+  india: <RegionDescription name="India" volume={74.4} />,
+  latinAmerica: <RegionDescription name="Latin America" volume={52.4} />,
+  uae: <RegionDescription name="UAE" volume={11.2} />,
 };
 
 type WorldMapProps = {
@@ -41,8 +48,8 @@ export default function WorldMap({ focusProgress = 0 }: WorldMapProps) {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const clampedProgress = Math.min(1, Math.max(0, focusProgress));
-  const zoomScale = 1 + clampedProgress * 1.2;
-  const translateY = -1 - clampedProgress * 55;
+  const zoomScale = 1 + clampedProgress * 0.9;
+  const translateY = -1 - clampedProgress * 35;
 
   useEffect(() => {
     const svg = svgRef.current;
@@ -1162,7 +1169,7 @@ export default function WorldMap({ focusProgress = 0 }: WorldMapProps) {
           {REGION_LABELS[tooltip.region]}
         </div>
       ) : null}
-      <div className="world-map-top-blur" aria-hidden="true" />
+      {/* <div className="world-map-top-blur" aria-hidden="true" /> */}
     </div>
   );
 }

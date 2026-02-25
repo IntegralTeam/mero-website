@@ -2,7 +2,7 @@ import { Seo } from "../lib/seo";
 import { Navbar } from "../components/Navbar";
 import { Header } from "../components/Header";
 import { Layout298 } from "../components/Layout298";
-import { Layout89 } from "../components/Layout89";
+import { Map } from "../components/Map";
 import { Layout420 } from "../components/Layout420";
 import { Layout356 } from "../components/Layout356";
 import { Layout298_1 } from "../components/Layout298_1";
@@ -25,14 +25,14 @@ export function HomePage() {
       <Navbar />
       <Header />
       <Layout298 />
-      <Layout89 />
+      <Map />
       <Layout420 />
       <Layout356 />
       <Layout298_1 />
       <ProcessSection />
       <Partners />
       <Testimonial6 />
-      <ReadySection />
+      {/* <ReadySection /> */}
       <StayInformedSection />
       <Faq7 />
       <Footer11 />
