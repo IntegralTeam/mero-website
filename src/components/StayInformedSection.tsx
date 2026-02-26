@@ -1,6 +1,48 @@
 import { Button } from "@relume_io/relume-ui";
+import supabase from "../lib/supabase";
+import { FormEvent, useState } from "react";
 
 export function StayInformedSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [messageType, setMessageType] = useState<"success" | "error" | null>(
+    null
+  );
+
+  const onSubscribe = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const emailValue = formData.get("email");
+    const email =
+      typeof emailValue === "string" ? emailValue.trim().toLowerCase() : "";
+
+    if (!email) {
+      setMessageType("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setMessage(null);
+    setMessageType(null);
+
+    const { error } = await supabase.from("subscriptions").insert([{ email }]);
+
+    if (error) {
+      setMessageType("error");
+      setMessage("Subscription failed. Please try again.");
+    } else {
+      setMessageType("success");
+      setMessage("Thanks. You are subscribed.");
+      form.reset();
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <section id="stay-informed" className="pb-16 md:pb-24 lg:pb-28">
       <div className="container overflow-hidden">
@@ -14,18 +56,32 @@ export function StayInformedSection() {
 
           <form
             className="mx-auto max-w-xl"
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={onSubscribe}
           >
             <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
+                required
+                autoComplete="email"
                 className="h-10 flex-1 border-0 border-b border-[#bdbdc2] bg-transparent px-0 text-base text-[#111111] outline-none placeholder:text-[#6b6b70]"
               />
-              <Button type="submit">
-                Subscribe
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
               </Button>
             </div>
+            {message ? (
+              <p
+                className={`mt-3 text-left text-sm ${
+                  messageType === "error" ? "text-red-600" : "text-green-700"
+                }`}
+                role="status"
+                aria-live="polite"
+              >
+                {message}
+              </p>
+            ) : null}
             <p className="mt-3 text-left text-xs text-[#333333]">
               By clicking Subscribe you&apos;re confirming that you agree with our
               Terms and Conditions.
