@@ -1,6 +1,7 @@
 import { Button } from "@relume_io/relume-ui";
 import supabase from "../lib/supabase";
 import { FormEvent, useState } from "react";
+import image from "../assets/StayInformed.jpg";
 
 export function StayInformedSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -90,7 +91,7 @@ export function StayInformedSection() {
         </div>
 
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2200&q=80"
+          src={image}
           alt="Team members in an office meeting"
           className="w-full object-cover"
         />

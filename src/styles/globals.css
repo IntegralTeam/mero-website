@@ -23,6 +23,26 @@ body {
   background: #ffffff;
 }
 
+.hero-title-gradient {
+  display: inline-block;
+  background-image: linear-gradient(
+    100.1deg,
+    #0b1c2d 9.64%,
+    #066253 72.94%,
+    #00c2a8 110.78%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
 a {
   color: inherit;
   text-decoration: none;

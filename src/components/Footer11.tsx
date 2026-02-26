@@ -58,7 +58,7 @@ export function Footer11() {
                   src={logo}
                   alt="Logo image"
                   className="inline-block"
-                  width={75}
+                  width={100}
                 />
               </a>
             </div>

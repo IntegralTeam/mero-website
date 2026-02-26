@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { MaterialIcon } from "./MaterialIcon";
 import placeholder2 from "../assets/PlaceholderImage2.png";
 import placeholder3 from "../assets/PlaceholderImage3.png";
-import placeholder4 from "../assets/PlaceholderImage4.png";
+import placeholder4 from "../assets/PlaceholderImage4.jpg";
 
 export function Layout356() {
   return (
