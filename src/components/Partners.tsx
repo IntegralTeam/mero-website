@@ -1,14 +1,15 @@
 import canton from '../assets/canton-logo-white.svg';
 import midnight from '../assets/midnight-logo.svg';
+import polygon from '../assets/polygon-logo.svg';
 
 export function Partners() {
   const logos = [
-    { src: canton, alt: "Linux" },
-    { src: midnight, alt: "UML" },
-    { src: canton, alt: "ClickUp" },
-    { src: midnight, alt: "Duolingo" },
-    { src: canton, alt: "Apple" },
-    { src: midnight, alt: "9GAG" },
+    { src: canton, alt: "Canton" },
+    { src: midnight, alt: "Midnight" },
+    { src: polygon, alt: "Polygon" },
+    { src: canton, alt: "Canton" },
+    { src: midnight, alt: "Midnight" },
+    { src: polygon, alt: "Polygon" },
   ];
 
   return (

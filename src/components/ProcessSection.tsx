@@ -19,7 +19,7 @@ export function ProcessSection() {
           <img
             src={financialReview}
             alt="Two professionals reviewing financial information together"
-            className="h-[22rem] w-full object-cover md:h-[32rem] lg:h-[40rem]"
+            className="h-[22rem] w-full object-cover md:h-[28rem] lg:h-[32rem] lg:w-[80%] mx-auto"
           />
         </div>
 

@@ -1,5 +1,8 @@
 import { MaterialIcon } from "./MaterialIcon";
 import placeholder from "../assets/PlaceholderImage.png";
+import RajeshPatel from "../assets/RajeshPatel.png";
+import SarahOkonkwo from "../assets/SarahOkonkwo.png";
+import MarcusChen from "../assets/MarcusChen.png";
 
 export function Testimonial6() {
   return (
@@ -22,7 +25,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src={placeholder}
+                  src={MarcusChen}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
@@ -32,13 +35,6 @@ export function Testimonial6() {
                 <p>Chief Investment Officer, Regional Bank</p>
               </div>
               <div className="hidden w-px self-stretch bg-black md:block" />
-              <div>
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="logo"
-                  className="max-h-12"
-                />
-              </div>
             </div>
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
@@ -49,7 +45,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src={placeholder}
+                  src={SarahOkonkwo}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
@@ -59,13 +55,6 @@ export function Testimonial6() {
                 <p>Head of Treasury, Pan-African Bank</p>
               </div>
               <div className="hidden w-px self-stretch bg-black md:block" />
-              <div>
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="logo"
-                  className="max-h-12"
-                />
-              </div>
             </div>
           </div>
           <div className="flex h-full max-w-lg flex-col items-start justify-start text-left">
@@ -76,7 +65,7 @@ export function Testimonial6() {
             <div className="mt-6 flex w-full flex-col md:mt-8 md:w-auto">
               <div className="mb-4">
                 <img
-                  src={placeholder}
+                  src={RajeshPatel}
                   alt="Testimonial avatar 1"
                   className="size-14 min-h-14 min-w-14 rounded-full object-cover"
                 />
@@ -86,13 +75,6 @@ export function Testimonial6() {
                 <p>Managing Director, South Asian Finance</p>
               </div>
               <div className="hidden w-px self-stretch bg-black md:block" />
-              <div>
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/webflow-logo.svg"
-                  alt="logo"
-                  className="max-h-12"
-                />
-              </div>
             </div>
           </div>
         </div>

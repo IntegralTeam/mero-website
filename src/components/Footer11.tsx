@@ -58,7 +58,7 @@ export function Footer11() {
                   src={logo}
                   alt="Logo image"
                   className="inline-block"
-                  width={100}
+                  width={120}
                 />
               </a>
             </div>
@@ -75,7 +75,7 @@ export function Footer11() {
                 info@mero.tech
               </a>
             </div>
-            <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
+            {/* <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
               <a href="#">
                 <img
                   src="https://cdn.simpleicons.org/facebook/111111"
@@ -104,7 +104,7 @@ export function Footer11() {
                   className="size-6"
                 />
               </a>
-            </div>
+            </div> */}
           </div>
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-10 sm:grid-cols-2 md:gap-x-8 md:gap-y-4">
             <ul>

@@ -93,7 +93,7 @@ export function StayInformedSection() {
         <img
           src={image}
           alt="Team members in an office meeting"
-          className="w-full object-cover"
+          className="w-full object-cover lg:w-[85%] mx-auto lg:h-[30rem]"
         />
       </div>
     </section>

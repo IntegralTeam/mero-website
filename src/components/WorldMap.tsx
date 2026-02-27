@@ -27,11 +27,11 @@ const RegionDescription = ({name, volume}: {name: string, volume: number}) => (
 );
 
 const REGION_LABELS: Record<RegionKey, any> = {
-  africa: <RegionDescription name="Africa" volume={58.1} />,
-  indonesia: <RegionDescription name="Indonesia" volume={5.9} />,
-  india: <RegionDescription name="India" volume={74.4} />,
-  latinAmerica: <RegionDescription name="Latin America" volume={52.4} />,
-  uae: <RegionDescription name="UAE" volume={11.2} />,
+  africa: <RegionDescription name="Africa" volume={257} />,
+  indonesia: <RegionDescription name="Indonesia" volume={500} />,
+  india: <RegionDescription name="India" volume={517} />,
+  latinAmerica: <RegionDescription name="Latin America" volume={430} />,
+  uae: <RegionDescription name="UAE" volume={900} />,
 };
 
 type WorldMapProps = {

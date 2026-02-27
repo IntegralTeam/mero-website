@@ -62,7 +62,7 @@ export function Navbar() {
   return (
     <section
       id="relume"
-      className="relative z-[999] flex min-h-16 w-full items-center bg-background-primary px-[5%] md:min-h-18"
+      className="relative z-[999] flex min-h-16 w-full items-center bg-transparent px-[5%] md:min-h-18"
     >
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
         <Link to="/">
@@ -73,8 +73,8 @@ export function Navbar() {
             className="pb-2"
           />
         </Link>
-        <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
-          <div className="flex flex-col items-center lg:flex-row">
+        <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-transparent px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:grid lg:h-auto lg:flex-1 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:border-none lg:bg-none lg:px-0 lg:pt-0">
+          <div className="flex flex-col items-center lg:col-start-2 lg:flex-row lg:justify-center">
             <Link
               to="/#platform"
               onClick={scrollToSectionOnRepeatedClick("platform")}
@@ -432,7 +432,7 @@ export function Navbar() {
               </AnimatePresence>
             </div> */}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 lg:col-start-3 lg:justify-self-end">
             <Button title="Login" size="sm">
               <Link
                 to="/#footer"
