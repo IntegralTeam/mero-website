@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../assets/logo.svg';
+import logo from "../assets/logo.svg";
 
 type LegalModalKey = "privacy" | "terms" | "cookies";
 
@@ -31,146 +31,126 @@ const modalContent: Record<LegalModalKey, { title: string; body: string[] }> = {
   },
 };
 
+const NAV_LINKS = [
+  { label: "Platform", href: "#platform" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Partners", href: "#partners" },
+  { label: "Contact", href: "#footer" },
+] as const;
+
 export function Footer11() {
   const [activeModal, setActiveModal] = useState<LegalModalKey | null>(null);
 
   useEffect(() => {
     if (!activeModal) return;
-
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActiveModal(null);
-      }
+      if (event.key === "Escape") setActiveModal(null);
     };
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeModal]);
 
   return (
-    <footer id="footer" className="px-[5%] py-12 md:py-18 lg:py-20">
-      <div className="container">
-        <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 border border-border-primary p-8 md:gap-y-16 md:p-12 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4">
-          <div>
-            <div className="mb-6 md:mb-8">
-              <a href="#">
-                <img
-                  src={logo}
-                  alt="Logo image"
-                  className="inline-block"
-                  width={120}
-                />
-              </a>
+    <footer id="footer" className="relative bg-white">
+      {/* Top border */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#0b1c2d]/10 to-transparent" />
+
+      <div className="container px-[5%]">
+        {/* Main footer content */}
+        <div className="py-16 md:py-20">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+            {/* Brand column */}
+            <div className="lg:col-span-2">
+              <Link to="/" className="mb-6 inline-block">
+                <img src={logo} alt="Mero" width={110} className="h-auto" />
+              </Link>
+              <p className="mb-6 max-w-sm text-sm leading-relaxed text-[#0b1c2d]/60">
+                Institutional infrastructure enabling commodity-backed USD yield 
+                in emerging markets. Built for banks, by banks.
+              </p>
+              <div>
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
+                  Contact
+                </p>
+                <a
+                  href="mailto:info@mero.tech"
+                  className="text-sm font-medium text-[#0b1c2d] transition-colors hover:text-[#066253]"
+                >
+                  info@mero.tech
+                </a>
+              </div>
             </div>
-            <div className="mb-6 md:mb-8">
-              {/* <p className="mb-1 text-sm font-semibold">Address</p>
-              <p className="mb-5 text-sm md:mb-6">
-                Singapore, Indonesia, India, and beyond
-              </p> */}
-              <p className="mb-1 text-sm font-semibold">Contact</p>
-              <a
-                href="tel:1800 123 4567"
-                className="block text-sm underline decoration-black underline-offset-1"
-              >
-                info@mero.tech
-              </a>
+
+            {/* Navigation */}
+            <div>
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
+                Navigation
+              </h4>
+              <ul className="space-y-3">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#066253]"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            {/* <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
-              <a href="#">
-                <img
-                  src="https://cdn.simpleicons.org/facebook/111111"
-                  alt="Facebook"
-                  className="size-5"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src="https://cdn.simpleicons.org/instagram/111111"
-                  alt="Instagram"
-                  className="size-5"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src="https://cdn.simpleicons.org/x/111111"
-                  alt="X"
-                  className="size-5"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src="https://cdn.simpleicons.org/youtube/111111"
-                  alt="YouTube"
-                  className="size-6"
-                />
-              </a>
-            </div> */}
-          </div>
-          <div className="grid grid-cols-1 items-start gap-x-6 gap-y-10 sm:grid-cols-2 md:gap-x-8 md:gap-y-4">
-            <ul>
-              <li className="py-2 text-sm font-semibold">
-                <Link to="/#platform">Platform</Link>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <Link to="/#about">About</Link>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <Link to="/#solutions">Solutions</Link>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <Link to="/#partners">Partners</Link>
-              </li>
-            </ul>
-            {/* <ul>
-              <li className="py-2 text-sm font-semibold">
-                <a href="#">Blog</a>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="#">Documentation</a>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="#">Careers</a>
-              </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="#">Press</a>
-              </li>
-            </ul> */}
+
+            {/* Legal */}
+            <div>
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
+                Legal
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("privacy")}
+                    className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#066253]"
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("terms")}
+                    className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#066253]"
+                  >
+                    Terms of Service
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("cookies")}
+                    className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#066253]"
+                  >
+                    Cookie Settings
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse items-start justify-between pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">
-          <p className="mt-8 md:mt-0">© 2026 Mero. All rights reserved.</p>
-          <ul className="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
-            <li className="underline">
-              <button
-                type="button"
-                onClick={() => setActiveModal("privacy")}
-                className="underline"
-              >
-                Privacy policy
-              </button>
-            </li>
-            <li className="underline">
-              <button
-                type="button"
-                onClick={() => setActiveModal("terms")}
-                className="underline"
-              >
-                Terms of service
-              </button>
-            </li>
-            <li className="underline">
-              <button
-                type="button"
-                onClick={() => setActiveModal("cookies")}
-                className="underline"
-              >
-                Cookie settings
-              </button>
-            </li>
-          </ul>
+
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-[#0b1c2d]/10 py-6 md:flex-row">
+          <p className="text-xs text-[#0b1c2d]/40">
+            © 2026 Mero. All rights reserved.
+          </p>
+          <p className="text-[10px] uppercase tracking-wider text-[#0b1c2d]/30">
+            Institutional Infrastructure
+          </p>
         </div>
       </div>
-      {activeModal ? (
+
+      {/* Legal Modal */}
+      {activeModal && (
         <div
           className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 px-5"
           onClick={() => setActiveModal(null)}
@@ -179,29 +159,29 @@ export function Footer11() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="legal-modal-title"
-            className="w-full max-w-xl border border-border-primary bg-white p-6 md:p-8"
-            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-xl border border-[#0b1c2d]/10 bg-white p-6 md:p-8"
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-5 flex items-start justify-between gap-4">
-              <h3 id="legal-modal-title" className="text-2xl font-bold">
+              <h3 id="legal-modal-title" className="text-xl font-bold text-[#0b1c2d]">
                 {modalContent[activeModal].title}
               </h3>
               <button
                 type="button"
                 onClick={() => setActiveModal(null)}
-                className="text-sm underline"
+                className="text-sm text-[#0b1c2d]/60 transition-colors hover:text-[#0b1c2d]"
               >
                 Close
               </button>
             </div>
-            <div className="space-y-3 text-sm md:text-base">
+            <div className="space-y-3 text-sm text-[#0b1c2d]/70">
               {modalContent[activeModal].body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
         </div>
-      ) : null}
+      )}
     </footer>
   );
 }

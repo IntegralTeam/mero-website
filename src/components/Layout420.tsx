@@ -1,118 +1,204 @@
-import { Button } from "@relume_io/relume-ui";
-import { MaterialIcon } from "./MaterialIcon";
+import { useEffect, useRef, useState } from "react";
 import gold from "../assets/gold.jpg";
 import copper from "../assets/copper.jpg";
 import nickel from "../assets/nickel.jpg";
 import gemstones from "../assets/gemstones.jpg";
 
+const COMMODITIES = [
+  {
+    id: "gold",
+    number: "01",
+    name: "Gold",
+    description: "Precious metal reserves provide stability and long-term value preservation for institutional investors.",
+    image: gold,
+    stat: "40-50%",
+    statLabel: "Allocation",
+  },
+  {
+    id: "copper",
+    number: "02",
+    name: "Copper",
+    description: "Industrial commodity backing reflects real economic demand and tangible asset value.",
+    image: copper,
+    stat: "25-30%",
+    statLabel: "Allocation",
+  },
+  {
+    id: "nickel",
+    number: "03",
+    name: "Nickel",
+    description: "Strategic metal reserves support energy transition and emerging market growth.",
+    image: nickel,
+    stat: "15-20%",
+    statLabel: "Allocation",
+  },
+  {
+    id: "gemstones",
+    number: "04",
+    name: "Gemstones",
+    description: "Rare asset reserves add diversification and hedge against currency volatility.",
+    image: gemstones,
+    stat: "5-10%",
+    statLabel: "Allocation",
+  },
+] as const;
+
 export function Layout420() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate progress from when section enters viewport to when it leaves
+      const start = rect.top - windowHeight;
+      const end = rect.bottom;
+      const total = end - start;
+      const current = -start;
+      
+      const progress = Math.max(0, Math.min(1, current / total));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate which commodity is currently in view (0-3)
+  const activeIndex = Math.min(3, Math.floor(scrollProgress * 4));
+
   return (
-    <section id="about" className="relative z-10 min-h-screen bg-white pt-0">
-      <div className="grid grid-cols-1 gap-y-0 md:grid-cols-2">
-        <div>
-          <div className="md:sticky md:top-0 md:gap-y-0">
-            <div className="flex flex-col items-end md:h-screen md:justify-center">
-              <div className="mx-[5%] md:ml-[5vw] md:mr-12 lg:mr-20">
-                <p className="mb-3 font-semibold md:mb-4">Reserves</p>
-                <h2 className="mb-5 text-4xl font-bold md:mb-6 leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
-                  Real commodities backing every stablecoin
-                </h2>
-                <p className="md:text-md">
-                  USDM is secured by a diversified basket of physical
-                  commodities. Each token represents genuine value held in
-                  reserve.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8 mb-5">
-                  <Button title="View reserves" variant="secondary">
-                    View reserves
-                  </Button>
-                  {/* <Button
-                    title="Learn more"
-                    variant="link"
-                    size="link"
-                    iconRight={<MaterialIcon name="chevron_right" />}
-                  >
-                    Learn more
-                  </Button> */}
+    <section 
+      id="about" 
+      ref={sectionRef}
+      className="relative z-10 min-h-[400vh] bg-white"
+    >
+      {/* Progress bar - fixed at top during scroll */}
+      <div className="sticky top-0 z-50 h-0.5 w-full bg-[#0b1c2d]/10">
+        <div 
+          className="h-full bg-gradient-to-r from-[#066253] to-[#00c2a8] transition-all duration-100"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Left side - sticky text content */}
+        <div className="sticky top-0 h-screen bg-white">
+          <div className="flex h-full flex-col justify-center px-[5%] py-16 md:px-[5vw] md:py-0">
+            {/* Section label */}
+            <div className="mb-6 flex items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#066253]">
+                Reserves
+              </span>
+              <div className="h-px w-8 bg-[#066253]/30" />
+            </div>
+
+            {/* Title */}
+            <h2 className="mb-6 text-3xl font-bold leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
+              Real commodities backing every stablecoin
+            </h2>
+
+            {/* Description */}
+            <p className="mb-8 max-w-md text-[#0b1c2d]/60 md:text-lg">
+              USDM is secured by a diversified basket of physical commodities. 
+              Each token represents genuine value held in institutional vaults.
+            </p>
+
+            {/* Active commodity indicator */}
+            <div className="mb-8">
+              <div className="flex items-center gap-4">
+                <span className="text-4xl font-bold text-[#0b1c2d]/10">
+                  {COMMODITIES[activeIndex].number}
+                </span>
+                <div>
+                  <span className="block text-sm font-semibold text-[#0b1c2d]">
+                    Viewing: {COMMODITIES[activeIndex].name}
+                  </span>
+                  <span className="text-xs text-[#0b1c2d]/40 uppercase tracking-wider">
+                    Scroll to explore
+                  </span>
                 </div>
               </div>
             </div>
+
+            {/* Commodity navigation dots */}
+            <div className="flex items-center gap-3">
+              {COMMODITIES.map((commodity, index) => (
+                <div
+                  key={commodity.id}
+                  className={`h-1 transition-all duration-300 ${
+                    index === activeIndex
+                      ? "w-8 bg-[#066253]"
+                      : index < activeIndex
+                      ? "w-2 bg-[#066253]/40"
+                      : "w-2 bg-[#0b1c2d]/10"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        <div>
-          <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative mb-[12rem]">
-              <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Gold
-              </h3>
-              <p>
-                Precious metal reserves provide stability and long-term value
-                preservation for institutional investors.
-              </p>
+
+        {/* Right side - scrolling commodity cards */}
+        <div className="relative md:mt-0">
+          {COMMODITIES.map((commodity, index) => (
+            <div
+              key={commodity.id}
+              className="sticky top-0 flex h-screen flex-col justify-start pt-24 md:pt-32"
+              style={{ zIndex: index + 1 }}
+            >
+              {/* Text overlay */}
+              <div className="relative z-10 px-6 md:px-10">
+                <div className="mb-4 flex items-baseline gap-4">
+                  <span className="text-5xl font-bold text-white/90 md:text-6xl">
+                    {commodity.number}
+                  </span>
+                  <span className="text-sm font-semibold uppercase tracking-wider text-white/60">
+                    {commodity.stat}
+                  </span>
+                </div>
+                <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">
+                  {commodity.name}
+                </h3>
+                <p className="max-w-sm text-sm leading-relaxed text-white/70 md:text-base">
+                  {commodity.description}
+                </p>
+                <span className="mt-2 block text-xs uppercase tracking-wider text-white/40">
+                  {commodity.statLabel}
+                </span>
+              </div>
+
+              {/* Background image with cinematic gradient */}
+              <div className="absolute inset-0 -z-10">
+                <img
+                  src={commodity.image}
+                  className="h-full w-full object-cover"
+                  alt={commodity.name}
+                />
+                {/* Cinematic gradient overlay - darker at top for text readability */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: `
+                      linear-gradient(
+                        to bottom,
+                        rgba(11, 28, 45, 0.85) 0%,
+                        rgba(11, 28, 45, 0.4) 30%,
+                        rgba(11, 28, 45, 0.1) 60%,
+                        rgba(11, 28, 45, 0.3) 100%
+                      )
+                    `,
+                  }}
+                />
+              </div>
             </div>
-            <div className="absolute inset-0 -z-10">
-              <img
-                src={gold}
-                className="size-full object-cover"
-                alt="gold"
-              />
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
-          </div>
-          <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative mb-[12rem]">
-              <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Copper
-              </h3>
-              <p>
-                Industrial commodity backing reflects real economic demand and tangible asset value.
-              </p>
-            </div>
-            <div className="absolute inset-0 -z-10">
-              <img
-                src={copper}
-                className="size-full object-cover"
-                alt="copper"
-              />
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
-          </div>
-          <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative mb-[12rem]">
-              <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Nickel
-              </h3>
-              <p>
-                Strategic metal reserves support energy transition and emerging market growth.
-              </p>
-            </div>
-            <div className="absolute inset-0 -z-10">
-              <img
-                src={nickel}
-                className="size-full object-cover"
-                alt="nickel"
-              />
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
-          </div>
-          <div className="sticky top-0 flex h-screen flex-col justify-center p-10">
-            <div className="max-w-md text-text-alternative mb-[12rem]">
-              <h3 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl">
-                Gemstones
-              </h3>
-              <p>
-                Rare asset reserves add diversification and hedge against currency volatility.
-              </p>
-            </div>
-            <div className="absolute inset-0 -z-10">
-              <img
-                src={gemstones}
-                className="size-full object-cover"
-                alt="gemstones"
-              />
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

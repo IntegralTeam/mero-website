@@ -1,9 +1,8 @@
-import { Button, useMediaQuery } from "@relume_io/relume-ui";
+import { useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, type MouseEvent } from "react";
-import { MaterialIcon } from "./MaterialIcon";
+import { useState, useEffect, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo-light.svg';
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,68 +39,75 @@ const useRelume = () => {
 export function Navbar() {
   const useActive = useRelume();
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const scrollToSectionOnRepeatedClick =
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick =
     (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-      const targetHash = `#${sectionId}`;
-      const isSamePath = location.pathname === "/";
-      const isSameHash = location.hash === targetHash;
-
-      if (!isSamePath || !isSameHash) {
-        return;
-      }
-
-      event.preventDefault();
-
       const target = document.getElementById(sectionId);
       if (target) {
+        event.preventDefault();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
 
   return (
-    <section
-      id="relume"
-      className="relative z-[999] flex min-h-16 w-full items-center bg-transparent px-[5%] md:min-h-18"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[999] flex min-h-16 w-full items-center px-[5%] transition-all duration-500 md:min-h-18 ${
+        isScrolled 
+          ? "bg-[#0b1c2d]/95 backdrop-blur-md shadow-lg shadow-black/10" 
+          : "bg-transparent"
+      }`}
     >
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
-        <Link to="/">
+        <Link to="/" className="flex items-center">
           <img
             src={logo}
-            alt="Logo image"
-            width={100}
-            className="pb-2"
+            alt="Mero"
+            width={110}
+            className="h-auto"
           />
         </Link>
-        <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-transparent px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:grid lg:h-auto lg:flex-1 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:border-none lg:bg-none lg:px-0 lg:pt-0">
-          <div className="flex flex-col items-center lg:col-start-2 lg:flex-row lg:justify-center">
+        <div className="absolute hidden h-screen overflow-auto border-b border-white/10 bg-[#0b1c2d]/95 backdrop-blur-sm px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-auto lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-end lg:border-none lg:bg-transparent lg:backdrop-blur-none lg:px-0 lg:pt-0">
+          <div className="flex flex-col items-center lg:flex-row lg:justify-end lg:gap-10">
             <Link
               to="/#platform"
-              onClick={scrollToSectionOnRepeatedClick("platform")}
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+              onClick={handleNavClick("platform")}
+              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
               Platform
-            </Link>
-            <Link
-              to="/#about"
-              onClick={scrollToSectionOnRepeatedClick("about")}
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
-            >
-              About
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
               to="/#solutions"
-              onClick={scrollToSectionOnRepeatedClick("solutions")}
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+              onClick={handleNavClick("solutions")}
+              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
               Solutions
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
               to="/#partners"
-              onClick={scrollToSectionOnRepeatedClick("partners")}
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+              onClick={handleNavClick("partners")}
+              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
               Partners
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <Link
+              to="/#footer"
+              onClick={handleNavClick("footer")}
+              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+            >
+              Contact
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
             </Link>
             {/* <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
@@ -432,26 +438,14 @@ export function Navbar() {
               </AnimatePresence>
             </div> */}
           </div>
-          <div className="flex items-center gap-4 lg:col-start-3 lg:justify-self-end">
-            <Button title="Login" size="sm">
-              <Link
-                to="/#footer"
-                onClick={scrollToSectionOnRepeatedClick("footer")}
-              >
-                Contact Us
-              </Link>
-            </Button>
-            {/* <Button title="Demo" size="sm">
-              Demo
-            </Button> */}
-          </div>
+
         </div>
         <button
           className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
           onClick={useActive.toggleMobileMenu}
         >
           <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
+            className="my-[3px] h-0.5 w-6 bg-white"
             animate={useActive.animateMobileMenuButtonSpan}
             variants={{
               open: { translateY: 8, transition: { delay: 0.1 } },
@@ -464,7 +458,7 @@ export function Navbar() {
             }}
           />
           <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
+            className="my-[3px] h-0.5 w-6 bg-white"
             animate={useActive.animateMobileMenu}
             variants={{
               open: { width: 0, transition: { duration: 0.1 } },
@@ -475,7 +469,7 @@ export function Navbar() {
             }}
           />
           <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
+            className="my-[3px] h-0.5 w-6 bg-white"
             animate={useActive.animateMobileMenuButtonSpan}
             variants={{
               open: { translateY: -8, transition: { delay: 0.1 } },
@@ -504,20 +498,20 @@ export function Navbar() {
             initial="close"
             exit="close"
             transition={{ duration: 0.4 }}
-            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
+            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-white/10 bg-[#0b1c2d]/98 backdrop-blur-md px-[5%] pb-8 pt-4 text-white"
           >
             <div className="flex flex-col">
-              <Link to="/#platform" className="block py-3 text-md">
+              <Link to="/#platform" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
                 Platform
               </Link>
-              <Link to="/#about" className="block py-3 text-md">
-                About
-              </Link>
-              <Link to="/#solutions" className="block py-3 text-md">
+              <Link to="/#solutions" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
                 Solutions
               </Link>
-              <Link to="/#partners" className="block py-3 text-md">
+              <Link to="/#partners" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
                 Partners
+              </Link>
+              <Link to="/#footer" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
+                Contact
               </Link>
               {/* <div >
                 <button
@@ -844,23 +838,11 @@ export function Navbar() {
                   </motion.nav>
                 </AnimatePresence>
               </div> */}
-              <div className="mt-6 flex flex-col gap-4">
-                <Button title="Login" size="sm">
-                  <Link
-                    to="/#footer"
-                    onClick={scrollToSectionOnRepeatedClick("footer")}
-                  >
-                    Contact Us
-                  </Link>
-                </Button>
-                {/* <Button title="Demo" size="sm">
-                  Demo
-                </Button> */}
-              </div>
+              {/* Mobile menu actions removed - Contact now in main nav */}
             </div>
           </motion.div>
         </motion.div>
       </AnimatePresence>
-    </section>
+    </nav>
   );
 }

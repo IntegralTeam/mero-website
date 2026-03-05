@@ -112,7 +112,7 @@ export function Map() {
         <div className="container">
           <div className="px-[5%] grid grid-cols-1 mb-5 items-end justify-between gap-x-12 gap-y-5 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-20">
             <div>
-              <p className="mb-3 font-semibold md:mb-4">Global Reach</p>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-700 md:mb-4">Global Reach</p>
               <h3 className="text-4xl font-bold leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
                 Emerging markets demand real solutions
               </h3>
@@ -144,11 +144,11 @@ export function Map() {
             className="h-[28rem] w-full overflow-hidden md:h-[32rem] lg:h-[37rem]"
           >
             {shouldLoadMap ? (
-              <Suspense fallback={<div className="h-full w-full bg-[#eef1f6]" />}>
+              <Suspense fallback={<div className="h-full w-full bg-white" />}>
                 <LazyWorldMap focusProgress={mapFocusProgress} />
               </Suspense>
             ) : (
-              <div className="h-full w-full bg-[#eef1f6]" />
+              <div className="h-full w-full bg-white" />
             )}
           </div>
         </div>

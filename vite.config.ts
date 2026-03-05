@@ -9,5 +9,5 @@ export default defineConfig({
       "@relume_io/relume-ui": path.resolve(__dirname, "src/lib/relume-ui.tsx"),
     }
   },
-  base: "/mero-website/"
+  base: "/",
 });

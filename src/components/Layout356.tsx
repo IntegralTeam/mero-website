@@ -1,173 +1,209 @@
-import { Button } from "@relume_io/relume-ui";
-import { Fragment } from "react";
-import { MaterialIcon } from "./MaterialIcon";
-import placeholder2 from "../assets/PlaceholderImage2.png";
-import placeholder3 from "../assets/PlaceholderImage3.png";
-import placeholder4 from "../assets/PlaceholderImage4.jpg";
+import { useEffect, useRef, useState } from "react";
+
+const FLOW_STEPS = [
+  {
+    id: "mint",
+    number: "01",
+    label: "Foundation",
+    title: "Mint",
+    subtitle: "Collateralize",
+    description:
+      "Deposit gold, copper, nickel, or gemstones into institutional vaults. Receive USDM tokens fully backed by real commodity reserves.",
+    specs: ["126% collateralization ratio", "Real-time auditing", "Institutional custody"],
+  },
+  {
+    id: "deploy",
+    number: "02",
+    label: "Structure",
+    title: "Deploy",
+    subtitle: "Generate Yield",
+    description:
+      "USDM flows into regulated yield products through trusted partners: BlackRock BUIDL, Franklin Templeton BENJI, Apollo ACRED.",
+    specs: ["5-15% APY range", "Regulated products only", "Zero FX friction"],
+  },
+  {
+    id: "redeem",
+    number: "03",
+    label: "Elevation",
+    title: "Redeem",
+    subtitle: "Withdraw",
+    description:
+      "Convert USDM back to underlying commodity reserves at any time. Full transparency, no lock-in periods, complete capital control.",
+    specs: ["24-48 hour settlement", "Full reserve transparency", "On-demand liquidity"],
+  },
+] as const;
+
+// Abstract architectural visualization for each step
+function StepVisualization({ step, isActive }: { step: typeof FLOW_STEPS[number]; isActive: boolean }) {
+  return (
+    <div className={`step-viz step-viz-${step.id} ${isActive ? "step-viz-active" : ""}`}>
+      {/* Geometric architecture based on step */}
+      <div className="step-viz-container">
+        {step.id === "mint" && (
+          <>
+            {/* Foundation: Stacked blocks representing reserves */}
+            <div className="viz-block viz-block-1" />
+            <div className="viz-block viz-block-2" />
+            <div className="viz-block viz-block-3" />
+            <div className="viz-line viz-line-horizontal" />
+            <div className="viz-line viz-line-vertical" />
+          </>
+        )}
+        {step.id === "deploy" && (
+          <>
+            {/* Structure: Flowing channels */}
+            <div className="viz-channel viz-channel-1" />
+            <div className="viz-channel viz-channel-2" />
+            <div className="viz-node viz-node-center" />
+            <div className="viz-arrow viz-arrow-right" />
+          </>
+        )}
+        {step.id === "redeem" && (
+          <>
+            {/* Elevation: Ascending pathways */}
+            <div className="viz-path viz-path-1" />
+            <div className="viz-path viz-path-2" />
+            <div className="viz-peak" />
+            <div className="viz-glow" />
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function Layout356() {
+  const [activeStep, setActiveStep] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("step-in-view");
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-10% 0px" }
+    );
+
+    const steps = document.querySelectorAll(".flow-step");
+    steps.forEach((step) => observer.observe(step));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="solutions" className="bg-[#F2F2F2]">
-      <div className="sticky top-0">
-        <Fragment>
-          <div className="relative -top-32 h-0" />
-          <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 top-0 lg:mb-32">
-            <div className="px-[5%]">
-              <div className="container">
-                {/* <a href="#" className="flex h-16 w-full items-center underline">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Mint
-                  </span>
-                  <h1 className="font-semibold md:text-md">Issue USDM</h1>
-                </a> */}
-                <span className="flex h-16 w-full items-center">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Mint
-                  </span>
-                </span>
-                <div className="py-8 md:py-10 lg:py-12">
-                  <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
-                    <div>
-                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
-                        Banks mint USDM backed by commodity reserves
-                      </h2>
-                      <p className="md:text-md">
-                        Deposit commodity collateral into Mero's institutional
-                        vaults. Receive USDM tokens, fully backed
-                        and ready to deploy.
-                      </p>
-                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-                        <Button title="Mint" variant="secondary">
-                          Mint
-                        </Button>
-                        <Button
-                          title="Learn more"
-                          variant="link"
-                          size="link"
-                          iconRight={<MaterialIcon name="chevron_right" />}
-                        >
-                          Learn more
-                        </Button>
-                      </div> */}
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={placeholder2}
-                        className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
-                        alt="Relume placeholder image 1"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Fragment>
-        <Fragment>
-          <div className="relative -top-32 h-0" />
-          <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 lg:top-16 lg:-mt-16 lg:mb-16">
-            <div className="px-[5%]">
-              <div className="container">
-                {/* <a href="#" className="flex h-16 w-full items-center underline">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Deploy
-                  </span>
-                  <h1 className="font-semibold md:text-md">Earn yield</h1>
-                </a> */}
-                <span className="flex h-16 w-full items-center">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Deploy & Earn
-                  </span>
-                </span>
-                <div className="py-8 md:py-10 lg:py-12">
-                  <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
-                    <div>
-                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
-                        Deploy
-                      </h2>
-                      <p className="md:text-md">
-                        USDM flows into regulated yield products earning 5-15% APY through trusted partners like BlackRock BUIDL, Franklin Templeton BENJI, and Apollo ACRED.
-                      </p>
-                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-                        <Button title="Mint" variant="secondary">
-                          Deploy
-                        </Button>
-                        <Button
-                          title="Learn more"
-                          variant="link"
-                          size="link"
-                          iconRight={<MaterialIcon name="chevron_right" />}
-                        >
-                          Learn more
-                        </Button>
-                      </div> */}
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={placeholder3}
-                        className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
-                        alt="Relume placeholder image 2"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Fragment>
-        <Fragment>
-          <div className="relative -top-32 h-0" />
-          <div className="relative border-t border-border-primary bg-[#F2F2F2] pb-8 md:pb-14 lg:sticky lg:pb-0 lg:top-32 lg:mb-16">
-            <div className="px-[5%]">
-              <div className="container">
-                {/* <a href="#" className="flex h-16 w-full items-center underline">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Convert back
-                  </span>
-                  <h1 className="font-semibold md:text-md">Redemption</h1>
-                </a> */}
-                <span className="flex h-16 w-full items-center">
-                  <span className="mr-5 font-semibold md:mr-6 md:text-md">
-                    Redeem
-                  </span>
-                </span>
-                <div className="py-8 md:py-10 lg:py-12">
-                  <div className="grid grid-cols-1 gap-y-12 md:items-center md:gap-x-12 lg:grid-cols-2 lg:gap-x-20">
-                    <div>
-                      <h2 className="rb-5 mb-5 text-4xl font-bold md:mb-6 md:text-[3.75rem] lg:text-[3.75rem]">
-                        Redeem
-                      </h2>
-                      <p className="md:text-md">
-                        Banks redeem USDM for underlying commodity reserves. Full transparency and control over capital.
-                      </p>
-                      {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-                        <Button title="Mint" variant="secondary">
-                          Redeem
-                        </Button>
-                        <Button
-                          title="Learn more"
-                          variant="link"
-                          size="link"
-                          iconRight={<MaterialIcon name="chevron_right" />}
-                        >
-                          Learn more
-                        </Button>
-                      </div> */}
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={placeholder4}
-                        className="h-[25rem] w-full object-cover sm:h-[30rem] lg:h-[60vh]"
-                        alt="Relume placeholder image 3"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Fragment>
+    <section
+      id="solutions"
+      ref={sectionRef}
+      className="relative bg-[#0a1628] overflow-hidden"
+    >
+      {/* Architectural grid background */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: "80px 80px",
+          }}
+        />
       </div>
+
+      {/* Section header */}
+      <div className="relative border-b border-white/10">
+        <div className="container px-[5%] py-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-400">
+                Process
+              </span>
+              <div className="h-px w-12 bg-emerald-400/30" />
+            </div>
+            <span className="text-xs font-medium text-white/30 uppercase tracking-wider">
+              Three Pillars
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Flow steps */}
+      <div className="relative">
+        {FLOW_STEPS.map((step, index) => (
+          <div
+            key={step.id}
+            className="flow-step relative border-b border-white/5"
+            onMouseEnter={() => setActiveStep(index)}
+          >
+            <div className="container px-[5%]">
+              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] lg:min-h-[80vh]">
+                {/* Content side */}
+                <div className="flex flex-col justify-center py-16 lg:py-24 lg:pr-20">
+                  {/* Step indicator */}
+                  <div className="flex items-center gap-6 mb-8">
+                    <span className="step-number text-7xl font-bold text-white/5 lg:text-9xl">
+                      {step.number}
+                    </span>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-400 mb-1">
+                        {step.label}
+                      </span>
+                      <div className="flex items-baseline gap-3">
+                        <h2 className="text-4xl font-bold text-white lg:text-5xl">
+                          {step.title}
+                        </h2>
+                        <span className="hidden text-lg font-light text-white/40 md:inline">
+                          {step.subtitle}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-lg leading-relaxed text-white/60 max-w-lg mb-10 lg:text-xl">
+                    {step.description}
+                  </p>
+
+                  {/* Specs */}
+                  <div className="space-y-3">
+                    {step.specs.map((spec, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-3 text-sm text-white/50"
+                      >
+                        <span className="h-1.5 w-1.5 bg-emerald-500/50" />
+                        <span className="uppercase tracking-wider">{spec}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Connection line to next step */}
+                  {index < FLOW_STEPS.length - 1 && (
+                    <div className="hidden lg:block absolute bottom-0 left-[5%] lg:left-[25%]">
+                      <div className="flex flex-col items-center">
+                        <div className="h-16 w-px bg-gradient-to-b from-emerald-500/30 to-transparent" />
+                        <div className="h-2 w-2 bg-emerald-500/50 rotate-45 -mt-1" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Visualization side */}
+                <div className="relative flex items-center justify-center py-12 lg:py-0 border-l border-white/5">
+                  <StepVisualization step={step} isActive={activeStep === index} />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom accent */}
+      <div className="h-1 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
     </section>
   );
 }
