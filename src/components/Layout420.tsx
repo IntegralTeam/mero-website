@@ -9,37 +9,37 @@ const COMMODITIES = [
     id: "gold",
     number: "01",
     name: "Gold",
-    description: "Precious metal reserves provide stability and long-term value preservation for institutional investors.",
+    description: "Intended core reserve component for liquidity and long-term value support.",
     image: gold,
-    stat: "40-50%",
-    statLabel: "Allocation",
+    stat: "Physical",
+    statLabel: "Reserve Asset",
   },
   {
     id: "copper",
     number: "02",
     name: "Copper",
-    description: "Industrial commodity backing reflects real economic demand and tangible asset value.",
+    description: "Industrial commodity exposure intended to diversify reserve composition.",
     image: copper,
-    stat: "25-30%",
-    statLabel: "Allocation",
+    stat: "Physical",
+    statLabel: "Reserve Asset",
   },
   {
     id: "nickel",
     number: "03",
     name: "Nickel",
-    description: "Strategic metal reserves support energy transition and emerging market growth.",
+    description: "Strategic metal inclusion intended to broaden commodity backing diversity.",
     image: nickel,
-    stat: "15-20%",
-    statLabel: "Allocation",
+    stat: "Physical",
+    statLabel: "Reserve Asset",
   },
   {
     id: "gemstones",
     number: "04",
     name: "Gemstones",
-    description: "Rare asset reserves add diversification and hedge against currency volatility.",
+    description: "Precious stones may form a portion of the basket, subject to valuation haircuts and custody controls.",
     image: gemstones,
-    stat: "5-10%",
-    statLabel: "Allocation",
+    stat: "Haircuts",
+    statLabel: "15-30% Intended",
   },
 ] as const;
 
@@ -50,48 +50,38 @@ export function Layout420() {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      
+
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
-      // Calculate progress from when section enters viewport to when it leaves
       const start = rect.top - windowHeight;
       const end = rect.bottom;
       const total = end - start;
       const current = -start;
-      
       const progress = Math.max(0, Math.min(1, current / total));
+
       setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Calculate which commodity is currently in view (0-3)
   const activeIndex = Math.min(3, Math.floor(scrollProgress * 4));
 
   return (
-    <section 
-      id="about" 
-      ref={sectionRef}
-      className="relative z-10 min-h-[400vh] bg-white"
-    >
-      {/* Progress bar - fixed at top during scroll */}
+    <section id="about" ref={sectionRef} className="relative z-10 min-h-[400vh] bg-white">
       <div className="sticky top-0 z-50 h-0.5 w-full bg-[#0b1c2d]/10">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-[#066253] to-[#00c2a8] transition-all duration-100"
           style={{ width: `${scrollProgress * 100}%` }}
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Left side - sticky text content */}
         <div className="sticky top-0 h-screen bg-white">
           <div className="flex h-full flex-col justify-center px-[5%] py-16 md:px-[5vw] md:py-0">
-            {/* Section label */}
             <div className="mb-6 flex items-center gap-3">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#066253]">
                 Reserves
@@ -99,18 +89,16 @@ export function Layout420() {
               <div className="h-px w-8 bg-[#066253]/30" />
             </div>
 
-            {/* Title */}
             <h2 className="mb-6 text-3xl font-bold leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-              Real commodities backing every stablecoin
+              Real commodities intended to back USDM
             </h2>
 
-            {/* Description */}
             <p className="mb-8 max-w-md text-[#0b1c2d]/60 md:text-lg">
-              USDM is secured by a diversified basket of physical commodities. 
-              Each token represents genuine value held in institutional vaults.
+              USDM is intended to be supported by a diversified basket of
+              physical commodities held with institutional custody providers.
+              Final basket composition and allocations are subject to change.
             </p>
 
-            {/* Active commodity indicator */}
             <div className="mb-8">
               <div className="flex items-center gap-4">
                 <span className="text-4xl font-bold text-[#0b1c2d]/10">
@@ -120,14 +108,13 @@ export function Layout420() {
                   <span className="block text-sm font-semibold text-[#0b1c2d]">
                     Viewing: {COMMODITIES[activeIndex].name}
                   </span>
-                  <span className="text-xs text-[#0b1c2d]/40 uppercase tracking-wider">
+                  <span className="text-xs uppercase tracking-wider text-[#0b1c2d]/40">
                     Scroll to explore
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Commodity navigation dots */}
             <div className="flex items-center gap-3">
               {COMMODITIES.map((commodity, index) => (
                 <div
@@ -136,8 +123,8 @@ export function Layout420() {
                     index === activeIndex
                       ? "w-8 bg-[#066253]"
                       : index < activeIndex
-                      ? "w-2 bg-[#066253]/40"
-                      : "w-2 bg-[#0b1c2d]/10"
+                        ? "w-2 bg-[#066253]/40"
+                        : "w-2 bg-[#0b1c2d]/10"
                   }`}
                 />
               ))}
@@ -145,7 +132,6 @@ export function Layout420() {
           </div>
         </div>
 
-        {/* Right side - scrolling commodity cards */}
         <div className="relative md:mt-0">
           {COMMODITIES.map((commodity, index) => (
             <div
@@ -153,7 +139,6 @@ export function Layout420() {
               className="sticky top-0 flex h-screen flex-col justify-start pt-24 md:pt-32"
               style={{ zIndex: index + 1 }}
             >
-              {/* Text overlay */}
               <div className="relative z-10 px-6 md:px-10">
                 <div className="mb-4 flex items-baseline gap-4">
                   <span className="text-5xl font-bold text-white/90 md:text-6xl">
@@ -163,9 +148,7 @@ export function Layout420() {
                     {commodity.stat}
                   </span>
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">
-                  {commodity.name}
-                </h3>
+                <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">{commodity.name}</h3>
                 <p className="max-w-sm text-sm leading-relaxed text-white/70 md:text-base">
                   {commodity.description}
                 </p>
@@ -174,15 +157,9 @@ export function Layout420() {
                 </span>
               </div>
 
-              {/* Background image with cinematic gradient */}
               <div className="absolute inset-0 -z-10">
-                <img
-                  src={commodity.image}
-                  className="h-full w-full object-cover"
-                  alt={commodity.name}
-                />
-                {/* Cinematic gradient overlay - darker at top for text readability */}
-                <div 
+                <img src={commodity.image} className="h-full w-full object-cover" alt={commodity.name} />
+                <div
                   className="absolute inset-0"
                   style={{
                     background: `

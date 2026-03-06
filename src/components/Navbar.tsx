@@ -257,7 +257,7 @@ export function Navbar() {
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Yield</h5>
                               <p className="hidden text-sm md:block">
-                                Access 5-15% APY through regulated partners
+                                Access indicative target APY through intended institutional products
                               </p>
                             </div>
                           </a>
@@ -271,7 +271,7 @@ export function Navbar() {
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Treasury</h5>
                               <p className="hidden text-sm md:block">
-                                Preserve capital with 126%
+                                Support capital preservation through target over-collateralisation
                                 over-collateralisation
                               </p>
                             </div>
@@ -307,7 +307,7 @@ export function Navbar() {
                               <h5 className="font-semibold">India</h5>
                               <p className="hidden text-sm md:block">
                                 Expanding regional infrastructure and
-                                partnerships
+                                integrations
                               </p>
                             </div>
                           </a>
@@ -382,7 +382,7 @@ export function Navbar() {
                             <div className="flex flex-col items-start justify-center">
                               <h5 className="font-semibold">Contact</h5>
                               <p className="hidden text-sm md:block">
-                                Reach out to discuss partnerships and
+                                Reach out to discuss integrations and
                                 integration
                               </p>
                             </div>
@@ -411,7 +411,7 @@ export function Navbar() {
                       <p>
                         Ready to launch USDM?
                         <a href="#" className="ml-1 underline">
-                          Request a demo
+                          Request a platform walkthrough
                         </a>
                       </p>
                     </div>
@@ -658,7 +658,7 @@ export function Navbar() {
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Yield</h5>
                                 <p className="hidden text-sm md:block">
-                                  Access 5-15% APY through regulated partners
+                                  Access indicative target APY through intended institutional products
                                 </p>
                               </div>
                             </a>
@@ -672,7 +672,7 @@ export function Navbar() {
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Treasury</h5>
                                 <p className="hidden text-sm md:block">
-                                  Preserve capital with 126%
+                                  Support capital preservation through target over-collateralisation
                                   over-collateralisation
                                 </p>
                               </div>
@@ -708,7 +708,7 @@ export function Navbar() {
                                 <h5 className="font-semibold">India</h5>
                                 <p className="hidden text-sm md:block">
                                   Expanding regional infrastructure and
-                                  partnerships
+                                  integrations
                                 </p>
                               </div>
                             </a>
@@ -783,7 +783,7 @@ export function Navbar() {
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Contact</h5>
                                 <p className="hidden text-sm md:block">
-                                  Reach out to discuss partnerships and
+                                  Reach out to discuss integrations and
                                   integration
                                 </p>
                               </div>
@@ -812,7 +812,7 @@ export function Navbar() {
                         <p>
                           Ready to launch USDM?
                           <a href="#" className="ml-1 underline">
-                            Request a demo
+                            Request a platform walkthrough
                           </a>
                         </p>
                       </div>

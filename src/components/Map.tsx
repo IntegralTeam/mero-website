@@ -1,6 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { MaterialIcon } from "./MaterialIcon";
 
 const LazyWorldMap = lazy(() => import("./WorldMap"));
 
@@ -41,15 +39,11 @@ export function Map() {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const viewportHeight =
-        window.innerHeight || document.documentElement.clientHeight || 1;
-
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
       const scrollable = Math.max(1, rect.height - viewportHeight);
       const rawProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
       const nextProgress =
-        rawProgress < MAP_ACTIVE_PROGRESS_END
-          ? rawProgress / MAP_ACTIVE_PROGRESS_END
-          : 1;
+        rawProgress < MAP_ACTIVE_PROGRESS_END ? rawProgress / MAP_ACTIVE_PROGRESS_END : 1;
 
       setMapFocusProgress((current) =>
         Math.abs(current - nextProgress) > 0.002 ? nextProgress : current
@@ -103,46 +97,28 @@ export function Map() {
   }, [shouldLoadMap]);
 
   return (
-    <section
-      id="relume"
-      ref={mapSectionRef}
-      className="relative z-0 h-[190vh] md:h-[195vh]"
-    >
+    <section id="relume" ref={mapSectionRef} className="relative z-0 h-[190vh] md:h-[195vh]">
       <div className="sticky top-0 flex h-screen items-center py-16 md:py-20 lg:py-20">
         <div className="container">
-          <div className="px-[5%] grid grid-cols-1 mb-5 items-end justify-between gap-x-12 gap-y-5 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-20">
+          <div className="mb-5 grid grid-cols-1 items-end justify-between gap-x-12 gap-y-5 px-[5%] md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-20">
             <div>
-              <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-700 md:mb-4">Global Reach</p>
-              <h3 className="text-4xl font-bold leading-[1.2] md:text-[3.75rem] lg:text-[3.75rem]">
-                Emerging markets demand real solutions
-              </h3>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-700 md:mb-4">
+                Global Reach
+              </p>
+              <h2 className="text-3xl font-bold leading-[1.15] lg:leading-[1.20] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
+                Target markets and regional pathways
+              </h2>
             </div>
             <div>
-              <p className="md:text-md">
-                Explore Mero's target markets across the globe. Click any region
-                on the interactive map to discover local market opportunities,
-                regulatory landscape, and institutional demand for
-                commodity-backed stablecoins.
+              <p className="text-[#0b1c2d]/60 md:text-lg">
+                Explore regions where Mero intends to operate. This map is a
+                product demonstration using simulated scenario data and does not
+                represent live deployment, active clients, or committed
+                partnerships.
               </p>
-              {/* <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-                <Button title="Explore markets" variant="secondary">
-                  Explore markets
-                </Button>
-                <Button
-                  title="Learn more"
-                  variant="link"
-                  size="link"
-                  iconRight={<MaterialIcon name="chevron_right" />}
-                >
-                  Learn more
-                </Button>
-              </div> */}
             </div>
           </div>
-          <div
-            ref={mapContainerRef}
-            className="h-[28rem] w-full overflow-hidden md:h-[32rem] lg:h-[37rem]"
-          >
+          <div ref={mapContainerRef} className="h-[28rem] w-full overflow-hidden md:h-[32rem] lg:h-[37rem]">
             {shouldLoadMap ? (
               <Suspense fallback={<div className="h-full w-full bg-white" />}>
                 <LazyWorldMap focusProgress={mapFocusProgress} />

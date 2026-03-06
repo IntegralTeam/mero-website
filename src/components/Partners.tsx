@@ -1,23 +1,22 @@
-import canton from '../assets/canton-logo-white.svg';
-import midnight from '../assets/midnight-logo.svg';
-import polygon from '../assets/polygon-logo.svg';
+import canton from "../assets/canton-logo-white.svg";
+import polygon from "../assets/polygon-logo.svg";
 
 export function Partners() {
   const logos = [
     { src: canton, alt: "Canton" },
-    { src: midnight, alt: "Midnight" },
     { src: polygon, alt: "Polygon" },
     { src: canton, alt: "Canton" },
-    { src: midnight, alt: "Midnight" },
+    { src: polygon, alt: "Polygon" },
+    { src: canton, alt: "Canton" },
     { src: polygon, alt: "Polygon" },
   ];
 
   return (
-    <section id="partners" className="overflow-hidden py-12 md:py-16 lg:py-20 bg-black">
+    <section id="partners" className="overflow-hidden bg-black py-12 md:py-16 lg:py-20">
       <div className="container mb-8 w-full max-w-lg px-[5%] md:mb-10 lg:mb-12">
-        <h1 className="text-center text-base font-bold leading-[1.2] md:text-md md:leading-[1.2] text-white">
-          Trusted by leading financial institutions
-        </h1>
+        <h2 className="text-center text-base font-bold leading-[1.2] text-white md:text-md md:leading-[1.2]">
+          Target institutional yield network
+        </h2>
       </div>
       <div className="logo-marquee pt-7 md:pt-0">
         {[0, 1].map((lane) => (

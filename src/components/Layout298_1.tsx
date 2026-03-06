@@ -27,7 +27,7 @@ export function Layout298_1() {
                 <MaterialIcon name="network_cell" size={48} />
               </div>
               <h3 className="mb-3 text-center text-xl font-bold md:mb-4 md:text-2xl">
-                Regulatory compliance built in
+                Designed with built-in compliance controls
               </h3>
               <p className="text-center">
                 Canton Network ensures permissioned access and audit trails
@@ -54,7 +54,7 @@ export function Layout298_1() {
                 Global scalability from day one
               </h3>
               <p className="text-center">
-                Zero FX conversion. Settle USDM across borders instantly without
+                Designed to eliminate direct FX conversion. USDM settlement is intended to avoid
                 currency friction.
               </p>
             </div>

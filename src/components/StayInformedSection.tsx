@@ -41,12 +41,10 @@ export function StayInformedSection() {
 
   return (
     <section id="stay-informed" className="relative bg-[#fafbfc] py-20 md:py-28 lg:py-32">
-      {/* Top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0b1c2d]/10 to-transparent" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0b1c2d]/10 to-transparent" />
 
       <div className="container px-[5%]">
         <div className="mx-auto max-w-2xl">
-          {/* Header */}
           <div className="mb-10 text-center md:mb-12">
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-[#066253]/40" />
@@ -63,10 +61,8 @@ export function StayInformedSection() {
             </p>
           </div>
 
-          {/* Form card */}
           <div className="border border-[#0b1c2d]/10 bg-white p-8 md:p-10">
             <form onSubmit={onSubscribe} className="space-y-6">
-              {/* Email input */}
               <div>
                 <label
                   htmlFor="email"
@@ -85,7 +81,6 @@ export function StayInformedSection() {
                 />
               </div>
 
-              {/* Submit button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -104,11 +99,9 @@ export function StayInformedSection() {
                     </>
                   )}
                 </span>
-                {/* Corner accent */}
                 <span className="absolute -right-1 -top-1 h-2 w-2 bg-[#00c2a8] opacity-0 transition-opacity group-hover:opacity-100" />
               </button>
 
-              {/* Message */}
               {message && (
                 <div
                   className={`border-l-2 py-3 pl-4 text-sm ${
@@ -123,15 +116,14 @@ export function StayInformedSection() {
                 </div>
               )}
 
-              {/* Terms */}
               <p className="text-center text-[10px] leading-relaxed text-[#0b1c2d]/40">
-                By subscribing, you agree to receive updates from Mero. 
-                We respect your privacy and will never share your information.
+                By subscribing, you agree to receive updates from Mero. We
+                respect your privacy. See our Privacy Policy for how your data
+                is handled.
               </p>
             </form>
           </div>
 
-          {/* Trust indicators */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-[10px] uppercase tracking-wider text-[#0b1c2d]/40">
             <span className="flex items-center gap-2">
               <span className="h-1 w-1 bg-[#066253]" />

@@ -50,7 +50,7 @@ const HERO_CONCEPTS = [
     title: "Institutional Seal",
     subtitle: "Bank Authority Badge",
     description:
-      "Circular seal with USDM at center. Outer ring reads 'COMMODITY BACKED • 126% COLLATERALIZED'. Metallic sheen, embossed effect. Central bank aesthetic.",
+      "Circular seal with USDM at center. Outer ring reads 'COMMODITY BACKED • TARGET 126% COLLATERALISATION'. Metallic sheen, embossed effect. Central bank aesthetic.",
     pros: ["Maximum trust signal", "Timeless", "Institutional gravitas"],
     cons: ["May feel traditional/old"],
     visual: "Seal",

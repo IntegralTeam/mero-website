@@ -6,42 +6,51 @@ const FLOW_STEPS = [
     number: "01",
     label: "Foundation",
     title: "Mint",
-    subtitle: "Collateralize",
+    subtitle: "Collateralise",
     description:
-      "Deposit gold, copper, nickel, or gemstones into institutional vaults. Receive USDM tokens fully backed by real commodity reserves.",
-    specs: ["126% collateralization ratio", "Real-time auditing", "Institutional custody"],
+      "Deposit gold, copper, nickel, or gemstones into institutional custody. USDM minting is intended to maintain a target minimum 126% collateralisation ratio, subject to verification and controls.",
+    specs: [
+      "Target minimum 126% collateralisation",
+      "Independent periodic auditing intended",
+      "Institutional custody model",
+    ],
   },
   {
     id: "deploy",
     number: "02",
     label: "Structure",
     title: "Deploy",
-    subtitle: "Generate Yield",
+    subtitle: "Target Yield",
     description:
-      "USDM flows into regulated yield products through trusted partners: BlackRock BUIDL, Franklin Templeton BENJI, Apollo ACRED.",
-    specs: ["5-15% APY range", "Regulated products only", "Zero FX friction"],
+      "USDM is intended to be deployed into regulated institutional products including BlackRock BUIDL, Franklin Templeton BENJI, and Apollo ACRED, subject to onboarding and product access.",
+    specs: [
+      "Indicative 5-15% target APY range",
+      "Products and allocations under development",
+      "USD-denominated workflow",
+    ],
   },
   {
     id: "redeem",
     number: "03",
-    label: "Elevation",
+    label: "Settlement",
     title: "Redeem",
     subtitle: "Withdraw",
     description:
-      "Convert USDM back to underlying commodity reserves at any time. Full transparency, no lock-in periods, complete capital control.",
-    specs: ["24-48 hour settlement", "Full reserve transparency", "On-demand liquidity"],
+      "Target 24-48 hour USDM minting settlement is subject to collateral verification and custodian processing. Redemption is expected to depend on yield product terms, including potential lock-up periods.",
+    specs: [
+      "Target 24-48 hour settlement",
+      "Lock-ups may range monthly to 22 months",
+      "Timeline and mechanics are indicative",
+    ],
   },
 ] as const;
 
-// Abstract architectural visualization for each step
 function StepVisualization({ step, isActive }: { step: typeof FLOW_STEPS[number]; isActive: boolean }) {
   return (
     <div className={`step-viz step-viz-${step.id} ${isActive ? "step-viz-active" : ""}`}>
-      {/* Geometric architecture based on step */}
       <div className="step-viz-container">
         {step.id === "mint" && (
           <>
-            {/* Foundation: Stacked blocks representing reserves */}
             <div className="viz-block viz-block-1" />
             <div className="viz-block viz-block-2" />
             <div className="viz-block viz-block-3" />
@@ -51,7 +60,6 @@ function StepVisualization({ step, isActive }: { step: typeof FLOW_STEPS[number]
         )}
         {step.id === "deploy" && (
           <>
-            {/* Structure: Flowing channels */}
             <div className="viz-channel viz-channel-1" />
             <div className="viz-channel viz-channel-2" />
             <div className="viz-node viz-node-center" />
@@ -60,7 +68,6 @@ function StepVisualization({ step, isActive }: { step: typeof FLOW_STEPS[number]
         )}
         {step.id === "redeem" && (
           <>
-            {/* Elevation: Ascending pathways */}
             <div className="viz-path viz-path-1" />
             <div className="viz-path viz-path-2" />
             <div className="viz-peak" />
@@ -95,12 +102,7 @@ export function Layout356() {
   }, []);
 
   return (
-    <section
-      id="solutions"
-      ref={sectionRef}
-      className="relative bg-[#0a1628] overflow-hidden"
-    >
-      {/* Architectural grid background */}
+    <section id="solutions" ref={sectionRef} className="relative overflow-hidden bg-[#0a1628]">
       <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="h-full w-full"
@@ -114,7 +116,6 @@ export function Layout356() {
         />
       </div>
 
-      {/* Section header */}
       <div className="relative border-b border-white/10">
         <div className="container px-[5%] py-8">
           <div className="flex items-center justify-between">
@@ -124,14 +125,13 @@ export function Layout356() {
               </span>
               <div className="h-px w-12 bg-emerald-400/30" />
             </div>
-            <span className="text-xs font-medium text-white/30 uppercase tracking-wider">
+            <span className="text-xs font-medium uppercase tracking-wider text-white/30">
               Three Pillars
             </span>
           </div>
         </div>
       </div>
 
-      {/* Flow steps */}
       <div className="relative">
         {FLOW_STEPS.map((step, index) => (
           <div
@@ -140,22 +140,18 @@ export function Layout356() {
             onMouseEnter={() => setActiveStep(index)}
           >
             <div className="container px-[5%]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] lg:min-h-[80vh]">
-                {/* Content side */}
+              <div className="grid min-h-[70vh] grid-cols-1 lg:min-h-[80vh] lg:grid-cols-2">
                 <div className="flex flex-col justify-center py-16 lg:py-24 lg:pr-20">
-                  {/* Step indicator */}
-                  <div className="flex items-center gap-6 mb-8">
+                  <div className="mb-8 flex items-center gap-6">
                     <span className="step-number text-7xl font-bold text-white/5 lg:text-9xl">
                       {step.number}
                     </span>
                     <div className="flex flex-col">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-400 mb-1">
+                      <span className="mb-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-400">
                         {step.label}
                       </span>
                       <div className="flex items-baseline gap-3">
-                        <h2 className="text-4xl font-bold text-white lg:text-5xl">
-                          {step.title}
-                        </h2>
+                        <h2 className="text-4xl font-bold text-white lg:text-5xl">{step.title}</h2>
                         <span className="hidden text-lg font-light text-white/40 md:inline">
                           {step.subtitle}
                         </span>
@@ -163,37 +159,30 @@ export function Layout356() {
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-lg leading-relaxed text-white/60 max-w-lg mb-10 lg:text-xl">
+                  <p className="mb-10 max-w-lg text-lg leading-relaxed text-white/60 lg:text-xl">
                     {step.description}
                   </p>
 
-                  {/* Specs */}
                   <div className="space-y-3">
-                    {step.specs.map((spec, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-3 text-sm text-white/50"
-                      >
+                    {step.specs.map((spec) => (
+                      <div key={spec} className="flex items-center gap-3 text-sm text-white/50">
                         <span className="h-1.5 w-1.5 bg-emerald-500/50" />
                         <span className="uppercase tracking-wider">{spec}</span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Connection line to next step */}
                   {index < FLOW_STEPS.length - 1 && (
-                    <div className="hidden lg:block absolute bottom-0 left-[5%] lg:left-[25%]">
+                    <div className="absolute bottom-0 left-[5%] hidden lg:block lg:left-[25%]">
                       <div className="flex flex-col items-center">
                         <div className="h-16 w-px bg-gradient-to-b from-emerald-500/30 to-transparent" />
-                        <div className="h-2 w-2 bg-emerald-500/50 rotate-45 -mt-1" />
+                        <div className="-mt-1 h-2 w-2 rotate-45 bg-emerald-500/50" />
                       </div>
                     </div>
                   )}
                 </div>
 
-                {/* Visualization side */}
-                <div className="relative flex items-center justify-center py-12 lg:py-0 border-l border-white/5">
+                <div className="relative flex items-center justify-center border-l border-white/5 py-12 lg:py-0">
                   <StepVisualization step={step} isActive={activeStep === index} />
                 </div>
               </div>
@@ -202,7 +191,6 @@ export function Layout356() {
         ))}
       </div>
 
-      {/* Bottom accent */}
       <div className="h-1 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
     </section>
   );
