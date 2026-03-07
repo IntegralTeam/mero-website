@@ -626,3 +626,57 @@ a {
   color: #066253;
   transition: color 0.3s ease;
 }
+
+/* ============================================================================
+   ANNOUNCEMENT PAGE - Load animation
+   ============================================================================ */
+
+.announcement-grid {
+  animation: announcementGridReveal 900ms ease-out both;
+}
+
+.announcement-content {
+  animation: announcementContentReveal 700ms ease-out both;
+}
+
+.announcement-item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: announcementItemIn 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.announcement-item-1 { animation-delay: 120ms; }
+.announcement-item-2 { animation-delay: 240ms; }
+.announcement-item-3 { animation-delay: 360ms; }
+.announcement-item-4 { animation-delay: 480ms; }
+
+@keyframes announcementGridReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 0.03;
+    transform: scale(1);
+  }
+}
+
+@keyframes announcementContentReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes announcementItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
