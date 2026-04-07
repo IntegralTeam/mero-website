@@ -78,37 +78,43 @@ export function Navbar() {
         <div className="absolute hidden h-screen overflow-auto border-b border-white/10 bg-[#0b1c2d]/95 backdrop-blur-sm px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-auto lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-end lg:border-none lg:bg-transparent lg:backdrop-blur-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row lg:justify-end lg:gap-10">
             <Link
-              to="/#platform"
-              onClick={handleNavClick("platform")}
+              to="/#about"
+              onClick={handleNavClick("about")}
               className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
-              Platform
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
+              Tokens
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
               to="/#solutions"
               onClick={handleNavClick("solutions")}
               className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
-              Solutions
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
+              Lending
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
-              to="/#partners"
-              onClick={handleNavClick("partners")}
+              to="/#yield"
+              onClick={handleNavClick("yield")}
               className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
-              Partners
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
+              Yield
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
-              to="/#footer"
-              onClick={handleNavClick("footer")}
+              to="/#faq"
+              onClick={handleNavClick("faq")}
               className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+            >
+              FAQ
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
+            </Link>
+            <a
+              href="mailto:info@mero.tech"
+              className="hidden lg:inline-flex items-center gap-2 border border-[#00c2a8]/40 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
             >
               Contact
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
-            </Link>
+            </a>
             {/* <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
@@ -501,18 +507,21 @@ export function Navbar() {
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-white/10 bg-[#0b1c2d]/98 backdrop-blur-md px-[5%] pb-8 pt-4 text-white"
           >
             <div className="flex flex-col">
-              <Link to="/#platform" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
-                Platform
+              <Link to="/#about" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+                Tokens
               </Link>
-              <Link to="/#solutions" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
-                Solutions
+              <Link to="/#solutions" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+                Lending
               </Link>
-              <Link to="/#partners" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
-                Partners
+              <Link to="/#yield" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+                Yield
               </Link>
-              <Link to="/#footer" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-emerald-300">
+              <Link to="/#faq" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+                FAQ
+              </Link>
+              <a href="mailto:info@mero.tech" className="mt-2 inline-block border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10">
                 Contact
-              </Link>
+              </a>
               {/* <div >
                 <button
                   className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"

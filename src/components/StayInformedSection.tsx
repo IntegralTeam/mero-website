@@ -47,17 +47,17 @@ export function StayInformedSection() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 text-center md:mb-12">
             <div className="mb-4 flex items-center justify-center gap-3">
-              <span className="h-px w-8 bg-[#066253]/40" />
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#066253]">
+              <span className="h-px w-8 bg-[#00c2a8]/40" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
                 Newsletter
               </span>
-              <span className="h-px w-8 bg-[#066253]/40" />
+              <span className="h-px w-8 bg-[#00c2a8]/40" />
             </div>
             <h2 className="mb-4 text-3xl font-bold leading-[1.15] text-[#0b1c2d] md:text-4xl">
               Stay informed
             </h2>
             <p className="text-[#0b1c2d]/60 md:text-lg">
-              Get updates on Mero, USDM, and institutional finance insights.
+              Get updates on Mero's commodity tokenisation platform, GIFT IFSC developments, and institutional yield infrastructure.
             </p>
           </div>
 
@@ -77,14 +77,14 @@ export function StayInformedSection() {
                   placeholder="your@institution.com"
                   required
                   autoComplete="email"
-                  className="h-12 w-full border border-[#0b1c2d]/10 bg-[#fafbfc] px-4 text-sm text-[#0b1c2d] outline-none transition-all placeholder:text-[#0b1c2d]/30 focus:border-[#066253] focus:bg-white"
+                  className="h-12 w-full border border-[#0b1c2d]/10 bg-[#fafbfc] px-4 text-sm text-[#0b1c2d] outline-none transition-all placeholder:text-[#0b1c2d]/30 focus:border-[#00c2a8] focus:bg-white"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full bg-[#0b1c2d] px-6 py-4 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-[#066253] disabled:cursor-not-allowed disabled:opacity-50"
+                className="group relative w-full bg-[#0b1c2d] px-6 py-4 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-[#00c2a8] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <span className="flex items-center justify-center gap-2">
                   {isSubmitting ? (
@@ -126,15 +126,15 @@ export function StayInformedSection() {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-[10px] uppercase tracking-wider text-[#0b1c2d]/40">
             <span className="flex items-center gap-2">
-              <span className="h-1 w-1 bg-[#066253]" />
+              <span className="h-1 w-1 bg-[#00c2a8]" />
               Institutional Updates
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-1 w-1 bg-[#066253]" />
+              <span className="h-1 w-1 bg-[#00c2a8]" />
               Monthly Frequency
             </span>
             <span className="flex items-center gap-2">
-              <span className="h-1 w-1 bg-[#066253]" />
+              <span className="h-1 w-1 bg-[#00c2a8]" />
               Unsubscribe Anytime
             </span>
           </div>

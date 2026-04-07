@@ -7,6 +7,8 @@ import { Map } from "../components/Map";
 import { Layout420 } from "../components/Layout420";
 import { Layout356 } from "../components/Layout356";
 import { InKindModel } from "../components/InKindModel";
+import { GoldETFOverlay } from "../components/GoldETFOverlay";
+import { AssetManagerMarketplace } from "../components/AssetManagerMarketplace";
 import { ProcessSection } from "../components/ProcessSection";
 import { Partners } from "../components/Partners";
 import { Faq7 } from "../components/Faq7";
@@ -17,8 +19,8 @@ export function HomePage() {
   return (
     <>
       <Seo
-        title="Institutional Digital Asset Infrastructure"
-        description="Mero is building institutional infrastructure intended to support commodity-backed USD-denominated digital asset workflows and target yield strategies."
+        title="Commodity Tokenisation Infrastructure at GIFT IFSC"
+        description="Mero tokenises warehouse receipts for physical gold and commodities on Sui Network — enabling institutions to borrow USDC, earn yield, and deploy capital without converting the underlying asset to cash."
         path="/"
       />
       <Navbar />
@@ -29,6 +31,8 @@ export function HomePage() {
       <Layout420 />
       <Layout356 />
       <InKindModel />
+      <GoldETFOverlay />
+      <AssetManagerMarketplace />
       <ProcessSection />
       <Partners />
       <Faq7 />

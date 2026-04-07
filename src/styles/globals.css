@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap");
 @import "material-symbols/outlined.css";
 
 @tailwind base;
@@ -23,8 +24,19 @@ body {
   background: #ffffff;
 }
 
-/* Hero Section - Deep Navy to Emerald Gradient Background */
+/* Hero Section - Deep Navy to Teal Gradient Background */
 .hero-gradient-bg {
+  background: linear-gradient(
+    110deg,
+    #0a1628 0%,
+    #0d1f35 50%,
+    #062e28 82%,
+    #053d35 100%
+  );
+}
+
+/* Emerald gradient for sections - Navy to Emerald */
+.emerald-gradient-bg {
   background: linear-gradient(
     100.1deg,
     #0b1c2d 9.64%,
@@ -44,8 +56,8 @@ body {
   background-image: linear-gradient(
     100.1deg,
     #0b1c2d 9.64%,
-    #066253 72.94%,
-    #00c2a8 110.78%
+    #C9A84C 72.94%,
+    #E8C96E 110.78%
   );
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -107,12 +119,12 @@ a {
   }
 }
 
-/* World Map - Brand Colors */
+/* World Map - Dark Teal Theme */
 .world-map path {
-  fill: #e8ecf2;
-  stroke: #ffffff;
-  stroke-width: 0.6;
-  transition: fill 200ms ease, opacity 200ms ease;
+  fill: #0d1f2e;
+  stroke: #16304a;
+  stroke-width: 0.35;
+  transition: fill 250ms ease, opacity 250ms ease, filter 250ms ease;
 }
 
 .world-map-frame {
@@ -120,79 +132,35 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #071220;
 }
 
 .world-map-svg {
   width: 100%;
   height: 100%;
   transform-origin: 50% 58%;
-  transition: transform 180ms linear;
-  will-change: transform;
 }
 
-.world-map-top-blur {
-  position: absolute;
-  top: -2%;
-  left: 0;
-  right: 0;
-  height: 10%;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.5) 45%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.5) 55%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.5) 55%,
-    rgba(0, 0, 0, 0) 100%
-  );
-}
-
-.world-map-tooltip {
-  position: absolute;
-  z-index: 20;
-  pointer-events: none;
-  transform: translate(-50%, calc(-100% - 0.6rem));
-  background: #0b1c2d;
-  color: #ffffff;
-  font-size: 0.7rem;
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  border-radius: 4px;
-  padding: 0.75rem 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-}
-
-/* Target markets - Deep Navy base */
+/* Target market regions — subtle teal base */
 .world-map .wm-region {
-  fill: #0b1c2d;
-  opacity: 0.85;
-  transition: fill 300ms ease, opacity 300ms ease;
+  fill: rgba(0, 194, 168, 0.15);
+  stroke: rgba(0, 194, 168, 0.25);
+  stroke-width: 0.5;
+  opacity: 1;
+  transition: fill 280ms ease, filter 280ms ease, stroke 280ms ease;
 }
 
-/* Hover state - Emerald glow */
+/* Active / hover state — bright teal with glow */
 .world-map.wm-hover-africa .wm-region-africa,
 .world-map.wm-hover-indonesia .wm-region-indonesia,
 .world-map.wm-hover-india .wm-region-india,
 .world-map.wm-hover-latinAmerica .wm-region-latinAmerica,
 .world-map.wm-hover-uae .wm-region-uae {
-  fill: #066253;
+  fill: #00c2a8;
+  stroke: #4dd9ca;
+  stroke-width: 0.7;
   opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(0, 194, 168, 0.4));
+  filter: drop-shadow(0 0 6px rgba(0, 194, 168, 0.55)) drop-shadow(0 0 14px rgba(0, 194, 168, 0.25));
 }
 
 .header-gradient-bg {
@@ -376,8 +344,8 @@ a {
 /* Mint Visualization - Foundation Blocks */
 .viz-block {
   position: absolute;
-  background: linear-gradient(135deg, rgba(11, 28, 45, 0.8) 0%, rgba(6, 98, 83, 0.4) 100%);
-  border: 1px solid rgba(0, 194, 168, 0.2);
+  background: linear-gradient(135deg, rgba(11, 28, 45, 0.8) 0%, rgba(184, 151, 63, 0.4) 100%);
+  border: 1px solid rgba(201, 168, 76, 0.2);
   transition: all 0.5s ease;
 }
 
@@ -403,13 +371,13 @@ a {
   transform: translateX(-50%);
   width: 80px;
   height: 40px;
-  background: linear-gradient(135deg, rgba(0, 194, 168, 0.3) 0%, rgba(6, 98, 83, 0.2) 100%);
-  border-color: rgba(0, 194, 168, 0.4);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.3) 0%, rgba(184, 151, 63, 0.2) 100%);
+  border-color: rgba(201, 168, 76, 0.4);
 }
 
 .viz-line {
   position: absolute;
-  background: rgba(0, 194, 168, 0.3);
+  background: rgba(201, 168, 76, 0.3);
 }
 
 .viz-line-horizontal {
@@ -427,19 +395,19 @@ a {
 }
 
 .step-viz-active .viz-block {
-  border-color: rgba(0, 194, 168, 0.5);
+  border-color: rgba(201, 168, 76, 0.5);
   box-shadow: 0 0 30px rgba(0, 194, 168, 0.1);
 }
 
 .step-viz-active .viz-block-3 {
-  background: linear-gradient(135deg, rgba(0, 194, 168, 0.5) 0%, rgba(6, 98, 83, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.5) 0%, rgba(184, 151, 63, 0.3) 100%);
 }
 
 /* Deploy Visualization - Flow Channels */
 .viz-channel {
   position: absolute;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 194, 168, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent);
 }
 
 .viz-channel-1 {
@@ -461,7 +429,7 @@ a {
   transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
-  border: 2px solid rgba(0, 194, 168, 0.4);
+  border: 2px solid rgba(201, 168, 76, 0.4);
   border-radius: 50%;
   background: rgba(11, 28, 45, 0.9);
 }
@@ -474,7 +442,7 @@ a {
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background: rgba(0, 194, 168, 0.6);
+  background: rgba(201, 168, 76, 0.6);
   border-radius: 50%;
 }
 
@@ -486,16 +454,16 @@ a {
   height: 0;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 10px solid rgba(0, 194, 168, 0.4);
+  border-left: 10px solid rgba(201, 168, 76, 0.4);
 }
 
 .step-viz-active .viz-node-center {
-  border-color: rgba(0, 194, 168, 0.8);
-  box-shadow: 0 0 20px rgba(0, 194, 168, 0.3);
+  border-color: rgba(201, 168, 76, 0.8);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
 }
 
 .step-viz-active .viz-node-center::before {
-  background: rgba(0, 194, 168, 0.9);
+  background: rgba(201, 168, 76, 0.9);
 }
 
 /* Redeem Visualization - Elevation Paths */
@@ -503,7 +471,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to top, rgba(0, 194, 168, 0.2), rgba(0, 194, 168, 0.6));
+  background: linear-gradient(to top, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.6));
 }
 
 .viz-path-1 {
@@ -525,7 +493,7 @@ a {
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-bottom: 50px solid rgba(0, 194, 168, 0.2);
+  border-bottom: 50px solid rgba(201, 168, 76, 0.2);
 }
 
 .viz-peak::before {
@@ -547,7 +515,7 @@ a {
   transform: translateX(-50%);
   width: 60px;
   height: 60px;
-  background: radial-gradient(circle, rgba(0, 194, 168, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.3) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -557,11 +525,11 @@ a {
 }
 
 .step-viz-active .viz-path {
-  background: linear-gradient(to top, rgba(0, 194, 168, 0.3), rgba(0, 194, 168, 0.9));
+  background: linear-gradient(to top, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.9));
 }
 
 .step-viz-active .viz-peak {
-  border-bottom-color: rgba(0, 194, 168, 0.4);
+  border-bottom-color: rgba(201, 168, 76, 0.4);
 }
 
 /* Responsive adjustments */
@@ -623,6 +591,128 @@ a {
 
 /* Step card hover effects */
 #process .group:hover h3 {
-  color: #066253;
+  color: #00c2a8;
   transition: color 0.3s ease;
+}
+
+/* ============================================================================
+   SCROLL ANIMATIONS - Subtle reveal effects
+   ============================================================================ */
+
+/* Base state for animated elements */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Visible state */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.animate-on-scroll .stagger-child {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-on-scroll.is-visible .stagger-child:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.is-visible .stagger-child:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.is-visible .stagger-child:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.is-visible .stagger-child:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+/* Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter-animate {
+  animation: countUp 0.8s ease-out forwards;
+}
+
+/* Card hover lift effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 194, 168, 0.1);
+}
+
+/* Subtle pulse for active elements */
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pulse-subtle {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+/* Icon scale on hover */
+.icon-hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.group:hover .icon-hover-scale {
+  transform: scale(1.1);
+}
+
+/* Underline draw animation */
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.draw-underline {
+  position: relative;
+}
+
+.draw-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 0.4s ease;
+}
+
+.draw-underline:hover::after {
+  width: 100%;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll .stagger-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .counter-animate {
+    animation: none;
+  }
+  
+  .card-hover:hover {
+    transform: none;
+  }
+}
+
+/* Performance optimization */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

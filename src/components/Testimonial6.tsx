@@ -18,7 +18,7 @@ const USE_CASES = [
 
 export function Testimonial6() {
   return (
-    <section className="relative overflow-hidden bg-[#0b1c2d] py-20 md:py-28 lg:py-32">
+    <section className="relative overflow-hidden emerald-gradient-bg py-20 md:py-28 lg:py-32">
       <div className="absolute inset-0 opacity-[0.02]">
         <div
           className="h-full w-full"

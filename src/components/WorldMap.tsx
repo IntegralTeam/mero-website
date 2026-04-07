@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-type RegionKey = "africa" | "indonesia" | "india" | "latinAmerica" | "uae";
+export type RegionKey = "africa" | "indonesia" | "india" | "latinAmerica" | "uae";
 
 const REGION_CODES: Record<RegionKey, string[]> = {
   africa: [
@@ -19,53 +19,20 @@ const REGION_CODES: Record<RegionKey, string[]> = {
   uae: ["AE"],
 };
 
-const RegionDescription = ({name, volume}: {name: string, volume: number}) => (
-  <div>
-    <p className="mb-2 text-sm">{name}</p>
-    <p>{`Commodity: $${volume} Billion`}</p>
-  </div>
-);
-
-const REGION_LABELS: Record<RegionKey, any> = {
-  africa: <RegionDescription name="Africa" volume={257} />,
-  indonesia: <RegionDescription name="Indonesia" volume={500} />,
-  india: <RegionDescription name="India" volume={517} />,
-  latinAmerica: <RegionDescription name="Latin America" volume={430} />,
-  uae: <RegionDescription name="UAE" volume={900} />,
-};
 
 type WorldMapProps = {
-  focusProgress?: number;
+  activeRegion?: RegionKey | null;
+  onRegionClick?: (region: RegionKey) => void;
 };
 
-export default function WorldMap({ focusProgress = 0 }: WorldMapProps) {
+export default function WorldMap({ activeRegion = null, onRegionClick }: WorldMapProps) {
   const [hoveredRegion, setHoveredRegion] = useState<RegionKey | null>(null);
-  const [tooltip, setTooltip] = useState<{
-    region: RegionKey;
-    x: number;
-    y: number;
-  } | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const clampedProgress = Math.min(1, Math.max(0, focusProgress));
-  const zoomScale = 1 + clampedProgress * 0.9;
-  const translateY = -1 - clampedProgress * 35;
 
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
-
-    const updateTooltipPosition = (event: MouseEvent, region: RegionKey) => {
-      const frame = frameRef.current;
-      if (!frame) return;
-      const rect = frame.getBoundingClientRect();
-
-      setTooltip({
-        region,
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
-      });
-    };
 
     const cleanups: Array<() => void> = [];
 
@@ -78,55 +45,42 @@ export default function WorldMap({ focusProgress = 0 }: WorldMapProps) {
           path.classList.add("wm-region", `wm-region-${region}`);
           path.style.cursor = "pointer";
 
-          const onEnter = (event: MouseEvent) => {
-            setHoveredRegion(region);
-            updateTooltipPosition(event, region);
-          };
-          const onMove = (event: MouseEvent) => {
-            updateTooltipPosition(event, region);
-          };
-          const onLeave = () => {
+          const onEnter = () => setHoveredRegion(region);
+          const onLeave = () =>
             setHoveredRegion((current) => (current === region ? null : current));
-            setTooltip((current) => (current?.region === region ? null : current));
-          };
+          const onClick = () => onRegionClick?.(region);
 
           path.addEventListener("mouseenter", onEnter);
-          path.addEventListener("mousemove", onMove);
           path.addEventListener("mouseleave", onLeave);
+          path.addEventListener("click", onClick);
 
           cleanups.push(() => {
             path.removeEventListener("mouseenter", onEnter);
-            path.removeEventListener("mousemove", onMove);
             path.removeEventListener("mouseleave", onLeave);
+            path.removeEventListener("click", onClick);
           });
         });
       }
     );
 
-    const onSvgLeave = () => {
-      setHoveredRegion(null);
-      setTooltip(null);
-    };
-
+    const onSvgLeave = () => setHoveredRegion(null);
     svg.addEventListener("mouseleave", onSvgLeave);
-    cleanups.push(() => {
-      svg.removeEventListener("mouseleave", onSvgLeave);
-    });
+    cleanups.push(() => svg.removeEventListener("mouseleave", onSvgLeave));
 
-    return () => {
-      cleanups.forEach((cleanup) => cleanup());
-      setTooltip(null);
-    };
-  }, []);
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, [onRegionClick]);
+
+  const highlightClass = hoveredRegion
+    ? `wm-hover-${hoveredRegion}`
+    : activeRegion
+    ? `wm-hover-${activeRegion}`
+    : "";
 
   return (
     <div ref={frameRef} className="world-map-frame">
       <svg
         ref={svgRef}
-        className={`world-map world-map-svg ${hoveredRegion ? `wm-hover-${hoveredRegion}` : ""}`}
-        style={{
-          transform: `translateY(${translateY}%) scale(${zoomScale})`,
-        }}
+        className={`world-map world-map-svg ${highlightClass}`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1009.6727 665.96301"
         width="100%"
@@ -1159,17 +1113,6 @@ export default function WorldMap({ focusProgress = 0 }: WorldMapProps) {
         name="Zimbabwe"
         id="ZW" />
       </svg>
-      {tooltip ? (
-        <div
-          className="world-map-tooltip"
-          style={{ left: `${tooltip.x}px`, top: `${tooltip.y}px` }}
-          role="status"
-          aria-live="polite"
-        >
-          {REGION_LABELS[tooltip.region]}
-        </div>
-      ) : null}
-      {/* <div className="world-map-top-blur" aria-hidden="true" /> */}
     </div>
   );
 }
