@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
-/** Set `true` to restore the “Eligible Investors Only” banner, modal, and gated Mero Fund card. */
-const INVESTOR_GATE_ENABLED = false;
+/** Keep fund-specific eligibility notice enabled. */
+const INVESTOR_GATE_ENABLED = true;
 
 const INVESTOR_GATE_KEY = "meroInvestorGateAccepted";
 
 const GATE_BODY =
-  "The following information relates to the Mero Fund, which is intended to be established as a Jersey Private Fund under the Collective Investment Funds (Jersey Private Funds) Order 2025. The minimum subscription is £250,000 (or currency equivalent). The Fund is intended to be available exclusively to eligible investors, including: high-net-worth individuals with net assets exceeding $1,000,000; entities with investable assets of $1,000,000 or more; UK FCA-classified professional clients; US SEC accredited investors under Regulation D Rule 501; and regulated financial services providers. The Fund will not be subject to the same regulatory protections as a Jersey-authorised fund. The Fund and its terms are under development and subject to change. By proceeding, you confirm that you expect to meet the minimum subscription and eligible investor criteria.";
+  "The following information relates to the Mero Fund, which is intended to be established as a Jersey Private Fund under the Collective Investment Funds (Jersey Private Funds) Order 2025. The minimum subscription is £250,000 (or currency equivalent). The Fund is intended to be available exclusively to eligible investors, including: high-net-worth individuals with net assets exceeding $1,000,000; entities with investable assets of $1,000,000 or more; professional clients as defined in the FCA Handbook (COBS 3.5); and regulated financial services providers. The Fund will not be subject to the same regulatory protections as a Jersey-authorised fund. The Fund and its terms are under development and subject to change. By proceeding, you confirm that you expect to meet the minimum subscription and eligible investor criteria.";
 
 const CHANNELS = [
   {
@@ -97,7 +97,6 @@ const ICONS = { banks: BankIcon, commodity: CommodityIcon, fund: FundIcon } as c
 export function ClientChannels() {
   const [isGateOpen, setIsGateOpen] = useState(false);
   const [isGateAccepted, setIsGateAccepted] = useState(false);
-  const hasAutoTriggeredRef = useRef(false);
   const gateUnlocked = !INVESTOR_GATE_ENABLED || isGateAccepted;
   const sectionRef = useRef<HTMLElement | null>(null);
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -108,26 +107,6 @@ export function ClientChannels() {
   useEffect(() => {
     setIsGateAccepted(sessionStorage.getItem(INVESTOR_GATE_KEY) === "true");
   }, []);
-
-  useEffect(() => {
-    if (!INVESTOR_GATE_ENABLED) return;
-    if (isGateAccepted || hasAutoTriggeredRef.current) return;
-    if (!sectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          hasAutoTriggeredRef.current = true;
-          setIsGateOpen(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.35 }
-    );
-
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [isGateAccepted]);
 
   const confirmGate = () => {
     sessionStorage.setItem(INVESTOR_GATE_KEY, "true");
