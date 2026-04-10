@@ -8,7 +8,7 @@ const MANAGERS = [
     strategy: "Tokenised US Treasury fund",
     description: "Institutional-grade short-duration yield on US government securities. The benchmark institutional product for tokenised capital deployment.",
     yield: "~5%",
-    yieldLabel: "Net",
+    yieldLabel: "Indicative",
     tag: "Money Market",
     highlight: false,
   },
@@ -19,7 +19,7 @@ const MANAGERS = [
     strategy: "Tokenised credit fund",
     description: "Diversified institutional credit exposure across corporate and structured credit instruments. Higher yield in exchange for reduced liquidity.",
     yield: "~7–8%",
-    yieldLabel: "Net",
+    yieldLabel: "Indicative",
     tag: "Credit",
     highlight: false,
   },
@@ -30,7 +30,7 @@ const MANAGERS = [
     strategy: "Tokenised money market fund",
     description: "Conservative, high-liquidity money market yield. Suitable for shorter-duration deployment of borrowed USDC capital.",
     yield: "~5%",
-    yieldLabel: "Net",
+    yieldLabel: "Indicative",
     tag: "Money Market",
     highlight: false,
   },
@@ -41,7 +41,7 @@ const MANAGERS = [
     strategy: "Delta-neutral and basis trading",
     description: "Higher-yield strategies employing delta-neutral positioning and basis trading. Institutional risk management with disciplined drawdown controls.",
     yield: "~12–18%",
-    yieldLabel: "Gross",
+    yieldLabel: "Indicative",
     tag: "Alternatives",
     highlight: true,
   },
@@ -52,7 +52,7 @@ const MANAGERS = [
     strategy: "Collar or covered call on IAU",
     description: "In-kind gold → IAU conversion, options strategy executed by SpiderRock Advisors. Income on idle gold reserves without selling the underlying metal.",
     yield: "1.3–9%",
-    yieldLabel: "Net",
+    yieldLabel: "Indicative",
     tag: "Commodities",
     highlight: false,
   },
@@ -109,7 +109,7 @@ export function AssetManagerMarketplace() {
             The lending protocol is the connective tissue. Without it, the warehouse receipt is a record in a wallet.
             With it, a commodity holder can tokenise their position, immediately borrow USDC against it,
             and deploy into the same yield strategies used by global institutional investors —
-            in a single integrated workflow.
+            through one integrated workflow, subject to rollout by market and channel.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export function AssetManagerMarketplace() {
             ))}
           </div>
           <p className="mt-4 text-center text-[10px] uppercase tracking-wider text-[#0b1c2d]/35">
-            Commodity-backed USD capital deployed into regulated institutional yield — one workflow
+            Commodity-backed USD capital into institutional yield pathways
           </p>
         </div>
 

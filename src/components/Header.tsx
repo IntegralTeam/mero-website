@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 const MODULES = [
   {
     id: "tokenise",
-    label: "Tokenize",
+    label: "Tokenise",
     description:
-      "Physical commodity in certified vaults becomes digital warehouse receipt tokens. 1 MEROG = 1 troy oz gold. Verified, transferable, auditable on Sui.",
+      "Convert verified vaulted commodities into digital warehouse receipts. 1 MEROG = 1 fine troy ounce of gold.",
   },
   {
     id: "lend",
@@ -18,7 +18,7 @@ const MODULES = [
     id: "yield",
     label: "Yield",
     description:
-      "Earn 1.3–9% on gold via ETF overlays from SpiderRock/BlackRock. Or deploy borrowed USDC into BUIDL, ACRED, and other institutional strategies.",
+      "Activate roadmap yield routes such as ETF overlays and institutional allocation pathways.",
   },
 ] as const;
 
@@ -48,6 +48,13 @@ function AbstractCore() {
           <stop offset="50%" stopColor="#066253" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#00c2a8" stopOpacity="0.8" />
         </linearGradient>
+        <linearGradient id="tokenTextGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#00c2a8" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#C9A84C" stopOpacity="0.95" />
+        </linearGradient>
+        <path id="tokenOrbitOuterArc" d="M 88 85 A 144 144 0 0 1 312 85" fill="none" />
+        <path id="tokenOrbitMiddleArc" d="M 110 115 A 116 116 0 0 1 290 115" fill="none" />
+        <path id="tokenOrbitInnerArc" d="M 132 143 A 90 90 0 0 1 268 143" fill="none" />
 
         {/* Glow filter */}
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -105,6 +112,44 @@ function AbstractCore() {
         <circle cx="200" cy="120" r="2.5" fill="#00c2a8" fillOpacity="0.6" />
       </g>
 
+      {/* Token tickers orbit - subtle brand relevance */}
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
+        <text fontSize="9.5" letterSpacing="1.4" fill="url(#tokenTextGradient)" opacity="0.6">
+          <textPath href="#tokenOrbitOuterArc" startOffset="50%" textAnchor="middle">
+            MEROG
+          </textPath>
+        </text>
+      </g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="120 200 200" to="480 200 200" dur="26s" repeatCount="indefinite" />
+        <text fontSize="9" letterSpacing="1.4" fill="url(#tokenTextGradient)" opacity="0.6">
+          <textPath href="#tokenOrbitMiddleArc" startOffset="50%" textAnchor="middle">
+            MEROC
+          </textPath>
+        </text>
+      </g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="240 200 200" to="600 200 200" dur="12s" repeatCount="indefinite" />
+        <text fontSize="9" letterSpacing="1.4" fill="url(#tokenTextGradient)" opacity="0.55">
+          <textPath href="#tokenOrbitInnerArc" startOffset="50%" textAnchor="middle">
+            MERON
+          </textPath>
+        </text>
+      </g>
+
+      {/* Compounding pulse bands - indicates accumulating interest */}
+      <g opacity="0.45">
+        <circle cx="200" cy="200" r="38" fill="none" stroke="#C9A84C" strokeWidth="0.8" strokeOpacity="0.35">
+          <animate attributeName="r" values="38;54;38" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="stroke-opacity" values="0.15;0.45;0.15" dur="5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="200" r="50" fill="none" stroke="#00c2a8" strokeWidth="0.8" strokeOpacity="0.25">
+          <animate attributeName="r" values="50;68;50" dur="5s" begin="1.2s" repeatCount="indefinite" />
+          <animate attributeName="stroke-opacity" values="0.08;0.35;0.08" dur="5s" begin="1.2s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
       {/* Central core */}
       <g>
         {/* Pulsing center */}
@@ -152,7 +197,7 @@ export function Header() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveModule((prev) => (prev + 1) % MODULES.length);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
@@ -194,20 +239,20 @@ export function Header() {
                 <span className="inline-block h-2 w-2 bg-[#00c2a8]/20" />
               </div>
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00c2a8]/80">
-                Phase 1 — GIFT IFSC Regulatory Sandbox
+                Phase 1 — GIFT IFSC
               </span>
             </div>
 
             {/* Headline - Simple and punchy */}
             <h1 className="mb-8 font-display text-[2.6rem] font-light leading-[1.05] text-white md:text-5xl lg:text-[3.5rem]">
               Commodities.<br />
-              <span className="text-[#00c2a8]">Tokenized. Earning.</span><br />
+              <span className="text-[#00c2a8]">Tokenised. Earning.</span><br />
               Without selling.
             </h1>
 
             <p className="mb-10 max-w-[520px] text-base leading-relaxed text-white/55 md:text-[1.1rem]">
-              Turn warehouse receipts into on-chain assets. Get instant liquidity or earn yield — 
-              while your gold, copper, and nickel stay vaulted.
+              Turn warehouse receipts into on-chain assets.
+              Access collateral workflows while underlying commodities stay vaulted.
             </p>
 
             {/* Module pills */}

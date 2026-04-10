@@ -14,7 +14,7 @@ const TOKENS = [
     image: gold,
     stat: "1 Troy Oz",
     statLabel: "Phase 1 Priority",
-    phase: "Phase 1 — Live",
+    phase: "Phase 1 Pilot",
   },
   {
     id: "meroc",
@@ -26,7 +26,7 @@ const TOKENS = [
     image: copper,
     stat: "Physical",
     statLabel: "Warehouse Receipt",
-    phase: "Phase 1",
+    phase: "Roadmap",
   },
   {
     id: "meron",
@@ -38,7 +38,7 @@ const TOKENS = [
     image: nickel,
     stat: "Physical",
     statLabel: "Warehouse Receipt",
-    phase: "Phase 1",
+    phase: "Roadmap",
   },
 ] as const;
 

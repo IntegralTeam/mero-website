@@ -6,7 +6,7 @@ const PLATFORM_FEATURES = [
   {
     icon: "assured_workload",
     iconColor: "text-[#00c2a8]",
-    title: "1:1 Tokenization",
+    title: "1:1 Tokenisation",
     description:
       "Physical commodities in certified vaults become on-chain tokens. MEROG, MEROC, MERON — each is verified, transferable proof of ownership.",
     stat: "1:1",
@@ -35,7 +35,7 @@ const PLATFORM_FEATURES = [
     iconColor: "text-[#0b1c2d]",
     title: "Strategy Marketplace",
     description:
-      "Deploy borrowed capital into BUIDL, ACRED, BENJI, Paradox/Hilbert. One integrated workflow from tokenization to yield.",
+      "Deploy borrowed capital into institutional products through a staged workflow from tokenisation to allocation.",
     stat: "4+",
     statLabel: "Managers",
   },
@@ -77,12 +77,12 @@ export function Platform() {
             </span>
             <span className="h-px w-8 bg-[#00c2a8]/40" />
           </div>
-          <h2 className="mb-5 text-center font-display text-3xl font-light leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-            Everything you need to put commodities to work
+          <h2 className="mb-5 text-center font-display text-3xl font-light text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
+            Everything you need <br /> to put commodities to work
           </h2>
           <p className="mx-auto max-w-2xl text-center text-[#0b1c2d]/60 md:text-lg">
-            Tokenize, borrow, earn, and deploy — four modules that work together 
-            to unlock the full value of your physical assets without selling them.
+            Tokenise, borrow, and activate capital through one infrastructure layer.
+            Unlock the full value of your physical assets without selling them.
           </p>
         </div>
 

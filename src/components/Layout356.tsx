@@ -27,7 +27,7 @@ const FLOW_STEPS = [
     specs: [
       "Lend: 60% LTV · 5% fixed · 30–180 day terms · No flash liquidation",
       "Earn: SpiderRock collar (1.3–1.6% net) or covered call (4–9% net)",
-      "Deploy borrowed USDC into BUIDL / ACRED / BENJI / Paradox",
+      "Roadmap deployment path: BUIDL / ACRED / BENJI / Paradox",
     ],
   },
   {

@@ -131,7 +131,7 @@ const PROCESS_STEPS = [
   },
   {
     number: "02",
-    label: "TOKENIZE",
+    label: "TOKENISE",
     title: "Receive your tokens",
     description:
       "Mero issues warehouse receipt tokens (MEROG, MEROC, MERON) on Sui Network. Each token represents verified ownership of 1:1 physical commodity, transferable and auditable in real-time.",
@@ -167,8 +167,8 @@ export function ProcessSection() {
             Three steps to liquidity
           </h2>
           <p className="text-[#0b1c2d]/60 md:text-lg">
-            From physical commodity to on-chain asset in 72 hours.
-            Borrow, earn, or redeem — you maintain full ownership throughout.
+            From physical commodity to on-chain collateral in a staged workflow.
+            Borrow, activate, or redeem while retaining ownership of the underlying asset.
           </p>
         </div>
 

@@ -245,9 +245,9 @@ export function GoldETFOverlay() {
             <span className="text-[#E8C96E]">Without selling a bar.</span>
           </h2>
           <p className="mx-auto max-w-2xl text-white/55 md:text-lg">
-            Physical gold is contributed in-kind to IAU (iShares Gold Trust) via an Authorised Participant.
-            SpiderRock Advisors — a wholly-owned subsidiary of BlackRock, Inc. — acts as discretionary
-            overlay manager. The gold is never sold. No liability is created.
+            Physical gold can be contributed in-kind to IAU (iShares Gold Trust) via authorised market participants.
+            SpiderRock Advisors is shown here as the intended overlay manager model for pilot design.
+            Structures remain subject to legal, counterparty, and execution readiness.
           </p>
         </div>
 
@@ -358,7 +358,7 @@ export function GoldETFOverlay() {
                 />
                 <MechanismStep
                   number="2"
-                  text="Gold is converted in-kind to IAU (iShares Gold Trust) shares via an Authorised Participant (JP Morgan, Goldman Sachs, or Jane Street). Cost of capital: zero."
+                  text="Gold is converted in-kind to IAU (iShares Gold Trust) shares via an authorised participant under agreed execution terms."
                   animation={mechanismAnimations[1]}
                 />
                 <MechanismStep
@@ -391,8 +391,8 @@ export function GoldETFOverlay() {
                   {" "}without converting a single ounce to cash.
                 </p>
                 <div className="space-y-2 text-[10px] text-white/35">
-                  <p>· SpiderRock Advisors — wholly-owned subsidiary of BlackRock, Inc.</p>
-                  <p>· Physical gold never sold. No FX conversion. No liability created.</p>
+                  <p>· Overlay manager references are indicative and subject to final agreement.</p>
+                  <p>· Physical gold treatment depends on the selected legal and custody structure.</p>
                   <p>· Title held in independent regulated escrow.</p>
                   <p>· Indicative only. Not a guarantee. Capital is at risk.</p>
                 </div>

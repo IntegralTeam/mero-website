@@ -18,7 +18,7 @@ const CHANNELS = [
     features: [
       "Bank's existing KYC/AML framework governs client onboarding",
       "Chainalysis and Elliptic supplement on-chain transaction screening",
-      "Bank configures available yield products and allocation limits",
+      "Bank configures available products and allocation limits",
     ],
     cta: "Platform for Banks",
     requiresGate: false,
@@ -33,7 +33,7 @@ const CHANNELS = [
     features: [
       "Tokenise at GIFT IFSC in the LBMA-aligned bullion market framework",
       "Lock MEROG as collateral — borrow USDC at 5% fixed, 60% LTV",
-      "Gold ETF overlay: 1.3–9% net annualised via SpiderRock/BlackRock",
+      "Gold ETF overlay route shown as an indicative roadmap pathway",
     ],
     cta: "For Commodity Holders",
     requiresGate: false,
@@ -161,8 +161,8 @@ export function ClientChannels() {
             Three client channels
           </h2>
           <p className="text-white/50 md:text-lg">
-            One platform. Three routes to market. Indian banks at GIFT IFSC, commodity holders seeking
-            USDC liquidity or yield, and international institutional investors via the Mero Fund.
+            One infrastructure layer. Three routes to market. Bank white-label deployment is the pilot focus,
+            with broader commodity-holder and fund pathways expanding through roadmap phases.
           </p>
         </div>
 

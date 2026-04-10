@@ -20,20 +20,20 @@ export function HomePage() {
     <>
       <Seo
         title="Commodity Tokenisation Infrastructure at GIFT IFSC"
-        description="Mero tokenises warehouse receipts for physical gold and commodities on Sui Network — enabling institutions to borrow USDC, earn yield, and deploy capital without converting the underlying asset to cash."
+        description="Mero provides commodity tokenisation infrastructure at GIFT IFSC, with first-release pilot workflows and roadmap pathways for expanded products and markets."
         path="/"
       />
       <Navbar />
       <Header />
       <ClientChannels />
       <Platform />
-      <Map />
       <Layout420 />
       <Layout356 />
       <InKindModel />
+      <ProcessSection />
       <GoldETFOverlay />
       <AssetManagerMarketplace />
-      <ProcessSection />
+      <Map />
       <Partners />
       <Faq7 />
       <StayInformedSection />

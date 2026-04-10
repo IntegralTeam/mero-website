@@ -22,7 +22,7 @@ const REGIONS: Record<
   india: {
     label: "India",
     subtitle: "GIFT IFSC · IFSCA Sandbox",
-    status: "Phase 1 — Active",
+    status: "Phase 1 Pilot",
     statusActive: true,
     stat: "$517B",
     statLabel: "Annual commodity market",
@@ -140,8 +140,8 @@ export function Map() {
               <span className="text-[#00c2a8]">Built for global scale.</span>
             </h2>
             <p className="self-end text-white/50 md:text-lg">
-              Phase 1 is live at GIFT IFSC, India's international financial hub. 
-              Our infrastructure is designed for commodity markets worldwide — from the UAE 
+              Phase 1 is being deployed through the GIFT IFSC.
+              Our infrastructure is designed for commodity markets worldwide — from the UAE
               to Indonesia and beyond. Select a region to explore our expansion roadmap.
             </p>
           </div>

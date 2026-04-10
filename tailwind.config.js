@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Cormorant Garamond", "Georgia", "serif"],
+        display: ["Sora", "Segoe UI", "sans-serif"],
+        sans: ["Sora", "Segoe UI", "sans-serif"],
       },
       colors: {
         "border-primary": "#d1d5db",

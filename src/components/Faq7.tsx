@@ -8,15 +8,15 @@ const FAQS = [
       "MEROG represents 1 fine troy oz of gold on Sui Network",
       "Gold is held in LBMA-certified vaults with verified encumbrance",
       "Token is digital proof of ownership — transferable on-chain",
-      "Also available: MEROC (copper) and MERON (nickel)",
+      "Roadmap extensions include MEROC (copper) and MERON (nickel)",
     ],
   },
   {
     question: "How does the lending protocol work?",
     bullets: [
       "Lock warehouse receipts as collateral via smart contract",
-      "Borrow USDC at 5% fixed rate, 60% LTV at origination",
-      "Terms: 30/60/90/180 days with 48-hour cure period",
+      "Pilot terms include 5% fixed rate and 60% LTV at origination",
+      "Indicative terms: 30/60/90/180 days with 48-hour cure period",
       "No flash liquidation — orderly unwind only",
     ],
   },
@@ -34,25 +34,25 @@ const FAQS = [
     bullets: [
       "Physical gold converted to IAU (iShares Gold Trust)",
       "SpiderRock Advisors (BlackRock subsidiary) manages options strategies",
-      "Collar: 1.3–1.6% yield with ~82–88% downside floor",
-      "Covered Call: 4–9% yield, no floor — for income-focused institutions",
+      "Collar: 1.3–1.6% target yield with ~82–88% downside floor",
+      "Covered Call: 4–9% target yield, no floor — for income-focused institutions",
     ],
   },
   {
     question: "Why GIFT IFSC?",
     bullets: [
       "India's international financial centre regulated by IFSCA",
-      "Bullion Exchange Regulations 2025 support tokenized receipts",
+      "Bullion Exchange Regulations 2025 support tokenised receipts",
       "Access to Indian banks with commodity client bases",
-      "Seeking Regulatory Sandbox approval for controlled deployment",
+      "Regulatory sandbox pathway supports controlled deployment",
     ],
   },
   {
     question: "How does the white-label bank model work?",
     bullets: [
       "Banks integrate Mero under their own brand at GIFT IFSC",
-      "Bank's KYC/AML governs onboarding — Mero provides tech only",
-      "Clients access tokenization, lending, and yield marketplace",
+      "Bank's KYC/AML governs onboarding — Mero provides infrastructure",
+      "Clients access tokenisation, lending, and phased product modules",
       "Bank configures products and earns spread on client activity",
     ],
   },
@@ -86,7 +86,7 @@ export function Faq7() {
             Common questions
           </h2>
           <p className="text-[#0b1c2d]/60 md:text-lg">
-            How the platform works, the lending mechanics, Gold ETF overlay, and GIFT IFSC context.
+            Platform mechanics, lending model, overlay pathway, and GIFT IFSC context.
           </p>
         </div>
 

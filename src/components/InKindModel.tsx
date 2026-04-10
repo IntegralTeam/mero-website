@@ -15,9 +15,9 @@ const COMPARISON_DATA = {
     title: "Mero Lending",
     subtitle: "Institutional Margin Mechanics",
     points: [
-      { label: "Liquidation", value: "75% LTV maintenance threshold triggers a margin notice. Borrower has 48 hours to top up collateral or repay." },
-      { label: "Rate", value: "5% per annum, fixed at origination. 4% paid to USDC lenders. 1% protocol spread." },
-      { label: "Structure", value: "Fixed-term: 30 / 60 / 90 / 180 days. Matched via auction or RFQ panel at origination." },
+      { label: "Liquidation", value: "75% LTV maintenance threshold can trigger a margin notice. Borrower has a 48-hour cure window to top up collateral or repay." },
+      { label: "Rate", value: "Pilot configuration targets a fixed annualised borrow rate at origination." },
+      { label: "Structure", value: "Pilot structure supports fixed terms (30 / 60 / 90 / 180 days) matched via auction or RFQ-style workflows." },
       { label: "Collateral", value: "Physical warehouse receipt tokens (MEROG, MEROC, MERON). Custodian-verified, vault-held commodity." },
       { label: "Matching", value: "Curated lender panel. Auction / RFQ mechanism. All counterparties KYC/AML screened." },
     ],
@@ -134,8 +134,8 @@ export function InKindModel() {
               Lock{" "}
               <span className="font-bold text-[#0b1c2d]">$10M of MEROG</span> as collateral
               {" "}→ borrow{" "}
-              <span className="font-bold text-[#00c2a8]">$6M USDC at 5% fixed</span>
-              {" "}on a 90-day term. If LTV rises above 75%, you have 48 hours to top up — no automatic liquidation.
+              <span className="font-bold text-[#00c2a8]">up to ~$6M USDC at a pilot target fixed rate</span>
+              {" "}on a 90-day term. If LTV rises above 75%, a 48-hour cure window applies before unwind.
             </p>
           </div>
         </div>

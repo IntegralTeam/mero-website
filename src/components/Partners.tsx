@@ -5,17 +5,18 @@ const ECOSYSTEM_GROUPS = [
     category: "Infrastructure",
     partners: [
       { name: "Sui Network", descriptor: "Settlement layer" },
+      { name: "Sui · Hashi", descriptor: "Liquidity provider" },
       { name: "Circle · USDC", descriptor: "Settlement currency" },
     ],
   },
   {
     category: "Yield Products",
     partners: [
-      { name: "BlackRock · BUIDL", descriptor: "Tokenised US treasury fund · ~5% net" },
-      { name: "Apollo · ACRED", descriptor: "Tokenised credit fund · ~7–8% net" },
-      { name: "Franklin Templeton · BENJI", descriptor: "Tokenised money market · ~5% net" },
-      { name: "SpiderRock / BlackRock", descriptor: "Gold ETF overlay · 1.3–9% net" },
-      { name: "Paradox / Hilbert", descriptor: "Delta-neutral strategies · ~12–18% gross" },
+      { name: "BlackRock · BUIDL", descriptor: "Tokenised US treasury fund · indicative yield profile" },
+      { name: "Apollo · ACRED", descriptor: "Tokenised credit fund · indicative yield profile" },
+      { name: "Franklin Templeton · BENJI", descriptor: "Tokenised money market · indicative yield profile" },
+      { name: "SpiderRock / BlackRock", descriptor: "Gold ETF overlay model · indicative strategy range" },
+      { name: "Paradox / Hilbert", descriptor: "Delta-neutral strategies · indicative yield profile" },
     ],
   },
   {
