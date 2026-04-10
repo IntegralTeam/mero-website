@@ -10,7 +10,6 @@ import { InKindModel } from "../components/InKindModel";
 import { GoldETFOverlay } from "../components/GoldETFOverlay";
 import { AssetManagerMarketplace } from "../components/AssetManagerMarketplace";
 import { ProcessSection } from "../components/ProcessSection";
-import { Partners } from "../components/Partners";
 import { Faq7 } from "../components/Faq7";
 import { StayInformedSection } from "../components/StayInformedSection";
 import { Footer11 } from "../components/Footer11";
@@ -20,7 +19,7 @@ export function HomePage() {
     <>
       <Seo
         title="Commodity Tokenisation Infrastructure at GIFT IFSC"
-        description="Mero provides commodity tokenisation infrastructure at GIFT IFSC, with first-release pilot workflows and roadmap pathways for expanded products and markets."
+        description="Mero provides commodity-backed digital asset infrastructure at GIFT IFSC, with first-release pilot workflows and roadmap pathways for expanded products and markets."
         path="/"
       />
       <Navbar />
@@ -34,7 +33,6 @@ export function HomePage() {
       <GoldETFOverlay />
       <AssetManagerMarketplace />
       <Map />
-      <Partners />
       <Faq7 />
       <StayInformedSection />
       <Footer11 />

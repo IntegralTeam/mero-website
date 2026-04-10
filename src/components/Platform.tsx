@@ -8,7 +8,7 @@ const PLATFORM_FEATURES = [
     iconColor: "text-[#00c2a8]",
     title: "1:1 Tokenisation",
     description:
-      "Physical commodities in certified vaults become on-chain tokens. MEROG, MEROC, MERON — each is verified, transferable proof of ownership.",
+      "Physical commodities in certified vaults become on-chain assets. MEROG, MEROC, MERON — each is verified, transferable proof of ownership.",
     stat: "1:1",
     statLabel: "Parity",
   },
@@ -17,7 +17,7 @@ const PLATFORM_FEATURES = [
     iconColor: "text-[#0b1c2d]",
     title: "Instant USDC Loans",
     description:
-      "Lock your tokens, borrow USDC at 5% fixed. 60% LTV at start, 75% maintenance threshold, 48-hour cure — no flash liquidation.",
+      "Lock your assets, borrow USDC at 5% fixed. 60% LTV at start, 75% maintenance threshold, 48-hour cure — no flash liquidation.",
     stat: "60%",
     statLabel: "LTV",
   },
@@ -26,7 +26,7 @@ const PLATFORM_FEATURES = [
     iconColor: "text-[#C9A84C]",
     title: "Earn Without Selling",
     description:
-      "Gold ETF overlays via SpiderRock/BlackRock. Collar or covered call strategies. 1.3–9% net yields while your metal stays vaulted.",
+      "Gold ETF overlays via an authorised investment manager. Collar or covered call strategies. 1.3–9% net yields while your metal stays vaulted.",
     stat: "1.3–9%",
     statLabel: "Net Yield",
   },
@@ -139,10 +139,10 @@ export function Platform() {
 
         <div className={`mt-12 flex items-center justify-center border-t border-[#0b1c2d]/10 pt-8 md:mt-16 transition-all duration-700 delay-500 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
-            to="/#partners"
+            to="/#yield"
             className="group flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider text-[#0b1c2d]/40 transition-all hover:text-[#00c2a8] hover:gap-3"
           >
-            View ecosystem and institutional partners
+            View yield overlay and deploy paths
             <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
         </div>

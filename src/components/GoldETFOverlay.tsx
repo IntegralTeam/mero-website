@@ -152,13 +152,8 @@ const STRATEGIES = [
     yieldLabel: "Net annualised",
     structure: "Buy put + sell out-of-the-money call",
     floor: "~82–88% of entry value",
-    tenor: "465–683 days",
     bestFor: "Sovereign mandates, central banks, reserve managers",
     highlight: false,
-    indicativeProposals: [
-      { expiry: "Jun 2027", tenor: "465d", strikes: "C115 / P85", floor: "~88%", gross: "~2.20%", net: "~1.30%" },
-      { expiry: "Jan 2028", tenor: "683d", strikes: "C120 / P79", floor: "~82%", gross: "~2.48%", net: "~1.58%" },
-    ],
   },
   {
     id: "covered-call",
@@ -168,14 +163,8 @@ const STRATEGIES = [
     yieldLabel: "Net annualised",
     structure: "Sell out-of-the-money call only",
     floor: "No structural floor — retains upside to strike",
-    tenor: "130–312 days",
     bestFor: "Income-focused institutions, corporate treasury",
     highlight: true,
-    indicativeProposals: [
-      { expiry: "Jul 2026", tenor: "130d", strikes: "C105", floor: "—", gross: "~11.21%", net: "~9.31%" },
-      { expiry: "Oct 2026", tenor: "221d", strikes: "C110", floor: "—", gross: "~8.10%", net: "~6.20%" },
-      { expiry: "Jan 2027", tenor: "312d", strikes: "C115", floor: "—", gross: "~6.07%", net: "~4.17%" },
-    ],
   },
 ] as const;
 
@@ -245,8 +234,8 @@ export function GoldETFOverlay() {
             <span className="text-[#E8C96E]">Without selling a bar.</span>
           </h2>
           <p className="mx-auto max-w-2xl text-white/55 md:text-lg">
-            Physical gold can be contributed in-kind to IAU (iShares Gold Trust) via authorised market participants.
-            SpiderRock Advisors is shown here as the intended overlay manager model for pilot design.
+            Physical gold can be contributed in-kind to a Gold ETF via authorised market participants.
+            An authorised investment manager is the intended overlay manager model for pilot design.
             Structures remain subject to legal, counterparty, and execution readiness.
           </p>
         </div>
@@ -294,7 +283,6 @@ export function GoldETFOverlay() {
                   {[
                     { label: "Structure", value: strategy.structure },
                     { label: "Downside", value: strategy.floor },
-                    { label: "Tenor", value: strategy.tenor },
                     { label: "Best for", value: strategy.bestFor },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-start gap-4">
@@ -306,33 +294,9 @@ export function GoldETFOverlay() {
                   ))}
                 </div>
 
-                {/* Indicative proposals table */}
-                <div className="mt-auto">
-                  <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30">
-                    Indicative proposals — $50M IAU position, March 2026
-                  </p>
-                  <div className="border border-white/[0.06] bg-black/20">
-                    <div className="grid grid-cols-5 border-b border-white/[0.06] px-3 py-2">
-                      {["Expiry", "Tenor", "Strikes", "Gross", "Net*"].map((h) => (
-                        <span key={h} className="text-[9px] font-semibold uppercase tracking-wider text-white/25">
-                          {h}
-                        </span>
-                      ))}
-                    </div>
-                    {strategy.indicativeProposals.map((row) => (
-                      <div key={row.expiry} className="grid grid-cols-5 border-b border-white/[0.04] px-3 py-2.5 last:border-0">
-                        <span className="text-[11px] text-white/60">{row.expiry}</span>
-                        <span className="text-[11px] text-white/40">{row.tenor}</span>
-                        <span className="text-[11px] text-white/55">{row.strikes}</span>
-                        <span className="text-[11px] text-white/55">{row.gross}</span>
-                        <span className="text-[11px] font-semibold text-[#E8C96E]">{row.net}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-2 text-[9px] leading-relaxed text-white/25">
-                    *Net of SpiderRock 0.40% and Mero management fee. All figures indicative, not guarantees. Subject to change at execution.
-                  </p>
-                </div>
+                <p className="mt-auto text-[10px] leading-relaxed text-white/35">
+                  Illustrative terms only. Final economics depend on mandate, execution window, and approvals.
+                </p>
               </div>
             );
           })}
@@ -358,12 +322,12 @@ export function GoldETFOverlay() {
                 />
                 <MechanismStep
                   number="2"
-                  text="Gold is converted in-kind to IAU (iShares Gold Trust) shares via an authorised participant under agreed execution terms."
+                  text="Gold is converted in-kind to a Gold ETF via an authorised participant under agreed execution terms."
                   animation={mechanismAnimations[1]}
                 />
                 <MechanismStep
                   number="3"
-                  text="SpiderRock Advisors is appointed as discretionary overlay manager. They execute the agreed collar or covered call options strategy on the IAU position."
+                  text="An authorised investment manager is appointed as discretionary overlay manager. They execute the agreed collar or covered call options strategy on the Gold ETF position."
                   animation={mechanismAnimations[2]}
                 />
                 <MechanismStep

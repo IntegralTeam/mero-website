@@ -34,7 +34,7 @@ const TOKENS = [
     ticker: "MERON",
     name: "Nickel",
     description:
-      "MERON is the warehouse receipt token for nickel. Strategic metal with commodity-specific assay requirements. The underlying receipt remains encumbered for the duration of the lending position.",
+      "MERON is the warehouse receipt asset for nickel. Strategic metal with commodity-specific assay requirements. The underlying receipt remains encumbered for the duration of the lending position.",
     image: nickel,
     stat: "Physical",
     statLabel: "Warehouse Receipt",
@@ -91,7 +91,7 @@ export function Layout420() {
           >
             <div className="mb-6 flex items-center gap-3">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-                Warehouse Receipt Tokens
+                Warehouse Receipt Assets
               </span>
               <div className="h-px w-8 bg-[#00c2a8]/30" />
             </div>
@@ -102,7 +102,7 @@ export function Layout420() {
             </h2>
 
             <p className="mb-6 max-w-md text-[#0b1c2d]/60 md:text-lg">
-              Each token is a digital warehouse receipt — a verified, transferable proof of title
+              Each asset is a digital warehouse receipt — a verified, transferable proof of title
               for a specific quantity of physical commodity held in institutional custody.
               When you hold MEROG, you own that ounce.
             </p>

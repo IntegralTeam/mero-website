@@ -132,16 +132,16 @@ const PROCESS_STEPS = [
   {
     number: "02",
     label: "TOKENISE",
-    title: "Receive your tokens",
+    title: "Receive your assets",
     description:
-      "Mero issues warehouse receipt tokens (MEROG, MEROC, MERON) on Sui Network. Each token represents verified ownership of 1:1 physical commodity, transferable and auditable in real-time.",
+      "Mero issues warehouse receipt assets (MEROG, MEROC, MERON) on Sui Network. Each asset represents verified ownership of 1:1 physical commodity, transferable and auditable in real-time.",
   },
   {
     number: "03",
     label: "ACTIVATE",
     title: "Borrow or earn",
     description:
-      "Lock tokens as collateral to borrow USDC at 5% fixed (60% LTV, 48h cure). Or deploy into institutional strategies including Gold ETF overlays and curated asset manager marketplace.",
+      "Lock assets as collateral to borrow USDC at 5% fixed (60% LTV, 48h cure). Or deploy into institutional strategies including Gold ETF overlays and regulated asset manager pathways.",
   },
 ] as const;
 

@@ -7,7 +7,7 @@ const FAQS = [
     bullets: [
       "MEROG represents 1 fine troy oz of gold on Sui Network",
       "Gold is held in LBMA-certified vaults with verified encumbrance",
-      "Token is digital proof of ownership — transferable on-chain",
+      "Asset is digital proof of ownership — transferable on-chain",
       "Roadmap extensions include MEROC (copper) and MERON (nickel)",
     ],
   },
@@ -32,8 +32,8 @@ const FAQS = [
   {
     question: "What is the Gold ETF yield overlay?",
     bullets: [
-      "Physical gold converted to IAU (iShares Gold Trust)",
-      "SpiderRock Advisors (BlackRock subsidiary) manages options strategies",
+      "Physical gold converted to a Gold ETF",
+      "Authorised investment manager executes options strategies",
       "Collar: 1.3–1.6% target yield with ~82–88% downside floor",
       "Covered Call: 4–9% target yield, no floor — for income-focused institutions",
     ],
@@ -42,7 +42,7 @@ const FAQS = [
     question: "Why GIFT IFSC?",
     bullets: [
       "India's international financial centre regulated by IFSCA",
-      "Bullion Exchange Regulations 2025 support tokenised receipts",
+      "Bullion Exchange Regulations 2025 support digital warehouse receipts",
       "Access to Indian banks with commodity client bases",
       "Regulatory sandbox pathway supports controlled deployment",
     ],
@@ -52,7 +52,7 @@ const FAQS = [
     bullets: [
       "Banks integrate Mero under their own brand at GIFT IFSC",
       "Bank's KYC/AML governs onboarding — Mero provides infrastructure",
-      "Clients access tokenisation, lending, and phased product modules",
+      "Clients access asset issuance, lending, and phased product modules",
       "Bank configures products and earns spread on client activity",
     ],
   },

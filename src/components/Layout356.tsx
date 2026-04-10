@@ -9,7 +9,7 @@ const FLOW_STEPS = [
     title: "Tokenise",
     subtitle: "Issue",
     description:
-      "Physical commodity is deposited in an LBMA-certified or equivalent vault. The vault operator confirms the asset and encumbers the receipt — it cannot be moved or sold. Mero issues the corresponding warehouse receipt token on Sui Network.",
+      "Physical commodity is deposited in an LBMA-certified or equivalent vault. The vault operator confirms the asset and encumbers the receipt — it cannot be moved or sold. Mero issues the corresponding warehouse receipt asset on Sui Network.",
     specs: [
       "Custodian confirms encumbrance before issuance",
       "Commodity-specific assay or grading embedded in minting logic",
@@ -23,11 +23,11 @@ const FLOW_STEPS = [
     title: "Lend / Earn",
     subtitle: "Two Paths",
     description:
-      "The warehouse receipt token becomes productive collateral from day one. Lock MEROG and borrow USDC at 5% fixed (60% LTV, 48-hour cure period). Or convert gold in-kind to IAU and earn 1.3–9% net via SpiderRock's options overlay.",
+      "The warehouse receipt asset becomes productive collateral from day one. Lock MEROG and borrow USDC at 5% fixed (60% LTV, 48-hour cure period). Or convert gold in-kind to Gold ETF and earn 1.3–9% net via authorised investment manager overlays.",
     specs: [
       "Lend: 60% LTV · 5% fixed · 30–180 day terms · No flash liquidation",
-      "Earn: SpiderRock collar (1.3–1.6% net) or covered call (4–9% net)",
-      "Roadmap deployment path: BUIDL / ACRED / BENJI / Paradox",
+      "Earn: Collar (1.3–1.6% net) or covered call (4–9% net)",
+      "Roadmap deployment path: Regulated Asset Managers",
     ],
   },
   {
@@ -37,7 +37,7 @@ const FLOW_STEPS = [
     title: "Redeem",
     subtitle: "Release",
     description:
-      "Return the warehouse receipt token to Mero. The smart contract releases the collateral escrow. The custodian is instructed to release the encumbrance on the underlying commodity. Ownership is unencumbered — exactly as before.",
+      "Return the warehouse receipt asset to Mero. The smart contract releases the collateral escrow. The custodian is instructed to release the encumbrance on the underlying commodity. Ownership is unencumbered — exactly as before.",
     specs: [
       "Smart contract automates collateral release on repayment",
       "Custodian releases encumbrance on instruction",

@@ -18,7 +18,7 @@ const COMPARISON_DATA = {
       { label: "Liquidation", value: "75% LTV maintenance threshold can trigger a margin notice. Borrower has a 48-hour cure window to top up collateral or repay." },
       { label: "Rate", value: "Pilot configuration targets a fixed annualised borrow rate at origination." },
       { label: "Structure", value: "Pilot structure supports fixed terms (30 / 60 / 90 / 180 days) matched via auction or RFQ-style workflows." },
-      { label: "Collateral", value: "Physical warehouse receipt tokens (MEROG, MEROC, MERON). Custodian-verified, vault-held commodity." },
+      { label: "Collateral", value: "Physical warehouse receipt assets (MEROG, MEROC, MERON). Custodian-verified, vault-held commodity." },
       { label: "Matching", value: "Curated lender panel. Auction / RFQ mechanism. All counterparties KYC/AML screened." },
     ],
     highlight: "48-hour cure window — no flash liquidation",
@@ -43,7 +43,7 @@ export function InKindModel() {
             Institutional margin mechanics
           </h2>
           <p className="text-[#0b1c2d]/60 md:text-lg">
-            Repo-style term lending against warehouse receipt tokens.
+            Repo-style term lending against warehouse receipt assets.
             The economics mirror traditional commodity repo — settlement and collateral management are automated and auditable.
           </p>
         </div>

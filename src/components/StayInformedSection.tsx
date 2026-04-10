@@ -57,7 +57,7 @@ export function StayInformedSection() {
               Stay informed
             </h2>
             <p className="text-[#0b1c2d]/60 md:text-lg">
-              Get updates on Mero's commodity tokenisation platform, GIFT IFSC developments, and institutional yield infrastructure.
+              Get updates on Mero's commodity-backed digital asset platform, GIFT IFSC developments, and institutional yield infrastructure.
             </p>
           </div>
 

@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
+/** Set `true` to restore the “Eligible Investors Only” banner, modal, and gated Mero Fund card. */
+const INVESTOR_GATE_ENABLED = false;
+
 const INVESTOR_GATE_KEY = "meroInvestorGateAccepted";
 
 const GATE_BODY =
@@ -29,7 +32,7 @@ const CHANNELS = [
     title: "Commodity Holders",
     subtitle: "Tokenise, Borrow, Earn",
     description:
-      "Mining corporates, bullion dealers, and sovereign commodity holders tokenise physical gold, copper, and nickel into warehouse receipt tokens. Deploy into the lending protocol for USDC liquidity, or the Gold ETF overlay for income on idle reserves.",
+      "Mining corporates, bullion dealers, and sovereign commodity holders digitise physical gold, copper, and nickel into warehouse receipt assets. Deploy into the lending protocol for USDC liquidity, or the Gold ETF overlay for income on idle reserves.",
     features: [
       "Tokenise at GIFT IFSC in the LBMA-aligned bullion market framework",
       "Lock MEROG as collateral — borrow USDC at 5% fixed, 60% LTV",
@@ -44,7 +47,7 @@ const CHANNELS = [
     title: "Mero Fund",
     subtitle: "Eligible Investors",
     description:
-      "International institutional investors — sovereign entities, family offices, qualified investors — access Mero's platform via the Mero Fund (Jersey Private Fund structure). Exposure to warehouse receipt tokens and curated yield strategies, administered by a JFSC-regulated Designated Service Provider.",
+      "International institutional investors — sovereign entities, family offices, qualified investors — access Mero's platform via the Mero Fund (Jersey Private Fund structure). Exposure to warehouse receipt assets and curated yield strategies, administered by a JFSC-regulated Designated Service Provider.",
     features: [
       "Jersey Private Fund — JFSC-regulated DSP administration",
       "Minimum subscription: £250,000 (or equivalent)",
@@ -95,6 +98,7 @@ export function ClientChannels() {
   const [isGateOpen, setIsGateOpen] = useState(false);
   const [isGateAccepted, setIsGateAccepted] = useState(false);
   const hasAutoTriggeredRef = useRef(false);
+  const gateUnlocked = !INVESTOR_GATE_ENABLED || isGateAccepted;
   const sectionRef = useRef<HTMLElement | null>(null);
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.1 });
   const card1Animation = useScrollAnimation({ threshold: 0.1 });
@@ -106,6 +110,7 @@ export function ClientChannels() {
   }, []);
 
   useEffect(() => {
+    if (!INVESTOR_GATE_ENABLED) return;
     if (isGateAccepted || hasAutoTriggeredRef.current) return;
     if (!sectionRef.current) return;
 
@@ -133,6 +138,7 @@ export function ClientChannels() {
   return (
     <section
       ref={sectionRef}
+      id="channels"
       className="relative overflow-hidden emerald-gradient-bg py-20 md:py-28 lg:py-32"
     >
       <div className="absolute inset-0 opacity-[0.02]">
@@ -166,7 +172,7 @@ export function ClientChannels() {
           </p>
         </div>
 
-        {!isGateAccepted && (
+        {INVESTOR_GATE_ENABLED && !gateUnlocked && (
           <div className="mx-auto mb-10 max-w-4xl border border-amber-300/25 bg-amber-200/8 p-5 text-left md:p-6">
             <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-amber-200">
               Eligible Investors Only
@@ -188,7 +194,7 @@ export function ClientChannels() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {CHANNELS.map((channel, index) => {
             const IconComponent = ICONS[channel.id];
-            const isHidden = channel.requiresGate && !isGateAccepted;
+            const isHidden = channel.requiresGate && !gateUnlocked;
             const cardAnimations = [card1Animation, card2Animation, card3Animation];
             const cardAnimation = cardAnimations[index];
 
@@ -259,7 +265,7 @@ export function ClientChannels() {
         </div>
       </div>
 
-      {isGateOpen && (
+      {INVESTOR_GATE_ENABLED && isGateOpen && (
         <div
           className="fixed inset-0 z-[1001] flex items-center justify-center bg-black/70 px-5"
           onClick={() => setIsGateOpen(false)}

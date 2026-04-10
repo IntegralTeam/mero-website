@@ -12,7 +12,7 @@ const MODULES = [
     id: "lend",
     label: "Lend",
     description:
-      "Lock tokens as collateral. Borrow USDC at 5% fixed with 60% LTV. No flash liquidation — 48-hour cure period for margin calls.",
+      "Lock assets as collateral. Borrow USDC at 5% fixed with 60% LTV. No flash liquidation — 48-hour cure period for margin calls.",
   },
   {
     id: "yield",
@@ -283,7 +283,7 @@ export function Header() {
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-6">
               <Link
-                to="/#platform"
+                to="/#channels"
                 className="group relative inline-flex items-center gap-3 bg-white px-7 py-3.5 text-xs font-semibold tracking-wider text-[#0b1c2d] transition-all duration-300 hover:gap-5 hover:bg-[#e6faf8]"
               >
                 <span>EXPLORE PLATFORM</span>
@@ -296,12 +296,12 @@ export function Header() {
                 <span className="absolute -right-1 -top-1 h-2 w-2 bg-[#00c2a8]" />
               </Link>
 
-              <Link
+              {/* <Link
                 to="/#partners"
                 className="text-xs font-medium tracking-wide text-white/45 transition-colors duration-300 hover:text-white/80"
               >
                 View ecosystem →
-              </Link>
+              </Link> */}
             </div>
           </div>
 

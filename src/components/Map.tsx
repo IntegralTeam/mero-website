@@ -43,7 +43,7 @@ const REGIONS: Record<
     commodities: ["Gold", "Precious metals"],
     framework: "DFSA · ADGM FSRA",
     note:
-      "Regional expansion target. DIFC and ADGM both provide established frameworks for commodity tokenisation and digital asset custody.",
+      "Regional expansion target. DIFC and ADGM both provide established frameworks for commodity-backed digital assets and custody.",
   },
   indonesia: {
     label: "Indonesia",
@@ -56,7 +56,7 @@ const REGIONS: Record<
     commodities: ["Nickel (world #1)", "Copper", "Bauxite"],
     framework: "OJK (Otoritas Jasa Keuangan)",
     note:
-      "The world's largest nickel producer. Strong strategic alignment with Mero's MERON and MEROC warehouse receipt tokenisation.",
+      "The world's largest nickel producer. Strong strategic alignment with Mero's MERON and MEROC warehouse receipt asset model.",
   },
   africa: {
     label: "Africa",
@@ -69,7 +69,7 @@ const REGIONS: Record<
     commodities: ["Gold", "Copper", "Platinum"],
     framework: "Multiple national regulators",
     note:
-      "Major gold and copper production centres. Opportunity to tokenise commodities at source and connect directly to institutional capital markets.",
+      "Major gold and copper production centres. Opportunity to digitise commodities at source and connect directly to institutional capital markets.",
   },
   latinAmerica: {
     label: "Latin America",
@@ -82,7 +82,7 @@ const REGIONS: Record<
     commodities: ["Copper (Chile #1 globally)", "Gold", "Lithium", "Silver"],
     framework: "Regional regulatory exploration",
     note:
-      "Chile is the world's largest copper producer. Brazil a major gold and agricultural commodity hub. Significant alignment with MEROC tokenisation.",
+      "Chile is the world's largest copper producer. Brazil a major gold and agricultural commodity hub. Significant alignment with MEROC asset issuance.",
   },
 };
 
@@ -141,8 +141,8 @@ export function Map() {
             </h2>
             <p className="self-end text-white/50 md:text-lg">
               Phase 1 is being deployed through the GIFT IFSC.
-              Our infrastructure is designed for commodity markets worldwide — from the UAE
-              to Indonesia and beyond. Select a region to explore our expansion roadmap.
+              Our infrastructure is designed for commodity markets worldwide — with pipeline expansion across UAE, Indonesia, Africa, and Latin America.
+              Select a region to explore the expansion roadmap.
             </p>
           </div>
         </div>

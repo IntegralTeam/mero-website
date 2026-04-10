@@ -82,7 +82,7 @@ export function Navbar() {
               onClick={handleNavClick("about")}
               className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
             >
-              Tokens
+              Assets
               <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
@@ -508,7 +508,7 @@ export function Navbar() {
           >
             <div className="flex flex-col">
               <Link to="/#about" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
-                Tokens
+                Assets
               </Link>
               <Link to="/#solutions" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
                 Lending

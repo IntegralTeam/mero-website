@@ -74,7 +74,7 @@ const FLOW_STEPS = [
   {
     step: "03",
     action: "Deploy",
-    detail: "USDC → BUIDL / ACRED / BENJI / Paradox",
+    detail: "USDC → Regulated Asset Managers",
     color: "text-[#00c2a8]",
   },
 ] as const;
@@ -107,7 +107,7 @@ export function AssetManagerMarketplace() {
           </h2>
           <p className="mx-auto max-w-2xl text-[#0b1c2d]/60 md:text-lg">
             The lending protocol is the connective tissue. Without it, the warehouse receipt is a record in a wallet.
-            With it, a commodity holder can tokenise their position, immediately borrow USDC against it,
+            With it, a commodity holder can activate their position as a digital asset, immediately borrow USDC against it,
             and deploy into the same yield strategies used by global institutional investors —
             through one integrated workflow, subject to rollout by market and channel.
           </p>
@@ -145,7 +145,7 @@ export function AssetManagerMarketplace() {
         </div>
 
         {/* Manager / product cards */}
-        <div className="mb-14 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+        {/* <div className="mb-14 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {MANAGERS.map((manager, index) => {
             const managerAnimation = managerAnimations[index];
             return (
@@ -163,7 +163,6 @@ export function AssetManagerMarketplace() {
                   <div className="absolute -top-px left-0 right-0 h-0.5 bg-gradient-to-r from-[#00c2a8] to-[#00c2a8]" />
                 )}
 
-                {/* Tag */}
                 <div className="mb-4 flex items-center justify-between">
                   <span className="border border-[#0b1c2d]/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
                     {manager.tag}
@@ -176,7 +175,6 @@ export function AssetManagerMarketplace() {
                   </div>
                 </div>
 
-                {/* Names */}
                 <div className="mb-3">
                   <h3 className="mb-0.5 text-lg font-bold text-[#0b1c2d]">{manager.name}</h3>
                   <p className="text-xs font-semibold uppercase tracking-wider text-[#00c2a8]">
@@ -196,7 +194,7 @@ export function AssetManagerMarketplace() {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* How the bank model works */}
         <div className="grid grid-cols-1 gap-10 border-t border-[#0b1c2d]/10 pt-12 md:grid-cols-2 md:gap-16 md:pt-14">
@@ -240,10 +238,10 @@ export function AssetManagerMarketplace() {
               </p>
               <p className="mb-5 font-display text-xl font-light leading-relaxed text-[#0b1c2d] md:text-2xl">
                 A bank's client can{" "}
-                <span className="font-medium text-[#00c2a8]">tokenise gold</span>,{" "}
+                <span className="font-medium text-[#00c2a8]">activate gold as a digital asset</span>,{" "}
                 <span className="font-medium text-[#00c2a8]">borrow USDC</span> against it,
                 and deploy into{" "}
-                <span className="font-medium text-[#00c2a8]">BUIDL or ACRED</span>
+                <span className="font-medium text-[#00c2a8]">Regulated Asset Managers</span>
                 {" "}in a single integrated workflow — without requiring the bank to establish
                 direct relationships with any of the underlying managers.
               </p>
