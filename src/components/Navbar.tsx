@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect, type MouseEvent } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../assets/logo-light.svg';
 
 const useRelume = () => {
@@ -9,6 +9,7 @@ const useRelume = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 991px)");
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
   const openOnMobileDropdownMenu = () => {
     setIsDropdownOpen((prev) => !prev);
   };
@@ -25,7 +26,9 @@ const useRelume = () => {
   const animateDropdownMenu = isDropdownOpen ? "open" : "close";
   const animateDropdownMenuIcon = isDropdownOpen ? "rotated" : "initial";
   return {
+    isMobileMenuOpen,
     toggleMobileMenu,
+    closeMobileMenu,
     openOnDesktopDropdownMenu,
     closeOnDesktopDropdownMenu,
     openOnMobileDropdownMenu,
@@ -38,7 +41,6 @@ const useRelume = () => {
 
 export function Navbar() {
   const useActive = useRelume();
-  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -58,11 +60,19 @@ export function Navbar() {
       }
     };
 
+  const handleMobileNavClick =
+    (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      handleNavClick(sectionId)(event);
+      useActive.closeMobileMenu();
+    };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[999] flex min-h-16 w-full items-center px-[5%] transition-all duration-500 md:min-h-18 ${
-        isScrolled 
+        isScrolled
           ? "bg-[#0b1c2d]/95 backdrop-blur-md shadow-lg shadow-black/10" 
+          : useActive.isMobileMenuOpen
+          ? "bg-[#0b1c2d]/95"
           : "bg-transparent"
       }`}
     >
@@ -491,11 +501,11 @@ export function Navbar() {
       </div>
       <AnimatePresence>
         <motion.div
-          variants={{ open: { height: "100dvh" }, close: { height: "auto" } }}
+          variants={{ open: { height: "100dvh" }, close: { height: 0 } }}
           animate={useActive.animateMobileMenu}
           initial="close"
           exit="close"
-          className="absolute left-0 right-0 top-full w-full overflow-hidden lg:hidden"
+          className="fixed inset-x-0 top-16 bottom-0 z-[998] overflow-hidden lg:hidden"
           transition={{ duration: 0.4 }}
         >
           <motion.div
@@ -504,22 +514,23 @@ export function Navbar() {
             initial="close"
             exit="close"
             transition={{ duration: 0.4 }}
-            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-white/10 bg-[#0b1c2d]/98 backdrop-blur-md px-[5%] pb-8 pt-4 text-white"
+            className="absolute inset-0 block overflow-y-auto overscroll-contain border-b border-white/10 px-[5%] pb-8 pt-20 text-white [touch-action:pan-y]"
           >
+            <div className="pointer-events-none absolute inset-0 bg-[#0b1c2d]/90 backdrop-blur-md" />
             <div className="flex flex-col">
-              <Link to="/#about" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+              <Link to="/#about" onClick={handleMobileNavClick("about")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
                 Assets
               </Link>
-              <Link to="/#solutions" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+              <Link to="/#solutions" onClick={handleMobileNavClick("solutions")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
                 Lending
               </Link>
-              <Link to="/#yield" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+              <Link to="/#yield" onClick={handleMobileNavClick("yield")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
                 Yield
               </Link>
-              <Link to="/#faq" className="block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
+              <Link to="/#faq" onClick={handleMobileNavClick("faq")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
                 FAQ
               </Link>
-              <a href="mailto:info@mero.tech" className="mt-2 inline-block border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10">
+              <a href="mailto:info@mero.tech" onClick={useActive.closeMobileMenu} className="relative mt-2 inline-block border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10">
                 Contact
               </a>
               {/* <div >
