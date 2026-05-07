@@ -38,15 +38,15 @@ const FAQS = [
       "Covered Call: 4–9% target yield, no floor — for income-focused institutions",
     ],
   },
-  {
-    question: "Why GIFT IFSC?",
-    bullets: [
-      "India's international financial centre regulated by IFSCA",
-      "Bullion Exchange Regulations 2025 support digital warehouse receipts",
-      "Access to Indian banks with commodity client bases",
-      "Regulatory sandbox pathway supports controlled deployment",
-    ],
-  },
+  // {
+  //   question: "Why GIFT IFSC?",
+  //   bullets: [
+  //     "India's international financial centre regulated by IFSCA",
+  //     "Bullion Exchange Regulations 2025 support digital warehouse receipts",
+  //     "Access to Indian banks with commodity client bases",
+  //     "Regulatory sandbox pathway supports controlled deployment",
+  //   ],
+  // },
   {
     question: "How does the white-label bank model work?",
     bullets: [

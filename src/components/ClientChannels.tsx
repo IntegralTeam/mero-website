@@ -14,10 +14,10 @@ const CHANNELS = [
   {
     id: "banks",
     number: "01",
-    title: "Indian Banks",
-    subtitle: "White-Label SaaS at GIFT IFSC",
+    title: "Banks",
+    subtitle: "White-Label SaaS",
     description:
-      "Mero deploys as white-label infrastructure under the bank's own brand at GIFT IFSC. The bank offers warehouse receipt issuance, repo-style lending, and the asset manager marketplace to its institutional clients. The bank retains the client relationship and earns the spread.",
+      "Mero deploys as white-label infrastructure under the bank's own brand. The bank offers warehouse receipt issuance, repo-style lending, and the asset manager marketplace to its institutional clients. The bank retains the client relationship and earns the spread.",
     features: [
       "Bank's existing KYC/AML framework governs client onboarding",
       "Chainalysis and Elliptic supplement on-chain transaction screening",
