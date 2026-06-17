@@ -5,9 +5,15 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Redirecting…</title>
     <script>
-      // GitHub Pages SPA fallback for project pages under /mero-website/
-      const segmentCount = 1;
+      // GitHub Pages SPA fallback:
+      // - project page: /mero-website/*  -> segmentCount = 1
+      // - custom domain root: /*         -> segmentCount = 0
       const { l } = { l: window.location };
+      const repoBaseSegment = "mero-website";
+      const hasRepoBase =
+        l.pathname === `/${repoBaseSegment}` ||
+        l.pathname.startsWith(`/${repoBaseSegment}/`);
+      const segmentCount = hasRepoBase ? 1 : 0;
       const path = l.pathname
         .split("/")
         .slice(1 + segmentCount)
