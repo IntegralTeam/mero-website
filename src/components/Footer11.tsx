@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import logo from "../assets/logo.svg";
 
@@ -63,8 +64,21 @@ const NAV_LINKS = [
 ] as const;
 
 export function Footer11() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [activeModal, setActiveModal] = useState<LegalModalKey | null>(null);
   const { ref: footerContentRef, isVisible: footerContentVisible } = useScrollAnimation({ threshold: 0.1 });
+  const navLinks = isZh
+    ? [
+        { label: "平台", href: "/cn/#platform" },
+        { label: "方案", href: "/cn/#solutions" },
+        { label: "路线图", href: "/cn/#yield" },
+        { label: "联系", href: "/cn/#footer" },
+      ]
+    : NAV_LINKS;
+  const importantNotice = isZh
+    ? "重要提示：本网站仅面向专业及合格投资者，不构成任何司法辖区内的要约、招揽或投资建议。Mero 提供的是面向大宗商品支持数字资产的技术基础设施与机构接入能力，并非投资管理人，亦不保证收益。网站中的收益与业绩数据均为示意性信息，可能与实际结果存在重大差异，甚至导致本金损失。过往表现不代表未来结果。"
+    : IMPORTANT_NOTICE;
 
   useEffect(() => {
     if (!activeModal) return;
@@ -81,7 +95,7 @@ export function Footer11() {
 
       <div className="container px-[5%]">
         <div className="border-b border-[#0b1c2d]/10 py-6">
-          <p className="text-xs leading-relaxed text-[#0b1c2d]/55">{IMPORTANT_NOTICE}</p>
+          <p className="text-xs leading-relaxed text-[#0b1c2d]/55">{importantNotice}</p>
         </div>
 
         <div 
@@ -94,13 +108,13 @@ export function Footer11() {
                 <img src={logo} alt="Mero" width={110} className="h-auto" />
               </Link>
               <p className="mb-6 max-w-sm text-sm leading-relaxed text-[#0b1c2d]/60">
-                Commodity-backed digital asset infrastructure. Warehouse receipt assets for
-                physical commodities at GIFT IFSC, with repo-style lending and
-                curated institutional deployment strategies.
+                {isZh
+                  ? "以大宗商品为支撑的数字资产基础设施。在 GIFT IFSC 提供实物商品仓单资产、回购式借贷与机构化配置路径。"
+                  : "Commodity-backed digital asset infrastructure. Warehouse receipt assets for physical commodities at GIFT IFSC, with repo-style lending and curated institutional deployment strategies."}
               </p>
               <div>
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
-                  Contact
+                  {isZh ? "联系" : "Contact"}
                 </p>
                 <a
                   href="mailto:info@mero.tech"
@@ -113,10 +127,10 @@ export function Footer11() {
 
             <div>
               <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
-                Navigation
+                {isZh ? "导航" : "Navigation"}
               </h4>
               <ul className="space-y-3">
-                {NAV_LINKS.map((link) => (
+                {navLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       to={link.href}
@@ -131,7 +145,7 @@ export function Footer11() {
 
             <div>
               <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/40">
-                Legal
+                {isZh ? "法律" : "Legal"}
               </h4>
               <ul className="space-y-3">
                 <li>
@@ -140,7 +154,7 @@ export function Footer11() {
                     onClick={() => setActiveModal("risk")}
                     className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#00c2a8]"
                   >
-                    Risk Disclosure
+                    {isZh ? "风险披露" : "Risk Disclosure"}
                   </button>
                 </li>
                 <li>
@@ -149,7 +163,7 @@ export function Footer11() {
                     onClick={() => setActiveModal("privacy")}
                     className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#00c2a8]"
                   >
-                    Privacy Policy
+                    {isZh ? "隐私政策" : "Privacy Policy"}
                   </button>
                 </li>
                 <li>
@@ -158,7 +172,7 @@ export function Footer11() {
                     onClick={() => setActiveModal("terms")}
                     className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#00c2a8]"
                   >
-                    Terms of Service
+                    {isZh ? "服务条款" : "Terms of Service"}
                   </button>
                 </li>
                 <li>
@@ -167,7 +181,7 @@ export function Footer11() {
                     onClick={() => setActiveModal("cookies")}
                     className="text-sm font-medium text-[#0b1c2d]/80 transition-colors hover:text-[#00c2a8]"
                   >
-                    Cookie Settings
+                    {isZh ? "Cookie 设置" : "Cookie Settings"}
                   </button>
                 </li>
               </ul>
@@ -176,9 +190,11 @@ export function Footer11() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-[#0b1c2d]/10 py-6 md:flex-row">
-          <p className="text-xs text-[#0b1c2d]/40">© 2026 Mero. All rights reserved.</p>
+          <p className="text-xs text-[#0b1c2d]/40">
+            {isZh ? "© 2026 Mero。保留所有权利。" : "© 2026 Mero. All rights reserved."}
+          </p>
           <p className="text-[10px] uppercase tracking-wider text-[#0b1c2d]/30">
-            Professional Investors Only
+            {isZh ? "仅限专业投资者" : "Professional Investors Only"}
           </p>
         </div>
       </div>
@@ -204,7 +220,7 @@ export function Footer11() {
                 onClick={() => setActiveModal(null)}
                 className="text-sm text-[#0b1c2d]/60 transition-colors hover:text-[#0b1c2d]"
               >
-                Close
+                {isZh ? "关闭" : "Close"}
               </button>
             </div>
             <div className="max-h-[65vh] space-y-3 overflow-y-scroll pr-2 text-sm text-[#0b1c2d]/70">

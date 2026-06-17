@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { MaterialIcon } from "./MaterialIcon";
 
@@ -42,7 +43,17 @@ const PLATFORM_FEATURES = [
 ] as const;
 
 export function Platform() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation({ threshold: 0.1 });
+  const platformFeatures = isZh
+    ? [
+        { ...PLATFORM_FEATURES[0], title: "1:1 代币化", statLabel: "等值锚定", description: "认证金库中的实物商品可映射为链上资产。MEROG、MEROC、MERON 均为可验证、可转移的所有权证明。" },
+        { ...PLATFORM_FEATURES[1], title: "即时 USDC 借贷", statLabel: "LTV", description: "锁定资产，按固定 5% 借入 USDC。起始 60% LTV，75% 维持阈值，48 小时补仓，无闪电清算。" },
+        { ...PLATFORM_FEATURES[2], title: "无需卖出也可获益", statLabel: "净收益", description: "通过授权投资管理人的黄金 ETF 叠加策略，在金属继续托管时获取潜在收益。" },
+        { ...PLATFORM_FEATURES[3], title: "策略市场", statLabel: "管理人", description: "将借入资本配置到机构产品，形成从代币化到资产配置的一体化流程。" },
+      ]
+    : PLATFORM_FEATURES;
 
   return (
     <section id="platform" className="relative bg-white py-20 md:py-28 lg:py-32 overflow-hidden">
@@ -73,21 +84,24 @@ export function Platform() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#00c2a8]/40" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-              Platform
+              {isZh ? "平台能力" : "Platform"}
             </span>
             <span className="h-px w-8 bg-[#00c2a8]/40" />
           </div>
           <h2 className="mb-5 text-center font-display text-3xl font-light text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-            Everything you need <br /> to put commodities to work
+            {isZh ? "让大宗商品资产高效运作的一站式能力" : "Everything you need "}
+            {!isZh && <br />}
+            {!isZh && " to put commodities to work"}
           </h2>
           <p className="mx-auto max-w-2xl text-center text-[#0b1c2d]/60 md:text-lg">
-            Tokenise, borrow, and activate capital through one infrastructure layer.
-            Unlock the full value of your physical assets without selling them.
+            {isZh
+              ? "通过统一基础设施完成代币化、借贷与资本激活，在不卖出实物资产的前提下释放其价值。"
+              : "Tokenise, borrow, and activate capital through one infrastructure layer. Unlock the full value of your physical assets without selling them."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-px bg-[#0b1c2d]/10 md:grid-cols-2 lg:grid-cols-4 relative">
-          {PLATFORM_FEATURES.map((feature, index) => (
+          {platformFeatures.map((feature, index) => (
             <div
               key={feature.title}
               className={`group relative bg-white p-8 transition-all duration-500 ease-out hover:bg-[#fafbfc] hover:-translate-y-1 hover:shadow-lg md:p-10 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
@@ -139,10 +153,12 @@ export function Platform() {
 
         <div className={`mt-12 flex items-center justify-center border-t border-[#0b1c2d]/10 pt-8 md:mt-16 transition-all duration-700 delay-500 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
-            to="/#yield"
-            className="group flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider text-[#0b1c2d]/40 transition-all hover:text-[#00c2a8] hover:gap-3"
+            to={isZh ? "/cn/#yield" : "/#yield"}
+            className={`group flex items-center gap-2 font-semibold text-[#0b1c2d]/40 transition-all hover:text-[#00c2a8] hover:gap-3 ${
+              isZh ? "text-[12px] tracking-[0.04em]" : "text-[10px] uppercase tracking-wider"
+            }`}
           >
-            View yield overlay and deploy paths
+            {isZh ? "查看收益叠加与部署路径" : "View yield overlay and deploy paths"}
             <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
         </div>

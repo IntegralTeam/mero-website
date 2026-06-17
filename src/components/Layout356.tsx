@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const FLOW_STEPS = [
@@ -81,6 +82,8 @@ function StepVisualization({ step, isActive }: { step: typeof FLOW_STEPS[number]
 }
 
 export function Layout356() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const stepAnimations = [
@@ -105,6 +108,13 @@ export function Layout356() {
     steps.forEach((step) => observer.observe(step));
     return () => observer.disconnect();
   }, []);
+  const flowSteps = isZh
+    ? [
+        { ...FLOW_STEPS[0], label: "基础", title: "代币化", subtitle: "发行", description: "将实物商品存入认证金库并设定权利负担后，Mero 在 Sui Network 上发行对应仓单资产。", specs: ["发行前由托管人确认权利负担", "铸造逻辑包含品类检测与分级要求", "1 MEROG = 1 金衡盎司黄金"] },
+        { ...FLOW_STEPS[1], label: "部署", title: "借贷 / 增益", subtitle: "双路径", description: "仓单资产可作为生产性抵押。可锁定 MEROG 按固定利率借入 USDC，或转换至黄金 ETF 路径获取收益。", specs: ["借贷：60% LTV · 固定利率 · 定期结构", "增益：领口或备兑策略", "路线图扩展：受监管资管机构"] },
+        { ...FLOW_STEPS[2], label: "结算", title: "赎回", subtitle: "释放", description: "归还仓单资产后，合约释放抵押，托管方解除权利负担，底层商品恢复自由状态。", specs: ["还款后自动释放抵押", "托管方按指令解除负担", "商品从未被永久出售"] },
+      ]
+    : FLOW_STEPS;
 
   return (
     <section id="solutions" ref={sectionRef} className="relative overflow-hidden bg-[#0a1628]">
@@ -128,12 +138,12 @@ export function Layout356() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#00c2a8]">
-                Process
+                {isZh ? "流程" : "Process"}
               </span>
               <div className="h-px w-12 bg-[#00c2a8]/30" />
             </div>
             <span className="text-xs font-medium uppercase tracking-wider text-white/25">
-              Three Pillars
+              {isZh ? "三大支柱" : "Three Pillars"}
             </span>
           </div>
         </div>
@@ -141,7 +151,7 @@ export function Layout356() {
 
       {/* Steps */}
       <div className="relative">
-        {FLOW_STEPS.map((step, index) => (
+        {flowSteps.map((step, index) => (
           <div
             key={step.id}
             className="flow-step relative border-b border-white/5"

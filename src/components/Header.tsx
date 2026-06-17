@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const MODULES = [
   {
@@ -192,7 +193,30 @@ function AbstractCore() {
 }
 
 export function Header() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [activeModule, setActiveModule] = useState<number>(0);
+  const modules = isZh
+    ? [
+        {
+          id: "tokenise",
+          label: "代币化",
+          description:
+            "将经验证且入库托管的大宗商品转换为数字仓单。1 MEROG = 1 金衡盎司黄金。",
+        },
+        {
+          id: "lend",
+          label: "借贷",
+          description:
+            "以资产作抵押并借入 USDC。固定 5% 利率，初始 60% LTV。无闪电清算，提供 48 小时补仓窗口。",
+        },
+        {
+          id: "yield",
+          label: "收益",
+          description: "激活路线图中的收益路径，包括 ETF 叠加与机构化配置方案。",
+        },
+      ]
+    : MODULES;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -239,30 +263,37 @@ export function Header() {
                 <span className="inline-block h-2 w-2 bg-[#00c2a8]/20" />
               </div>
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00c2a8]/80">
-                Phase 1 — GIFT IFSC
+                {isZh ? "第一阶段 — GIFT IFSC" : "Phase 1 — GIFT IFSC"}
               </span>
             </div>
 
             {/* Headline - Simple and punchy */}
             <h1 className="mb-8 font-display text-[2.6rem] font-light leading-[1.05] text-white md:text-5xl lg:text-[3.5rem]">
-              Commodities.<br />
-              <span className="text-[#00c2a8]">Tokenised. Earning.</span><br />
-              Without selling.
+              {isZh ? "大宗商品。" : "Commodities."}
+              <br />
+              <span className={`text-[#00c2a8] ${isZh ? "tracking-[0.01em]" : ""}`}>
+                {isZh ? "代币化，创收益。" : "Tokenised. Earning."}
+              </span>
+              <br />
+              {isZh ? "无需卖出。" : "Without selling."}
             </h1>
 
             <p className="mb-10 max-w-[520px] text-base leading-relaxed text-white/55 md:text-[1.1rem]">
-              Turn warehouse receipts into on-chain assets.
-              Access collateral workflows while underlying commodities stay vaulted.
+              {isZh
+                ? "将仓单转换为链上资产。在底层商品持续托管的同时，接入抵押与流动性流程。"
+                : "Turn warehouse receipts into on-chain assets. Access collateral workflows while underlying commodities stay vaulted."}
             </p>
 
             {/* Module pills */}
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              {MODULES.map((module, index) => (
+              {modules.map((module, index) => (
                 <button
                   key={module.id}
                   type="button"
                   onClick={() => setActiveModule(index)}
-                  className={`border px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-300 ${
+                  className={`border px-5 py-2.5 text-xs font-semibold transition-all duration-300 ${
+                    isZh ? "tracking-[0.04em]" : "uppercase tracking-[0.12em]"
+                  } ${
                     activeModule === index
                       ? "border-[#00c2a8]/60 bg-[#00c2a8]/12 text-[#00c2a8]"
                       : "border-white/10 bg-white/[0.02] text-white/40 hover:border-white/20 hover:text-white/60"
@@ -274,19 +305,25 @@ export function Header() {
             </div>
 
             {/* Description - Fixed height to prevent layout shift */}
-            <div className="mb-10 h-28 max-w-[480px] border-l-2 border-[#00c2a8]/30 bg-white/[0.02] px-5 pt-3 pb-4">
-              <p className="text-sm leading-relaxed text-white/60 md:text-[0.95rem]">
-                {MODULES[activeModule].description}
+            <div
+              className={`mb-10 max-w-[480px] border-l-2 border-[#00c2a8]/30 bg-white/[0.02] px-5 pt-3 pb-4 ${
+                isZh ? "h-[5.5rem]" : "h-28"
+              }`}
+            >
+              <p className={`text-sm text-white/60 md:text-[0.95rem] ${isZh ? "leading-snug" : "leading-relaxed"}`}>
+                {modules[activeModule].description}
               </p>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-6">
               <Link
-                to="/#channels"
-                className="group relative inline-flex items-center gap-3 bg-white px-7 py-3.5 text-xs font-semibold tracking-wider text-[#0b1c2d] transition-all duration-300 hover:gap-5 hover:bg-[#e6faf8]"
+                to={isZh ? "/cn/#channels" : "/#channels"}
+                className={`group relative inline-flex items-center gap-3 bg-white px-7 py-3.5 text-xs font-semibold text-[#0b1c2d] transition-all duration-300 hover:gap-5 hover:bg-[#e6faf8] ${
+                  isZh ? "tracking-[0.05em]" : "tracking-wider"
+                }`}
               >
-                <span>EXPLORE PLATFORM</span>
+                <span>{isZh ? "探索平台" : "EXPLORE PLATFORM"}</span>
                 <svg
                   className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -317,7 +354,9 @@ export function Header() {
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
           <div className="flex flex-col items-center gap-3">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-white/25">Scroll</span>
+            <span className="text-[10px] uppercase tracking-[0.25em] text-white/25">
+              {isZh ? "滚动" : "Scroll"}
+            </span>
             <div className="h-10 w-px bg-gradient-to-b from-[#00c2a8]/50 to-transparent" />
           </div>
         </div>

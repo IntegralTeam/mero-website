@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 /** Keep fund-specific eligibility notice enabled. */
@@ -9,6 +10,8 @@ const INVESTOR_GATE_KEY = "meroInvestorGateAccepted";
 
 const GATE_BODY =
   "The following information relates to the Mero Fund, which is intended to be established as a Jersey Private Fund under the Collective Investment Funds (Jersey Private Funds) Order 2025. The minimum subscription is £250,000 (or currency equivalent). The Fund is intended to be available exclusively to eligible investors, including: high-net-worth individuals with net assets exceeding $1,000,000; entities with investable assets of $1,000,000 or more; professional clients as defined in the FCA Handbook (COBS 3.5); and regulated financial services providers. The Fund will not be subject to the same regulatory protections as a Jersey-authorised fund. The Fund and its terms are under development and subject to change. By proceeding, you confirm that you expect to meet the minimum subscription and eligible investor criteria.";
+const GATE_BODY_ZH =
+  "以下信息涉及 Mero 基金。该基金拟依据《Collective Investment Funds (Jersey Private Funds) Order 2025》设立为泽西私募基金。最低认购额为 £250,000（或等值货币）。本基金仅面向合格投资者开放，包括：净资产超过 $1,000,000 的高净值个人；可投资资产不少于 $1,000,000 的机构；FCA 手册（COBS 3.5）定义的专业客户；以及受监管的金融服务提供机构。该基金不适用与泽西授权基金相同的监管保护。基金及其条款仍在开发中，后续可能调整。继续操作即表示您确认预计满足最低认购要求及合格投资者标准。";
 
 const CHANNELS = [
   {
@@ -95,6 +98,8 @@ function FundIcon() {
 const ICONS = { banks: BankIcon, commodity: CommodityIcon, fund: FundIcon } as const;
 
 export function ClientChannels() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [isGateOpen, setIsGateOpen] = useState(false);
   const [isGateAccepted, setIsGateAccepted] = useState(false);
   const gateUnlocked = !INVESTOR_GATE_ENABLED || isGateAccepted;
@@ -113,6 +118,50 @@ export function ClientChannels() {
     setIsGateAccepted(true);
     setIsGateOpen(false);
   };
+
+  const channels = isZh
+    ? [
+        {
+          ...CHANNELS[0],
+          title: "银行",
+          subtitle: "白标 SaaS",
+          description:
+            "Mero 以白标基础设施方式部署在银行自有品牌下。银行可向机构客户提供仓单发行、回购式借贷与资管市场能力，并保留客户关系与价差收益。",
+          features: [
+            "客户准入沿用银行现有 KYC/AML 框架",
+            "链上交易筛查可由 Chainalysis 与 Elliptic 补充",
+            "银行可配置可用产品与额度上限",
+          ],
+          cta: "银行平台方案",
+        },
+        {
+          ...CHANNELS[1],
+          title: "大宗商品持有方",
+          subtitle: "代币化、借贷、增益",
+          description:
+            "矿业企业、金银交易商及主权商品持有方可将实物黄金、铜、镍数字化为仓单资产，并用于借贷协议获得 USDC 流动性。",
+          features: [
+            "在 GIFT IFSC 的 LBMA 对齐框架下进行代币化",
+            "以 MEROG 作抵押，固定 5% 借入 USDC，初始 LTV 60%",
+            "黄金 ETF 叠加路径为路线图中的示意能力",
+          ],
+          cta: "面向商品持有方",
+        },
+        {
+          ...CHANNELS[2],
+          title: "Mero 基金",
+          subtitle: "合格投资者",
+          description:
+            "国际机构投资者可通过 Mero 基金结构接入平台，获得仓单资产与精选收益策略敞口。",
+          features: [
+            "Jersey Private Fund 架构与受监管服务商管理",
+            "最低认购额：£250,000（或等值货币）",
+            "可接入 MEROG 与黄金 ETF 收益叠加策略",
+          ],
+          cta: "了解基金详情",
+        },
+      ]
+    : CHANNELS;
 
   return (
     <section
@@ -138,40 +187,65 @@ export function ClientChannels() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#00c2a8]/40" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-              Go-to-Market
+              {isZh ? "市场路径" : "Go-to-Market"}
             </span>
             <span className="h-px w-8 bg-[#00c2a8]/40" />
           </div>
           <h2 className="mb-5 font-display text-3xl font-light leading-[1.15] text-white md:text-4xl lg:text-[2.75rem]">
-            Three client channels
+            {isZh ? "三类客户通道" : "Three client channels"}
           </h2>
           <p className="text-white/50 md:text-lg">
-            One infrastructure layer. Three routes to market. Bank white-label deployment is the pilot focus,
-            with broader commodity-holder and fund pathways expanding through roadmap phases.
+            {isZh
+              ? "一个基础设施层，三条市场路径。当前试点聚焦银行白标部署，并逐步扩展至商品持有方与基金通道。"
+              : "One infrastructure layer. Three routes to market. Bank white-label deployment is the pilot focus, with broader commodity-holder and fund pathways expanding through roadmap phases."}
           </p>
         </div>
 
         {INVESTOR_GATE_ENABLED && !gateUnlocked && (
-          <div className="mx-auto mb-10 max-w-4xl border border-amber-300/25 bg-amber-200/8 p-5 text-left md:p-6">
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-amber-200">
-              Eligible Investors Only
+          <div
+            className={`mx-auto mb-10 border text-left ${
+              isZh
+                ? "max-w-3xl border-amber-300/20 bg-amber-200/5 px-4 py-3.5 md:px-5 md:py-4"
+                : "max-w-4xl border-amber-300/25 bg-amber-200/8 p-5 md:p-6"
+            }`}
+          >
+            <h3
+              className={`font-semibold text-amber-200 ${
+                isZh
+                  ? "mb-1.5 text-[13px] tracking-[0.04em]"
+                  : "mb-2 text-sm uppercase tracking-wider"
+              }`}
+            >
+              {isZh ? "仅限合格投资者" : "Eligible Investors Only"}
             </h3>
-            <p className="mb-4 text-sm leading-relaxed text-white/65">
-              The Mero Fund channel below relates to fund-specific terms intended for eligible investors only.
+            <p
+              className={`text-white/65 ${
+                isZh
+                  ? "mb-3 max-w-[620px] text-[13px] leading-snug"
+                  : "mb-4 text-sm leading-relaxed"
+              }`}
+            >
+              {isZh
+                ? "下方 Mero 基金通道涉及仅面向合格投资者的专属条款。"
+                : "The Mero Fund channel below relates to fund-specific terms intended for eligible investors only."}
             </p>
             <button
               type="button"
-              className="inline-flex items-center gap-2 border border-amber-200/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-amber-100 transition-colors hover:bg-amber-100/10"
+              className={`inline-flex items-center border border-amber-200/40 font-semibold text-amber-100 transition-colors hover:bg-amber-100/10 ${
+                isZh
+                  ? "gap-1.5 px-3.5 py-1.5 text-[12px] tracking-[0.04em]"
+                  : "gap-2 px-4 py-2 text-xs uppercase tracking-wider"
+              }`}
               onClick={() => setIsGateOpen(true)}
             >
-              Review Eligibility Notice
+              {isZh ? "查看资格说明" : "Review Eligibility Notice"}
               <span>→</span>
             </button>
           </div>
         )}
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-          {CHANNELS.map((channel, index) => {
+          {channels.map((channel, index) => {
             const IconComponent = ICONS[channel.id];
             const isHidden = channel.requiresGate && !gateUnlocked;
             const cardAnimations = [card1Animation, card2Animation, card3Animation];
@@ -203,14 +277,16 @@ export function ClientChannels() {
                 {isHidden ? (
                   <div className="space-y-4 border border-white/10 bg-black/20 p-4">
                     <p className="text-sm text-white/55">
-                      This content is intended for eligible investors only.
+                      {isZh
+                        ? "此内容仅面向合格投资者。"
+                        : "This content is intended for eligible investors only."}
                     </p>
                     <button
                       type="button"
                       onClick={() => setIsGateOpen(true)}
                       className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:text-[#00c2a8]"
                     >
-                      I confirm I am an eligible investor — Continue
+                      {isZh ? "我确认自己是合格投资者 — 继续" : "I confirm I am an eligible investor — Continue"}
                       <span>→</span>
                     </button>
                   </div>
@@ -254,38 +330,44 @@ export function ClientChannels() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-start justify-between gap-4">
-              <h3 className="text-xl font-bold text-white md:text-2xl">
-                Eligible Investors Only
+              <h3 className={`font-bold text-white ${isZh ? "text-[26px] md:text-[30px]" : "text-xl md:text-2xl"}`}>
+                {isZh ? "仅限合格投资者" : "Eligible Investors Only"}
               </h3>
               <button
                 type="button"
                 onClick={() => setIsGateOpen(false)}
-                className="text-sm text-white/50 transition-colors hover:text-white"
+                className={`transition-colors hover:text-white ${isZh ? "text-[13px] tracking-[0.04em] text-white/55" : "text-sm text-white/50"}`}
               >
-                Close
+                {isZh ? "关闭" : "Close"}
               </button>
             </div>
-            <p className="mb-6 text-sm leading-relaxed text-white/70">
-              {GATE_BODY}
+            <p className={`mb-6 text-white/70 ${isZh ? "text-[13px] leading-snug" : "text-sm leading-relaxed"}`}>
+              {isZh ? GATE_BODY_ZH : GATE_BODY}
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={confirmGate}
-                className="bg-[#00c2a8] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d] transition-colors hover:bg-[#00c2a8]"
+                className={`bg-[#00c2a8] font-semibold text-[#0b1c2d] transition-colors hover:bg-[#00c2a8] ${
+                  isZh ? "px-4 py-2 text-[12px] tracking-[0.04em]" : "px-4 py-2 text-xs uppercase tracking-wider"
+                }`}
               >
-                I confirm I am an eligible investor — Continue
+                {isZh ? "我确认自己是合格投资者 — 继续" : "I confirm I am an eligible investor — Continue"}
               </button>
               <button
                 type="button"
                 onClick={() => setIsGateOpen(false)}
-                className="border border-white/25 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/75 transition-colors hover:border-white/50 hover:text-white"
+                className={`border border-white/25 font-semibold text-white/75 transition-colors hover:border-white/50 hover:text-white ${
+                  isZh ? "px-4 py-2 text-[12px] tracking-[0.04em]" : "px-4 py-2 text-xs uppercase tracking-wider"
+                }`}
               >
-                Close
+                {isZh ? "关闭" : "Close"}
               </button>
             </div>
-            <p className="mt-4 text-xs text-white/40">
-              This information is intended for eligible investors only. For enquiries, contact info@mero.tech.
+            <p className={`mt-4 text-white/40 ${isZh ? "text-[12px] leading-snug" : "text-xs"}`}>
+              {isZh
+                ? "该信息仅面向合格投资者。如需咨询，请联系 info@mero.tech。"
+                : "This information is intended for eligible investors only. For enquiries, contact info@mero.tech."}
             </p>
           </div>
         </div>

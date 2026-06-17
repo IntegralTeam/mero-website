@@ -1,5 +1,6 @@
 import { useCounterAnimation, useScrollAnimation } from "../hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // Metric Card Component with Icon
 function MetricCard({ 
@@ -146,9 +147,18 @@ const PROCESS_STEPS = [
 ] as const;
 
 export function ProcessSection() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const { ref: metricsRef, isVisible: metricsVisible } = useScrollAnimation({ threshold: 0.3 });
   const { ref: hoursRef, count: hoursCount } = useCounterAnimation(48, 1500);
   const { ref: parityRef, count: parityCount } = useCounterAnimation(1, 1500);
+  const processSteps = isZh
+    ? [
+        { ...PROCESS_STEPS[0], label: "存入", title: "将商品入库", description: "将实物黄金、铜或镍存入认证金库。托管方核验并设定权利负担，避免重复质押。" },
+        { ...PROCESS_STEPS[1], label: "代币化", title: "接收链上资产", description: "Mero 在 Sui Network 上发行仓单资产（MEROG、MEROC、MERON），实现 1:1 所有权映射并可审计。" },
+        { ...PROCESS_STEPS[2], label: "激活", title: "借贷或增益", description: "锁定资产按固定 5% 借入 USDC（60% LTV，48h 补仓），或配置至机构策略。"},
+      ]
+    : PROCESS_STEPS;
 
   return (
     <section id="process" className="relative bg-white py-20 md:py-28 lg:py-32">
@@ -159,22 +169,23 @@ export function ProcessSection() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#00c2a8]" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-              Process
+              {isZh ? "流程" : "Process"}
             </span>
             <span className="h-px w-8 bg-[#00c2a8]" />
           </div>
           <h2 className="mb-5 font-display text-3xl font-light leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-            Three steps to liquidity
+            {isZh ? "三步获得流动性" : "Three steps to liquidity"}
           </h2>
           <p className="text-[#0b1c2d]/60 md:text-lg">
-            From physical commodity to on-chain collateral in a staged workflow.
-            Borrow, activate, or redeem while retaining ownership of the underlying asset.
+            {isZh
+              ? "从实物商品到链上抵押的分阶段流程。在保留底层资产所有权的同时完成借贷、激活或赎回。"
+              : "From physical commodity to on-chain collateral in a staged workflow. Borrow, activate, or redeem while retaining ownership of the underlying asset."}
           </p>
         </div>
 
         <div className="mx-auto max-w-4xl">
           <div className="space-y-0">
-            {PROCESS_STEPS.map((step) => (
+            {processSteps.map((step) => (
               <div
                 key={step.number}
                 className="group relative border-b border-[#0b1c2d]/10 py-10 first:border-t md:py-12"
@@ -219,8 +230,8 @@ export function ProcessSection() {
                 </svg>
               }
               value="60%"
-              label="Loan-to-Value"
-              sublabel="At Origination"
+              label={isZh ? "贷款价值比" : "Loan-to-Value"}
+              sublabel={isZh ? "初始值" : "At Origination"}
               delay={0}
               isVisible={metricsVisible}
             >
@@ -239,8 +250,8 @@ export function ProcessSection() {
                   </svg>
                 }
                 value={`${hoursCount}h`}
-                label="Cure Window"
-                sublabel="Margin Call Response"
+                label={isZh ? "补仓窗口" : "Cure Window"}
+                sublabel={isZh ? "追加保证金响应期" : "Margin Call Response"}
                 delay={100}
                 isVisible={metricsVisible}
               >
@@ -248,7 +259,7 @@ export function ProcessSection() {
                   <svg className="h-4 w-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
-                  <span className="text-xs font-medium text-amber-700">2 days to respond</span>
+                  <span className="text-xs font-medium text-amber-700">{isZh ? "2 天内处理" : "2 days to respond"}</span>
                 </div>
               </MetricCard>
             </div>
@@ -265,8 +276,8 @@ export function ProcessSection() {
                   </svg>
                 }
                 value={parityCount === 1 ? '1:1' : `${parityCount}:${parityCount}`}
-                label="Asset Backing"
-                sublabel="MEROG Parity"
+                label={isZh ? "资产锚定" : "Asset Backing"}
+                sublabel={isZh ? "MEROG 等值" : "MEROG Parity"}
                 delay={200}
                 isVisible={metricsVisible}
               >
@@ -274,7 +285,7 @@ export function ProcessSection() {
                   <div className="flex h-6 w-6 items-center justify-center rounded bg-[#C9A84C] text-[10px] font-bold text-white">Au</div>
                   <span>=</span>
                   <div className="flex h-6 w-6 items-center justify-center rounded bg-[#00c2a8] text-[10px] font-bold text-white">M</div>
-                  <span className="ml-auto">1 troy oz</span>
+                  <span className="ml-auto">{isZh ? "1 金衡盎司" : "1 troy oz"}</span>
                 </div>
               </MetricCard>
             </div>
@@ -287,18 +298,18 @@ export function ProcessSection() {
                 </svg>
               }
               value="Sui"
-              label="Network"
-              sublabel="Settlement Layer"
+              label={isZh ? "网络" : "Network"}
+              sublabel={isZh ? "结算层" : "Settlement Layer"}
               delay={300}
               isVisible={metricsVisible}
             >
               <div className="mt-4 space-y-1">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#0b1c2d]/50">Speed</span>
+                  <span className="text-[#0b1c2d]/50">{isZh ? "速度" : "Speed"}</span>
                   <span className="font-medium text-[#0b1c2d]">&lt; 1s</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#0b1c2d]/50">Cost</span>
+                  <span className="text-[#0b1c2d]/50">{isZh ? "成本" : "Cost"}</span>
                   <span className="font-medium text-[#0b1c2d]">&lt; $0.01</span>
                 </div>
               </div>

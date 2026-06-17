@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const FAQS = [
@@ -59,6 +60,8 @@ const FAQS = [
 ] as const;
 
 export function Faq7() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.1 });
   const faqAnimations = FAQS.map(() => useScrollAnimation({ threshold: 0.1 }));
@@ -67,6 +70,64 @@ export function Faq7() {
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const zhFaqs = [
+    {
+      question: "MEROG 是什么？如何运作？",
+      bullets: [
+        "MEROG 在 Sui Network 上代表 1 金衡盎司黄金",
+        "黄金存放于 LBMA 认证金库，并有可验证的权利负担记录",
+        "资产是可转移的链上所有权数字凭证",
+        "路线图扩展包括 MEROC（铜）与 MERON（镍）",
+      ],
+    },
+    {
+      question: "借贷协议如何运作？",
+      bullets: [
+        "通过智能合约锁定仓单资产作为抵押",
+        "试点条款包括固定 5% 利率与初始 60% LTV",
+        "参考期限 30/60/90/180 天，含 48 小时补仓窗口",
+        "无闪电清算，仅有序平仓",
+      ],
+    },
+    {
+      question: "什么是 48 小时补仓期？",
+      bullets: [
+        "当 LTV 超过 75% 时，借款人会收到追加保证金通知",
+        "在 48 小时内补充抵押或偿还债务",
+        "逾期后才会启动有序平仓",
+        "避免闪电清算，符合机构金融实践",
+      ],
+    },
+    {
+      question: "什么是黄金 ETF 收益叠加策略？",
+      bullets: [
+        "将实物黄金转换为黄金 ETF 持仓",
+        "由授权投资管理人执行期权策略",
+        "领口策略：目标收益 1.3–1.6%，下行保护约 82–88%",
+        "备兑看涨：目标收益 4–9%，无保底，适合收益导向机构",
+      ],
+    },
+    {
+      question: "为什么选择 GIFT IFSC？",
+      bullets: [
+        "印度国际金融中心，由 IFSCA 监管",
+        "2025 年金银交易规则支持数字仓单模式",
+        "可连接拥有大宗商品客户基础的印度银行",
+        "监管沙盒路径支持受控部署",
+      ],
+    },
+    {
+      question: "白标银行模式如何运作？",
+      bullets: [
+        "银行在 GIFT IFSC 以自有品牌接入 Mero",
+        "银行沿用自身 KYC/AML 体系，Mero 提供基础设施",
+        "客户可访问资产发行、借贷与分阶段产品模块",
+        "银行可配置产品并通过客户活动获得价差收益",
+      ],
+    },
+  ] as const;
+  const localizedFaqs = isZh ? zhFaqs : FAQS;
 
   return (
     <section id="faq" className="relative bg-[#fafbfc] py-20 md:py-28 lg:py-32">
@@ -83,16 +144,18 @@ export function Faq7() {
             </span>
           </div>
           <h2 className="mb-5 font-display text-3xl font-light leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-            Common questions
+            {isZh ? "常见问题" : "Common questions"}
           </h2>
           <p className="text-[#0b1c2d]/60 md:text-lg">
-            Platform mechanics, lending model, overlay pathway, and GIFT IFSC context.
+            {isZh
+              ? "平台机制、借贷模型、收益叠加路径与 GIFT IFSC 相关说明。"
+              : "Platform mechanics, lending model, overlay pathway, and GIFT IFSC context."}
           </p>
         </div>
 
         <div className="mx-auto max-w-3xl">
           <div className="border-t border-[#0b1c2d]/10">
-            {FAQS.map((faq, index) => {
+            {localizedFaqs.map((faq, index) => {
               const isOpen = openIndex === index;
               const faqAnimation = faqAnimations[index];
               return (
@@ -176,21 +239,21 @@ export function Faq7() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#00c2a8]/30" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00c2a8]/60">
-              Contact
+              {isZh ? "联系" : "Contact"}
             </span>
             <span className="h-px w-8 bg-[#00c2a8]/30" />
           </div>
           <h4 className="mb-3 text-xl font-bold text-[#0b1c2d] md:text-2xl">
-            Still have questions?
+            {isZh ? "还有疑问？" : "Still have questions?"}
           </h4>
           <p className="mb-6 text-[#0b1c2d]/60">
-            Reach out to our institutional team.
+            {isZh ? "欢迎联系机构业务团队。" : "Reach out to our institutional team."}
           </p>
           <a
             href="mailto:info@mero.tech"
             className="inline-flex items-center gap-2 border border-[#0b1c2d]/20 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d] transition-all hover:border-[#00c2a8] hover:text-[#00c2a8]"
           >
-            Contact Us
+            {isZh ? "联系我们" : "Contact Us"}
             <span>→</span>
           </a>
         </div>

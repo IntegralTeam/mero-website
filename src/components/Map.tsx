@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type RegionKey = "india" | "uae" | "indonesia" | "africa" | "latinAmerica";
 
@@ -101,7 +102,69 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 export function Map() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [activeRegion, setActiveRegion] = useState<RegionKey>("india");
+  const regions = isZh
+    ? {
+        india: {
+          ...REGIONS.india,
+          label: "印度",
+          subtitle: "GIFT IFSC · IFSCA 沙盒",
+          status: "第一阶段试点",
+          statLabel: "年度大宗商品市场规模",
+          markets: ["GIFT City（甘地讷格尔）", "孟买", "艾哈迈达巴德"],
+          commodities: ["黄金 (MEROG)", "铜 (MEROC)", "镍 (MERON)"],
+          framework: "IFSCA《金银交易所条例》2025 · IFSCA《金融公司条例》2021",
+          note:
+            "核心首发司法辖区。Mero 在 GIFT IFSC 的 IFSCA 监管沙盒框架内推进落地。",
+        },
+        uae: {
+          ...REGIONS.uae,
+          label: "阿联酋",
+          subtitle: "DIFC · 阿布扎比",
+          status: "规划中",
+          statLabel: "年度大宗商品流通规模",
+          markets: ["迪拜（DIFC）", "阿布扎比（ADGM）"],
+          commodities: ["黄金", "贵金属"],
+          framework: "DFSA · ADGM FSRA",
+          note: "区域扩展目标。DIFC 与 ADGM 均具备较成熟的商品支持数字资产与托管监管框架。",
+        },
+        indonesia: {
+          ...REGIONS.indonesia,
+          label: "印度尼西亚",
+          subtitle: "雅加达 · 苏拉威西",
+          status: "规划中",
+          statLabel: "大宗商品产值",
+          markets: ["雅加达", "苏拉威西", "加里曼丹"],
+          commodities: ["镍（全球第一）", "铜", "铝土矿"],
+          framework: "OJK（印尼金融服务管理局）",
+          note: "全球最大镍生产国，与 Mero 的 MERON 和 MEROC 仓单资产模型高度契合。",
+        },
+        africa: {
+          ...REGIONS.africa,
+          label: "非洲",
+          subtitle: "撒哈拉以南及北非",
+          status: "规划中",
+          statLabel: "采矿业年度产出",
+          markets: ["南非", "加纳", "肯尼亚", "摩洛哥"],
+          commodities: ["黄金", "铜", "铂金"],
+          framework: "多国监管机构",
+          note: "黄金与铜重要产区，可在产地端实现商品数字化并连接机构资本市场。",
+        },
+        latinAmerica: {
+          ...REGIONS.latinAmerica,
+          label: "拉丁美洲",
+          subtitle: "南美洲",
+          status: "规划中",
+          statLabel: "年度大宗商品出口额",
+          markets: ["智利", "巴西", "哥伦比亚", "秘鲁"],
+          commodities: ["铜（智利全球第一）", "黄金", "锂", "白银"],
+          framework: "区域监管探索中",
+          note: "智利是全球最大铜生产国，巴西是主要黄金与农产品枢纽，与 MEROC 资产发行场景高度匹配。",
+        },
+      }
+    : REGIONS;
 
   return (
     <section className="relative overflow-hidden bg-[#0a1628] py-20 md:py-28 lg:py-32">
@@ -130,19 +193,22 @@ export function Map() {
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-8 bg-[#00c2a8]/40" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-              Global Reach
+              {isZh ? "全球布局" : "Global Reach"}
             </span>
             <span className="h-px w-8 bg-[#00c2a8]/40" />
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
             <h2 className="font-display text-3xl font-light leading-[1.15] text-white md:text-4xl lg:text-[2.75rem]">
-              Starting in India.<br />
-              <span className="text-[#00c2a8]">Built for global scale.</span>
+              {isZh ? "从印度启航。" : "Starting in India."}
+              <br />
+              <span className="text-[#00c2a8]">
+                {isZh ? "为全球规模而构建。" : "Built for global scale."}
+              </span>
             </h2>
             <p className="self-end text-white/50 md:text-lg">
-              Phase 1 is being deployed through the GIFT IFSC.
-              Our infrastructure is designed for commodity markets worldwide — with pipeline expansion across UAE, Indonesia, Africa, and Latin America.
-              Select a region to explore the expansion roadmap.
+              {isZh
+                ? "第一阶段通过 GIFT IFSC 推进部署。我们的基础设施面向全球大宗商品市场，后续将扩展至阿联酋、印尼、非洲与拉美。选择区域查看扩展路线。"
+                : "Phase 1 is being deployed through the GIFT IFSC. Our infrastructure is designed for commodity markets worldwide — with pipeline expansion across UAE, Indonesia, Africa, and Latin America. Select a region to explore the expansion roadmap."}
             </p>
           </div>
         </div>
@@ -153,7 +219,7 @@ export function Map() {
           {/* ── LEFT: Region cards ── */}
           <div className="flex flex-col gap-px">
             {REGION_ORDER.map((key) => {
-              const region = REGIONS[key];
+              const region = regions[key];
               const isActive = activeRegion === key;
 
               return (
@@ -221,7 +287,7 @@ export function Map() {
                       <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-3">
                         <div>
                           <p className="mb-1.5 text-[9px] font-semibold uppercase tracking-wider text-white/25">
-                            Key Markets
+                            {isZh ? "重点市场" : "Key Markets"}
                           </p>
                           <ul className="space-y-0.5">
                             {region.markets.map((m) => (
@@ -233,7 +299,7 @@ export function Map() {
                         </div>
                         <div>
                           <p className="mb-1.5 text-[9px] font-semibold uppercase tracking-wider text-white/25">
-                            Commodities
+                            {isZh ? "大宗商品" : "Commodities"}
                           </p>
                           <ul className="space-y-0.5">
                             {region.commodities.map((c) => (
@@ -247,7 +313,7 @@ export function Map() {
 
                       <div className="mb-3">
                         <p className="mb-1 text-[9px] font-semibold uppercase tracking-wider text-white/25">
-                          Regulatory Framework
+                          {isZh ? "监管框架" : "Regulatory Framework"}
                         </p>
                         <p className="text-[11px] leading-relaxed text-white/45">{region.framework}</p>
                       </div>
@@ -283,11 +349,11 @@ export function Map() {
               <div className="pointer-events-none absolute bottom-4 right-4">
                 <div className="border border-[#00c2a8]/20 bg-[#0a1628]/90 px-3 py-2 backdrop-blur-sm">
                   <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8]/60">
-                    Selected region
+                    {isZh ? "当前区域" : "Selected region"}
                   </p>
                   <p className="text-sm font-bold text-white">
-                    {REGIONS[activeRegion].label}
-                    <span className="ml-2 font-normal text-[#00c2a8]">{REGIONS[activeRegion].stat}</span>
+                    {regions[activeRegion].label}
+                    <span className="ml-2 font-normal text-[#00c2a8]">{regions[activeRegion].stat}</span>
                   </p>
                 </div>
               </div>
@@ -295,8 +361,9 @@ export function Map() {
 
             {/* Disclaimer */}
             <p className="mt-3 text-[10px] leading-relaxed text-white/25">
-              This map illustrates target markets and regional pathways. It does not represent live deployment,
-              active clients, or committed partnerships outside of GIFT IFSC.
+              {isZh
+                ? "本地图用于展示目标市场与区域路径，不代表 GIFT IFSC 之外已上线部署、活跃客户或已签署合作。"
+                : "This map illustrates target markets and regional pathways. It does not represent live deployment, active clients, or committed partnerships outside of GIFT IFSC."}
             </p>
           </div>
         </div>
@@ -304,10 +371,10 @@ export function Map() {
         {/* Bottom metric strip */}
         <div className="mt-12 grid grid-cols-2 gap-px border-t border-[#00c2a8]/10 pt-8 md:grid-cols-4 md:mt-14">
           {[
-            { value: "5", label: "Target regions" },
-            { value: "$2.6T+", label: "Combined commodity markets" },
-            { value: "GIFT IFSC", label: "Phase 1 jurisdiction" },
-            { value: "IFSCA", label: "Primary regulator" },
+            { value: "5", label: isZh ? "目标区域" : "Target regions" },
+            { value: "$2.6T+", label: isZh ? "合计大宗商品市场规模" : "Combined commodity markets" },
+            { value: "GIFT IFSC", label: isZh ? "第一阶段司法辖区" : "Phase 1 jurisdiction" },
+            { value: "IFSCA", label: isZh ? "主要监管机构" : "Primary regulator" },
           ].map(({ value, label }) => (
             <div key={label} className="px-6 py-4 first:pl-0">
               <p className="mb-1 font-display text-2xl font-light text-[#00c2a8] md:text-3xl">{value}</p>

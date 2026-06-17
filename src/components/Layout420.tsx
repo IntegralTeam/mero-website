@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import gold from "../assets/gold.jpg";
 import copper from "../assets/copper.jpg";
@@ -43,6 +44,8 @@ const TOKENS = [
 ] as const;
 
 export function Layout420() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const { ref: stickyPanelRef, isVisible: stickyPanelVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -71,6 +74,36 @@ export function Layout420() {
   }, []);
 
   const activeIndex = Math.min(TOKENS.length - 1, Math.floor(scrollProgress * TOKENS.length));
+  const tokens = isZh
+    ? [
+        {
+          ...TOKENS[0],
+          name: "黄金",
+          description:
+            "一个 MEROG 代表存放于 LBMA 认证金库中的一金衡盎司实物黄金。该仓单由托管方设定权利负担，在归还 MEROG 前不得转移或出售。",
+          statLabel: "第一阶段重点",
+          phase: "第一阶段试点",
+        },
+        {
+          ...TOKENS[1],
+          name: "铜",
+          description:
+            "MEROC 代表存放于认证金库中的工业级铜仓单资产。发行流程内置商品核验要求，包括重量、品位与库方确认。",
+          stat: "实物",
+          statLabel: "仓单资产",
+          phase: "路线图",
+        },
+        {
+          ...TOKENS[2],
+          name: "镍",
+          description:
+            "MERON 是镍对应的仓单资产。该战略金属需满足品类特定检测要求，且在借贷存续期内底层仓单保持权利负担状态。",
+          stat: "实物",
+          statLabel: "仓单资产",
+          phase: "路线图",
+        },
+      ]
+    : TOKENS;
 
   return (
     <section id="about" ref={sectionRef} className="relative z-10 min-h-[300vh] bg-white">
@@ -91,43 +124,48 @@ export function Layout420() {
           >
             <div className="mb-6 flex items-center gap-3">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-                Warehouse Receipt Assets
+                {isZh ? "仓单资产" : "Warehouse Receipt Assets"}
               </span>
               <div className="h-px w-8 bg-[#00c2a8]/30" />
             </div>
 
             <h2 className="mb-5 font-display text-3xl font-light leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-              Physical commodities.<br />
-              <span className="text-[#00c2a8]">On-chain ownership.</span>
+              {isZh ? "实物商品。" : "Physical commodities."}
+              <br />
+              <span className="text-[#00c2a8]">{isZh ? "链上所有权。" : "On-chain ownership."}</span>
             </h2>
 
             <p className="mb-6 max-w-md text-[#0b1c2d]/60 md:text-lg">
-              Each asset is a digital warehouse receipt — a verified, transferable proof of title
-              for a specific quantity of physical commodity held in institutional custody.
-              When you hold MEROG, you own that ounce.
+              {isZh
+                ? "每项资产都是数字仓单，代表特定数量实物商品的可验证、可转移所有权凭证。持有 MEROG 即代表持有对应盎司黄金权益。"
+                : "Each asset is a digital warehouse receipt — a verified, transferable proof of title for a specific quantity of physical commodity held in institutional custody. When you hold MEROG, you own that ounce."}
             </p>
 
             {/* 1 MEROG callout */}
             <div className="mb-8 border-l-2 border-[#00c2a8] bg-[#00c2a8]/[0.04] px-4 py-3">
               <p className="text-sm font-semibold text-[#0b1c2d]">
-                1 MEROG = 1 fine troy ounce of gold
+                {isZh ? "1 MEROG = 1 金衡盎司黄金" : "1 MEROG = 1 fine troy ounce of gold"}
               </p>
               <p className="mt-1 text-xs text-[#0b1c2d]/50">
-                Custodian confirms encumbrance. Receipt cannot be moved or sold until MEROG is returned.
+                {isZh
+                  ? "托管人确认权利负担。在归还 MEROG 前，仓单不得转移或出售。"
+                  : "Custodian confirms encumbrance. Receipt cannot be moved or sold until MEROG is returned."}
               </p>
             </div>
 
             <div className="mb-8">
               <div className="flex items-center gap-4">
                 <span className="text-4xl font-bold text-[#0b1c2d]/8">
-                  {TOKENS[activeIndex].number}
+                  {tokens[activeIndex].number}
                 </span>
                 <div>
                   <span className="block text-sm font-bold text-[#00c2a8]">
-                    {TOKENS[activeIndex].ticker}
+                    {tokens[activeIndex].ticker}
                   </span>
                   <span className="text-xs text-[#0b1c2d]/40">
-                    Viewing: {TOKENS[activeIndex].name} — Scroll to explore
+                    {isZh
+                      ? `当前查看：${tokens[activeIndex].name} — 滚动浏览`
+                      : `Viewing: ${tokens[activeIndex].name} — Scroll to explore`}
                   </span>
                 </div>
               </div>
@@ -135,7 +173,7 @@ export function Layout420() {
 
             {/* Progress dots */}
             <div className="flex items-center gap-3">
-              {TOKENS.map((token, index) => (
+              {tokens.map((token, index) => (
                 <div
                   key={token.id}
                   className={`h-1 transition-all duration-300 ${
@@ -153,7 +191,7 @@ export function Layout420() {
 
         {/* Scrolling right panels */}
         <div className="relative md:mt-0">
-          {TOKENS.map((token, index) => {
+          {tokens.map((token, index) => {
             const tokenAnimation = tokenAnimations[index];
             return (
               <div
@@ -166,7 +204,11 @@ export function Layout420() {
                   {/* Phase badge */}
                   <div className="mb-4 inline-flex items-center gap-2 border border-[#00c2a8]/30 bg-[#00c2a8]/10 px-3 py-1">
                     <span className="h-1.5 w-1.5 bg-[#00c2a8]" />
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8]">
+                    <span
+                      className={`font-semibold text-[#00c2a8] ${
+                        isZh ? "text-[11px] tracking-[0.06em]" : "text-[9px] uppercase tracking-[0.2em]"
+                      }`}
+                    >
                       {token.phase}
                     </span>
                   </div>

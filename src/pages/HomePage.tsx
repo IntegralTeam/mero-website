@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { Seo } from "../lib/seo";
 import { Navbar } from "../components/Navbar";
 import { Header } from "../components/Header";
@@ -15,12 +17,18 @@ import { StayInformedSection } from "../components/StayInformedSection";
 import { Footer11 } from "../components/Footer11";
 
 export function HomePage() {
+  const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
+  const isChineseRoute = pathname.startsWith("/cn");
+  const seoPath = isChineseRoute ? "/cn/" : "/";
+
   return (
     <>
       <Seo
-        title="Commodity Tokenisation Infrastructure at GIFT IFSC"
-        description="Mero provides commodity-backed digital asset infrastructure at GIFT IFSC, with first-release pilot workflows and roadmap pathways for expanded products and markets."
-        path="/"
+        title={t("seo.homeTitle")}
+        description={t("seo.homeDescription")}
+        path={seoPath}
+        locale={i18n.language}
       />
       <Navbar />
       <Header />

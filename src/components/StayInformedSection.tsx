@@ -1,7 +1,10 @@
 import { useState, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 import supabase from "../lib/supabase";
 
 export function StayInformedSection() {
+  const { i18n } = useTranslation();
+  const isZh = i18n.language === "zh-CN";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<"success" | "error" | null>(null);
@@ -17,7 +20,7 @@ export function StayInformedSection() {
 
     if (!email) {
       setMessageType("error");
-      setMessage("Please enter a valid email address.");
+      setMessage(isZh ? "请输入有效的电子邮箱地址。" : "Please enter a valid email address.");
       return;
     }
 
@@ -29,10 +32,12 @@ export function StayInformedSection() {
 
     if (error) {
       setMessageType("error");
-      setMessage("Subscription failed. Please try again.");
+      setMessage(isZh ? "订阅失败，请稍后重试。" : "Subscription failed. Please try again.");
     } else {
       setMessageType("success");
-      setMessage("Thank you. You are now subscribed to Mero updates.");
+      setMessage(
+        isZh ? "感谢订阅，您已成功订阅 Mero 最新动态。" : "Thank you. You are now subscribed to Mero updates."
+      );
       form.reset();
     }
 
@@ -49,15 +54,17 @@ export function StayInformedSection() {
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-[#00c2a8]/40" />
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">
-                Newsletter
+                {isZh ? "通讯订阅" : "Newsletter"}
               </span>
               <span className="h-px w-8 bg-[#00c2a8]/40" />
             </div>
             <h2 className="mb-4 text-3xl font-bold leading-[1.15] text-[#0b1c2d] md:text-4xl">
-              Stay informed
+              {isZh ? "保持关注" : "Stay informed"}
             </h2>
             <p className="text-[#0b1c2d]/60 md:text-lg">
-              Get updates on Mero's commodity-backed digital asset platform, GIFT IFSC developments, and institutional yield infrastructure.
+              {isZh
+                ? "获取关于 Mero 大宗商品支持数字资产平台、GIFT IFSC 进展及机构收益基础设施的最新信息。"
+                : "Get updates on Mero's commodity-backed digital asset platform, GIFT IFSC developments, and institutional yield infrastructure."}
             </p>
           </div>
 
@@ -68,13 +75,13 @@ export function StayInformedSection() {
                   htmlFor="email"
                   className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#0b1c2d]/60"
                 >
-                  Email Address
+                  {isZh ? "邮箱地址" : "Email Address"}
                 </label>
                 <input
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="your@institution.com"
+                  placeholder={isZh ? "your@institution.com" : "your@institution.com"}
                   required
                   autoComplete="email"
                   className="h-12 w-full border border-[#0b1c2d]/10 bg-[#fafbfc] px-4 text-sm text-[#0b1c2d] outline-none transition-all placeholder:text-[#0b1c2d]/30 focus:border-[#00c2a8] focus:bg-white"
@@ -90,11 +97,11 @@ export function StayInformedSection() {
                   {isSubmitting ? (
                     <>
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                      Subscribing...
+                      {isZh ? "订阅中..." : "Subscribing..."}
                     </>
                   ) : (
                     <>
-                      Subscribe
+                      {isZh ? "立即订阅" : "Subscribe"}
                       <span className="text-lg transition-transform group-hover:translate-x-0.5">→</span>
                     </>
                   )}
@@ -117,9 +124,9 @@ export function StayInformedSection() {
               )}
 
               <p className="text-center text-[10px] leading-relaxed text-[#0b1c2d]/40">
-                By subscribing, you agree to receive updates from Mero. We
-                respect your privacy. See our Privacy Policy for how your data
-                is handled.
+                {isZh
+                  ? "订阅即表示您同意接收来自 Mero 的更新信息。我们尊重您的隐私。请参阅隐私政策了解数据处理方式。"
+                  : "By subscribing, you agree to receive updates from Mero. We respect your privacy. See our Privacy Policy for how your data is handled."}
               </p>
             </form>
           </div>
@@ -127,15 +134,15 @@ export function StayInformedSection() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-[10px] uppercase tracking-wider text-[#0b1c2d]/40">
             <span className="flex items-center gap-2">
               <span className="h-1 w-1 bg-[#00c2a8]" />
-              Institutional Updates
+              {isZh ? "机构动态" : "Institutional Updates"}
             </span>
             <span className="flex items-center gap-2">
               <span className="h-1 w-1 bg-[#00c2a8]" />
-              Monthly Frequency
+              {isZh ? "每月发送" : "Monthly Frequency"}
             </span>
             <span className="flex items-center gap-2">
               <span className="h-1 w-1 bg-[#00c2a8]" />
-              Unsubscribe Anytime
+              {isZh ? "随时退订" : "Unsubscribe Anytime"}
             </span>
           </div>
         </div>

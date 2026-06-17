@@ -1,6 +1,7 @@
 import { useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect, type MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo-light.svg';
 
@@ -42,6 +43,10 @@ const useRelume = () => {
 export function Navbar() {
   const useActive = useRelume();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t, i18n } = useTranslation();
+  const isChinese = i18n.language === "zh-CN";
+  const homePath = isChinese ? "/cn/" : "/";
+  const localizedHashPath = (hash: string) => `${homePath}#${hash}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +82,7 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link to={homePath} className="flex items-center">
           <img
             src={logo}
             alt="Mero"
@@ -88,42 +93,62 @@ export function Navbar() {
         <div className="absolute hidden h-screen overflow-auto border-b border-white/10 bg-[#0b1c2d]/95 backdrop-blur-sm px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-auto lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-end lg:border-none lg:bg-transparent lg:backdrop-blur-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row lg:justify-end lg:gap-10">
             <Link
-              to="/#about"
+              to={localizedHashPath("about")}
               onClick={handleNavClick("about")}
-              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
+                isChinese
+                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
+                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
+              }`}
             >
-              Assets
+              {t("nav.assets")}
               <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
-              to="/#solutions"
+              to={localizedHashPath("solutions")}
               onClick={handleNavClick("solutions")}
-              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
+                isChinese
+                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
+                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
+              }`}
             >
-              Lending
+              {t("nav.lending")}
               <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
-              to="/#yield"
+              to={localizedHashPath("yield")}
               onClick={handleNavClick("yield")}
-              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
+                isChinese
+                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
+                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
+              }`}
             >
-              Yield
+              {t("nav.yield")}
               <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <Link
-              to="/#faq"
+              to={localizedHashPath("faq")}
               onClick={handleNavClick("faq")}
-              className="group relative block w-auto py-3 text-md font-semibold uppercase tracking-[0.2em] text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:text-xs lg:opacity-70"
+              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
+                isChinese
+                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
+                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
+              }`}
             >
-              FAQ
+              {t("nav.faq")}
               <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
             </Link>
             <a
               href="mailto:info@mero.tech"
-              className="hidden lg:inline-flex items-center gap-2 border border-[#00c2a8]/40 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
+              className={`hidden lg:inline-flex items-center justify-center gap-2 border border-[#00c2a8]/40 py-2 text-[10px] font-semibold text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10 ${
+                isChinese
+                  ? "min-w-[100px] px-5 tracking-[0.08em]"
+                  : "px-4 uppercase tracking-[0.2em]"
+              }`}
             >
-              Contact
+              {t("nav.contact")}
             </a>
             {/* <div
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
@@ -518,20 +543,28 @@ export function Navbar() {
           >
             <div className="pointer-events-none absolute inset-0 bg-[#0b1c2d]/90 backdrop-blur-md" />
             <div className="flex flex-col">
-              <Link to="/#about" onClick={handleMobileNavClick("about")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
-                Assets
+              <Link to={localizedHashPath("about")} onClick={handleMobileNavClick("about")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
+                {t("nav.assets")}
               </Link>
-              <Link to="/#solutions" onClick={handleMobileNavClick("solutions")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
-                Lending
+              <Link to={localizedHashPath("solutions")} onClick={handleMobileNavClick("solutions")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
+                {t("nav.lending")}
               </Link>
-              <Link to="/#yield" onClick={handleMobileNavClick("yield")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
-                Yield
+              <Link to={localizedHashPath("yield")} onClick={handleMobileNavClick("yield")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
+                {t("nav.yield")}
               </Link>
-              <Link to="/#faq" onClick={handleMobileNavClick("faq")} className="relative block py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]">
-                FAQ
+              <Link to={localizedHashPath("faq")} onClick={handleMobileNavClick("faq")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
+                {t("nav.faq")}
               </Link>
-              <a href="mailto:info@mero.tech" onClick={useActive.closeMobileMenu} className="relative mt-2 inline-block border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10">
-                Contact
+              <a
+                href="mailto:info@mero.tech"
+                onClick={useActive.closeMobileMenu}
+                className={`relative mt-2 inline-block border border-[#00c2a8]/60 py-3 text-sm font-semibold text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10 ${
+                  isChinese
+                    ? "min-w-[120px] px-7 tracking-[0.08em]"
+                    : "px-6 uppercase tracking-wider"
+                }`}
+              >
+                {t("nav.contact")}
               </a>
               {/* <div >
                 <button
