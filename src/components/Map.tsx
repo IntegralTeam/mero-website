@@ -198,12 +198,23 @@ export function Map() {
             <span className="h-px w-8 bg-[#00c2a8]/40" />
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
-            <h2 className="font-display text-3xl font-light leading-[1.15] text-white md:text-4xl lg:text-[2.75rem]">
-              {isZh ? "从印度启航。" : "Starting in India."}
-              <br />
-              <span className="text-[#00c2a8]">
-                {isZh ? "为全球规模而构建。" : "Built for global scale."}
-              </span>
+            <h2
+              className={`font-display text-3xl font-light text-white md:text-4xl lg:text-[2.75rem] ${
+                isZh ? "leading-[1.18]" : "leading-[1.15]"
+              }`}
+            >
+              {isZh ? (
+                <>
+                  <span className="block">从印度启航。</span>
+                  <span className="mt-2 block text-[#00c2a8]">为全球规模而构建。</span>
+                </>
+              ) : (
+                <>
+                  Starting in India.
+                  <br />
+                  <span className="text-[#00c2a8]">Built for global scale.</span>
+                </>
+              )}
             </h2>
             <p className="self-end text-white/50 md:text-lg">
               {isZh
@@ -376,7 +387,7 @@ export function Map() {
             { value: "GIFT IFSC", label: isZh ? "第一阶段司法辖区" : "Phase 1 jurisdiction" },
             { value: "IFSCA", label: isZh ? "主要监管机构" : "Primary regulator" },
           ].map(({ value, label }) => (
-            <div key={label} className="px-6 py-4 first:pl-0">
+            <div key={label} className="px-6 py-4 max-md:odd:pl-0 md:first:pl-0">
               <p className="mb-1 font-display text-2xl font-light text-[#00c2a8] md:text-3xl">{value}</p>
               <p className="text-[10px] uppercase tracking-wider text-white/35">{label}</p>
             </div>

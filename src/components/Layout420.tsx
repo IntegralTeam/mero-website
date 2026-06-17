@@ -129,10 +129,23 @@ export function Layout420() {
               <div className="h-px w-8 bg-[#00c2a8]/30" />
             </div>
 
-            <h2 className="mb-5 font-display text-3xl font-light leading-[1.15] text-[#0b1c2d] md:text-4xl lg:text-[2.75rem]">
-              {isZh ? "实物商品。" : "Physical commodities."}
-              <br />
-              <span className="text-[#00c2a8]">{isZh ? "链上所有权。" : "On-chain ownership."}</span>
+            <h2
+              className={`mb-5 font-display text-3xl font-light text-[#0b1c2d] md:text-4xl lg:text-[2.75rem] ${
+                isZh ? "leading-[1.18]" : "leading-[1.15]"
+              }`}
+            >
+              {isZh ? (
+                <>
+                  <span className="block">实物商品。</span>
+                  <span className="mt-2 block text-[#00c2a8]">链上所有权。</span>
+                </>
+              ) : (
+                <>
+                  Physical commodities.
+                  <br />
+                  <span className="text-[#00c2a8]">On-chain ownership.</span>
+                </>
+              )}
             </h2>
 
             <p className="mb-6 max-w-md text-[#0b1c2d]/60 md:text-lg">
