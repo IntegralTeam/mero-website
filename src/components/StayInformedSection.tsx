@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
-import supabase from "../lib/supabase";
+
+const API_URL = import.meta.env.VITE_API_URL || "https://supabase.mero.tech";
 
 export function StayInformedSection() {
   const { i18n } = useTranslation();
@@ -28,11 +29,18 @@ export function StayInformedSection() {
     setMessage(null);
     setMessageType(null);
 
-    const { error } = await supabase.from("subscriptions").insert([{ email }]);
+    const res = await fetch(`${API_URL}/api/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
 
-    if (error) {
+    if (!res.ok) {
       setMessageType("error");
-      setMessage(isZh ? "订阅失败，请稍后重试。" : "Subscription failed. Please try again.");
+      setMessage(
+        data.error || (isZh ? "订阅失败，请稍后重试。" : "Subscription failed. Please try again.")
+      );
     } else {
       setMessageType("success");
       setMessage(
