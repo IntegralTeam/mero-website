@@ -1,4 +1,5 @@
 import { Icon, type IconName } from "./icons";
+import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 const CAPABILITIES: { icon: IconName; title: string; description: string }[] = [
@@ -30,38 +31,57 @@ const CAPABILITIES: { icon: IconName; title: string; description: string }[] = [
 
 export function WhatMeroDoes() {
   return (
-    <section id="what-mero-does" className="relative overflow-hidden bg-white py-20 md:py-28 lg:py-32">
-      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0b1c2d]/10 to-transparent" />
-      <div className="container px-[5%]">
-        <div className="mx-auto mb-14 max-w-3xl md:mb-20">
+    <section id="what-mero-does" className="relative overflow-hidden bg-[#f3f7f9] py-20 md:py-28 lg:py-32">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(11,28,45,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(11,28,45,0.035) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[34rem] w-[60rem] -translate-x-1/2 -translate-y-1/3"
+        style={{ background: "radial-gradient(ellipse, rgba(0,194,168,0.16) 0%, transparent 65%)" }}
+      />
+      <div
+        className="pointer-events-none absolute -bottom-40 -right-40 h-[30rem] w-[30rem] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(201,168,76,0.14) 0%, transparent 65%)" }}
+      />
+
+      <div className="container relative px-[5%]">
+        <Reveal variant="up" className="mx-auto mb-14 max-w-3xl md:mb-20">
           <SectionHeading
             eyebrow="What Mero does"
             title="One operating layer for the whole collateral lifecycle"
             align="center"
           />
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 gap-px bg-[#0b1c2d]/10 md:grid-cols-2 lg:grid-cols-4">
-          {CAPABILITIES.map((capability, index) => (
-            <div
-              key={capability.title}
-              className="group relative bg-white p-8 transition-all duration-500 ease-out hover:-translate-y-1 hover:bg-[#fafbfc] hover:shadow-lg md:p-10"
-            >
-              <div className="absolute right-4 top-4 text-[10px] font-semibold uppercase tracking-wider text-[#0b1c2d]/20 transition-colors group-hover:text-[#00c2a8]/50">
-                {`0${index + 1}`}
+        <Reveal
+          variant="zoom"
+          delay={150}
+          className="relative overflow-hidden bg-white shadow-[0_40px_80px_-40px_rgba(11,28,45,0.35)] ring-1 ring-[#0b1c2d]/5"
+        >
+          <div className="h-1.5 bg-gradient-to-r from-[#00c2a8] via-[#066253] to-[#C9A84C]" />
+          <Reveal variant="stagger" className="grid grid-cols-1 gap-px bg-[#0b1c2d]/[0.07] md:grid-cols-2 lg:grid-cols-4">
+            {CAPABILITIES.map((capability, index) => (
+              <div
+                key={capability.title}
+                className="group relative bg-white p-8 transition-colors duration-500 hover:bg-[#f7fbfb] md:p-10"
+              >
+                <span className="pointer-events-none absolute right-6 top-4 font-display text-6xl font-light text-[#0b1c2d]/[0.05] transition-colors duration-500 group-hover:text-[#00c2a8]/15">
+                  {`0${index + 1}`}
+                </span>
+                <div className="relative mb-8 flex h-14 w-14 items-center justify-center bg-gradient-to-br from-[#00c2a8] to-[#066253] text-white shadow-[0_12px_24px_-10px_rgba(0,194,168,0.7)] transition-transform duration-300 group-hover:-translate-y-1">
+                  <Icon name={capability.icon} className="h-7 w-7" />
+                </div>
+                <h3 className="relative mb-3 text-lg font-bold text-[#0b1c2d] md:text-xl">{capability.title}</h3>
+                <p className="relative text-sm leading-relaxed text-[#0b1c2d]/60">{capability.description}</p>
               </div>
-              <div className="mb-8 flex h-14 w-14 items-center justify-center bg-gradient-to-br from-[#00c2a8]/15 to-[#00c2a8]/5 text-[#00c2a8] ring-1 ring-[#00c2a8]/20 transition-transform duration-300 group-hover:scale-110">
-                <Icon name={capability.icon} className="h-7 w-7" />
-              </div>
-              <h3 className="mb-3 text-lg font-bold text-[#0b1c2d] transition-colors duration-300 group-hover:text-[#00c2a8] md:text-xl">
-                {capability.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#0b1c2d]/60">{capability.description}</p>
-              <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-[#00c2a8] to-[#00c2a8]/50 transition-all duration-500 ease-out group-hover:w-full" />
-              <div className="absolute right-0 top-0 h-0 w-0 border-l-[24px] border-t-[24px] border-l-transparent border-t-[#00c2a8] opacity-0 transition-all duration-500 group-hover:opacity-[0.08]" />
-            </div>
-          ))}
-        </div>
+            ))}
+          </Reveal>
+        </Reveal>
       </div>
     </section>
   );

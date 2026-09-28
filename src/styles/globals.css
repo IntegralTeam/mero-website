@@ -21,6 +21,7 @@ body,
 }
 
 body {
+  overflow-x: clip;
   font-family: "Sora", "Segoe UI", sans-serif;
   color: #111827;
   background: #ffffff;
@@ -39,6 +40,16 @@ section[id] {
     #0d1f35 50%,
     #062e28 82%,
     #053d35 100%
+  );
+}
+
+/* Navy to emerald gradient for accent sections */
+.emerald-gradient-bg {
+  background: linear-gradient(
+    100.1deg,
+    #0b1c2d 9.64%,
+    #066253 72.94%,
+    #00c2a8 110.78%
   );
 }
 
@@ -89,6 +100,124 @@ a {
   }
 }
 
+/* Hero load-in, CSS only so the pre-rendered hero never waits on JavaScript */
+.hero-in {
+  animation: hero-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-core-in {
+  animation: hero-core-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+}
+
+@keyframes hero-core-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-12deg);
+  }
+}
+
+/* Scroll reveals, only hidden once the page knows JavaScript is running */
+.js .reveal {
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s ease,
+    clip-path 1.2s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.js .reveal:not(.is-visible) {
+  opacity: 0;
+}
+
+.js .reveal-up:not(.is-visible) {
+  transform: translateY(48px);
+}
+
+.js .reveal-left:not(.is-visible) {
+  transform: translateX(-64px);
+}
+
+.js .reveal-right:not(.is-visible) {
+  transform: translateX(64px);
+}
+
+.js .reveal-zoom:not(.is-visible) {
+  transform: scale(0.9);
+}
+
+.js .reveal-blur:not(.is-visible) {
+  filter: blur(14px);
+  transform: translateY(20px) scale(0.98);
+}
+
+.js .reveal-clip {
+  clip-path: inset(-10% -10% -10% -10%);
+}
+
+.js .reveal-clip:not(.is-visible) {
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
+}
+
+.js .reveal-media {
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal-clip:not(.is-visible) .reveal-media {
+  transform: scale(1.18);
+}
+
+.js .reveal-flip:not(.is-visible) {
+  transform: perspective(1200px) rotateX(22deg) translateY(56px);
+  transform-origin: 50% 0;
+}
+
+.js .reveal-orbit:not(.is-visible) {
+  transform: scale(0.75) rotate(-25deg);
+}
+
+.js .reveal-stagger > * {
+  transition:
+    opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.js .reveal-stagger:not(.is-visible) > * {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.js .reveal-stagger-x:not(.is-visible) > * {
+  transform: translateX(-28px);
+}
+
+.reveal-stagger > :nth-child(2) { transition-delay: 90ms; }
+.reveal-stagger > :nth-child(3) { transition-delay: 180ms; }
+.reveal-stagger > :nth-child(4) { transition-delay: 270ms; }
+.reveal-stagger > :nth-child(5) { transition-delay: 360ms; }
+.reveal-stagger > :nth-child(6) { transition-delay: 450ms; }
+.reveal-stagger > :nth-child(7) { transition-delay: 540ms; }
+.reveal-stagger > :nth-child(8) { transition-delay: 630ms; }
+.reveal-stagger > :nth-child(9) { transition-delay: 720ms; }
+.reveal-stagger > :nth-child(10) { transition-delay: 810ms; }
+.reveal-stagger > :nth-child(11) { transition-delay: 900ms; }
+.reveal-stagger > :nth-child(12) { transition-delay: 990ms; }
+.reveal-stagger > :nth-child(13) { transition-delay: 1080ms; }
+
+.reveal-stagger.reveal-done > * {
+  transition-delay: 0ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -96,7 +225,18 @@ a {
 
   .flow-line-x,
   .flow-line-y,
-  .flow-path {
+  .flow-path,
+  .hero-in,
+  .hero-core-in {
     animation: none;
+  }
+
+  .js .reveal,
+  .js .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    transition: none !important;
   }
 }

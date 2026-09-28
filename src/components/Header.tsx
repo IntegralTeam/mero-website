@@ -167,18 +167,18 @@ export function Header() {
       <div className="container relative flex min-h-screen items-center px-[5%] py-24 md:py-32">
         <div className="grid w-full grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col">
-            <h1 className="mb-8 font-display text-[2.6rem] font-light leading-[1.08] text-white md:text-5xl lg:text-[3.5rem]">
+            <h1 className="hero-in mb-8 font-display text-[2.6rem] font-light leading-[1.08] text-white md:text-5xl lg:text-[3.5rem]">
               The infrastructure layer for{" "}
               <span className="text-[#00c2a8] md:block">gold as collateral</span>
             </h1>
 
-            <p className="mb-10 max-w-[540px] text-base leading-relaxed text-white/60 md:text-[1.1rem]">
+            <p className="hero-in mb-10 max-w-[540px] [animation-delay:150ms] text-base leading-relaxed text-white/60 md:text-[1.1rem]">
               Banks and financial institutions use Mero to authenticate vaulted gold, record a pledge
               with the custodian or depository that holds it, and monitor and enforce the loan. The
               metal never leaves the vault.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <div className="hero-in flex flex-wrap items-center gap-4 [animation-delay:300ms] sm:gap-6">
               <a
                 href="#who-it-is-for"
                 className="group relative inline-flex items-center gap-3 bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d] transition-all duration-300 hover:gap-5 hover:bg-[#e6faf8]"
@@ -205,14 +205,14 @@ export function Header() {
           </div>
 
           <div className="flex items-center justify-center">
-            <div className="relative h-80 w-80 md:h-[28rem] md:w-[28rem] lg:h-[32rem] lg:w-[32rem]">
+            <div className="hero-core-in relative h-80 w-80 md:h-[28rem] md:w-[28rem] lg:h-[32rem] lg:w-[32rem]">
               <AbstractCore />
             </div>
           </div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 md:block">
-          <div className="flex flex-col items-center gap-3">
+          <div className="hero-in flex flex-col items-center gap-3 [animation-delay:700ms]">
             <span className="text-[10px] uppercase tracking-[0.25em] text-white/25">Scroll</span>
             <div className="h-10 w-px bg-gradient-to-b from-[#00c2a8]/50 to-transparent" />
           </div>

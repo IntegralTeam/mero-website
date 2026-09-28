@@ -24,3 +24,5 @@ if (container.firstElementChild) {
 } else {
   ReactDOM.createRoot(container).render(app);
 }
+
+document.documentElement.classList.add("app-ready");

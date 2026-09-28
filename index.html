@@ -59,6 +59,15 @@
     </script>
 
     <script>
+      (function (root) {
+        root.classList.add("js");
+        setTimeout(function () {
+          if (!root.classList.contains("app-ready")) root.classList.remove("js");
+        }, 4000);
+      })(document.documentElement);
+    </script>
+
+    <script>
       (function (location) {
         if (location.search[1] === "/") {
           const decoded = location.search
