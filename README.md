@@ -1,17 +1,18 @@
 # Mero Landing (React)
 
-This project is now a working React + Vite application with static routes and SEO metadata.
+Single-page React + Vite site for mero.tech, pre-rendered to static HTML at build time.
 
 ## Pages
 
 - `/` Home
-- `/platform` Platform
-- `/about` About
 
-## SEO setup
+## SEO and rendering
 
-- Per-page metadata via `react-helmet-async` in `/src/lib/seo.tsx`
-- Canonical URLs and Open Graph/Twitter tags on each page
+- `npm run build` builds the client bundle, builds `src/entry-server.tsx` as an SSR bundle, then
+  `scripts/prerender.mjs` renders `/` into `dist/index.html`. The page text is in the served HTML, so it
+  is readable with JavaScript disabled; the client hydrates on load.
+- Title, description, canonical URL, Open Graph/Twitter tags and Organisation JSON-LD live in `index.html`.
+- `public/og-image.png` (1200 x 630) is the link preview image; `public/logo.png` is the structured-data logo.
 - `public/robots.txt`
 - `public/sitemap.xml`
 
@@ -38,5 +39,5 @@ This project is now a working React + Vite application with static routes and SE
 
 ## Notes
 
-- The original Relume component imports (`@relume_io/relume-ui`) are mapped to a local compatibility module at `/src/lib/relume-ui.tsx` through `vite.config.ts`.
+- Contact email and company details are in `src/lib/site.ts`.
 - Tailwind is configured in `tailwind.config.js` and styles are in `/src/styles/globals.css`.

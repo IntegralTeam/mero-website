@@ -1,901 +1,99 @@
-import { useMediaQuery } from "@relume_io/relume-ui";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect, type MouseEvent } from "react";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import logo from '../assets/logo-light.svg';
-
-const useRelume = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 991px)");
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
-  const openOnMobileDropdownMenu = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-  const openOnDesktopDropdownMenu = () => {
-    !isMobile && setIsDropdownOpen(true);
-  };
-  const closeOnDesktopDropdownMenu = () => {
-    !isMobile && setIsDropdownOpen(false);
-  };
-  const animateMobileMenu = isMobileMenuOpen ? "open" : "close";
-  const animateMobileMenuButtonSpan = isMobileMenuOpen
-    ? ["open", "rotatePhase"]
-    : "closed";
-  const animateDropdownMenu = isDropdownOpen ? "open" : "close";
-  const animateDropdownMenuIcon = isDropdownOpen ? "rotated" : "initial";
-  return {
-    isMobileMenuOpen,
-    toggleMobileMenu,
-    closeMobileMenu,
-    openOnDesktopDropdownMenu,
-    closeOnDesktopDropdownMenu,
-    openOnMobileDropdownMenu,
-    animateMobileMenu,
-    animateMobileMenuButtonSpan,
-    animateDropdownMenu,
-    animateDropdownMenuIcon,
-  };
-};
+import { useEffect, useState } from "react";
+import logo from "../assets/logo-light.svg";
+import { NAV_LINKS } from "../lib/site";
 
 export function Navbar() {
-  const useActive = useRelume();
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t, i18n } = useTranslation();
-  const isChinese = i18n.language === "zh-CN";
-  const homePath = isChinese ? "/cn/" : "/";
-  const localizedHashPath = (hash: string) => `${homePath}#${hash}`;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick =
-    (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-      const target = document.getElementById(sectionId);
-      if (target) {
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-
-  const handleMobileNavClick =
-    (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-      handleNavClick(sectionId)(event);
-      useActive.closeMobileMenu();
-    };
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[999] flex min-h-16 w-full items-center px-[5%] transition-all duration-500 md:min-h-18 ${
-        isScrolled
-          ? "bg-[#0b1c2d]/95 backdrop-blur-md shadow-lg shadow-black/10" 
-          : useActive.isMobileMenuOpen
-          ? "bg-[#0b1c2d]/95"
+      className={`fixed left-0 right-0 top-0 z-[999] w-full px-[5%] transition-colors duration-500 ${
+        isScrolled || isMenuOpen
+          ? "bg-[#0b1c2d]/95 shadow-lg shadow-black/10 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex size-full max-w-full items-center justify-between">
-        <Link to={homePath} className="flex items-center">
-          <img
-            src={logo}
-            alt="Mero"
-            width={110}
-            className="h-auto"
-          />
-        </Link>
-        <div className="absolute hidden h-screen overflow-auto border-b border-white/10 bg-[#0b1c2d]/95 backdrop-blur-sm px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-auto lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-end lg:border-none lg:bg-transparent lg:backdrop-blur-none lg:px-0 lg:pt-0">
-          <div className="flex flex-col items-center lg:flex-row lg:justify-end lg:gap-10">
-            <Link
-              to={localizedHashPath("about")}
-              onClick={handleNavClick("about")}
-              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
-                isChinese
-                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
-                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
-              }`}
-            >
-              {t("nav.assets")}
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to={localizedHashPath("solutions")}
-              onClick={handleNavClick("solutions")}
-              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
-                isChinese
-                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
-                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
-              }`}
-            >
-              {t("nav.lending")}
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to={localizedHashPath("yield")}
-              onClick={handleNavClick("yield")}
-              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
-                isChinese
-                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
-                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
-              }`}
-            >
-              {t("nav.yield")}
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <Link
-              to={localizedHashPath("faq")}
-              onClick={handleNavClick("faq")}
-              className={`group relative block w-auto py-3 font-semibold text-white transition-opacity duration-300 hover:opacity-100 lg:inline-block lg:px-2 lg:py-6 lg:opacity-70 ${
-                isChinese
-                  ? "text-[15px] tracking-[0.04em] lg:text-[13px]"
-                  : "text-md uppercase tracking-[0.2em] lg:text-xs"
-              }`}
-            >
-              {t("nav.faq")}
-              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
-            </Link>
-            <a
-              href="mailto:info@mero.tech"
-              className={`hidden lg:inline-flex items-center justify-center gap-2 border border-[#00c2a8]/40 py-2 text-[10px] font-semibold text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10 ${
-                isChinese
-                  ? "min-w-[100px] px-5 tracking-[0.08em]"
-                  : "px-4 uppercase tracking-[0.2em]"
-              }`}
-            >
-              {t("nav.contact")}
-            </a>
-            {/* <div
-              onMouseEnter={useActive.openOnDesktopDropdownMenu}
-              onMouseLeave={useActive.closeOnDesktopDropdownMenu}
-            >
-              <button
-                className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
-                onClick={useActive.openOnMobileDropdownMenu}
-              >
-                <span>Resources</span>
-                <motion.span
-                  animate={useActive.animateDropdownMenuIcon}
-                  variants={{
-                    rotated: { rotate: 180 },
-                    initial: { rotate: 0 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <MaterialIcon name="expand_more" />
-                </motion.span>
-              </button>
-              <AnimatePresence>
-                <motion.nav
-                  variants={{
-                    open: {
-                      opacity: 1,
-                      height: "var(--height-open, auto)",
-                      display: "block",
-                    },
-                    close: {
-                      opacity: 0,
-                      height: "var(--height-close, 0)",
-                      display: "none",
-                    },
-                  }}
-                  animate={useActive.animateDropdownMenu}
-                  initial="close"
-                  exit="close"
-                  transition={{ duration: 0.2 }}
-                  className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden bg-background-primary lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
-                >
-                  <div className="mx-auto flex size-full max-w-full items-center justify-between">
-                    <div className="flex w-full flex-col lg:flex-row">
-                      <div className="grid flex-1 grid-cols-1 content-start items-start gap-x-8 gap-y-6 py-4 md:grid-cols-2 md:py-8 lg:auto-cols-fr lg:grid-cols-4 lg:content-stretch lg:items-stretch lg:gap-y-0">
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Getting started
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="overview" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Overview</h5>
-                              <p className="hidden text-sm md:block">
-                                Learn how Mero works and what makes it different
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="sdk" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Integration</h5>
-                              <p className="hidden text-sm md:block">
-                                Deploy USDM into your infrastructure today
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="security" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Security</h5>
-                              <p className="hidden text-sm md:block">
-                                Privacy-preserving blockchain built on Canton
-                                Network
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="finance" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Compliance</h5>
-                              <p className="hidden text-sm md:block">
-                                Institutional-grade standards for regulated
-                                banks
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Use cases
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="vpn_lock" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Pensions</h5>
-                              <p className="hidden text-sm md:block">
-                                Unlock yield for emerging market pension funds
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="savings" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Savings</h5>
-                              <p className="hidden text-sm md:block">
-                                Stable returns backed by commodity reserves
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="partner_reports" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Yield</h5>
-                              <p className="hidden text-sm md:block">
-                                Access indicative target APY through intended institutional products
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="savings" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Treasury</h5>
-                              <p className="hidden text-sm md:block">
-                                Support capital preservation through target over-collateralisation
-                                over-collateralisation
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Markets
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="globe" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Indonesia</h5>
-                              <p className="hidden text-sm md:block">
-                                First market for institutional stablecoin
-                                adoption
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="globe" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">India</h5>
-                              <p className="hidden text-sm md:block">
-                                Expanding regional infrastructure and
-                                integrations
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="globe" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Latin America</h5>
-                              <p className="hidden text-sm md:block">
-                                Building institutional-grade stablecoin rails
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="globe" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Africa</h5>
-                              <p className="hidden text-sm md:block">
-                                Bringing stable currency to emerging markets
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Company
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="metro" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">About</h5>
-                              <p className="hidden text-sm md:block">
-                                The story behind Mero and our mission
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="finance" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Careers</h5>
-                              <p className="hidden text-sm md:block">
-                                Join a team building the future of finance
-                              </p>
-                            </div>
-                          </a>
-                          <Link 
-                            to="/#stay-informed"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="contacts" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Contact</h5>
-                              <p className="hidden text-sm md:block">
-                                Reach out to discuss integrations and
-                                integration
-                              </p>
-                            </div>
-                          </Link>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <MaterialIcon name="news" size={24} />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Press</h5>
-                              <p className="hidden text-sm md:block">
-                                Latest news and announcements from Mero
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="relative mb-6 flex w-full flex-col items-start justify-between p-6 sm:items-center lg:mb-0 lg:flex-row lg:px-0 lg:py-4">
-                    <div className="absolute -left-[50vw] -right-[50vw] bottom-0 top-0 w-[200vw] bg-background-secondary" />
-                    <div className="relative mb-4 grid auto-cols-fr grid-cols-[max-content] grid-rows-[auto_auto] items-center gap-x-2 gap-y-4 lg:mb-0 lg:flex lg:items-center">
-                      <p>
-                        Ready to launch USDM?
-                        <a href="#" className="ml-1 underline">
-                          Request a platform walkthrough
-                        </a>
-                      </p>
-                    </div>
-                    <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
-                      <Button
-                        title="Search"
-                        variant="link"
-                        size="link"
-                      >
-                        <MaterialIcon name="search" className="mr-2" />
-                        Search
-                      </Button>
-                      <Button
-                        title="Menu"
-                        variant="link"
-                        size="link"
-                      >
-                        <MaterialIcon name="menu" className="mr-2" />
-                        Menu
-                      </Button>
-                    </div>
-                  </div>
-                </motion.nav>
-              </AnimatePresence>
-            </div> */}
-          </div>
+      <div className="mx-auto flex min-h-16 items-center justify-between md:min-h-18">
+        <a href="#top" className="flex items-center" onClick={closeMenu}>
+          <img src={logo} alt="Mero Technologies" width={110} height={29} className="h-auto" />
+        </a>
 
+        <div className="hidden items-center gap-10 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="group relative py-6 text-xs font-semibold uppercase tracking-[0.2em] text-white opacity-70 transition-opacity duration-300 hover:opacity-100"
+            >
+              {link.label}
+              <span className="absolute bottom-4 left-0 h-px w-0 bg-[#00c2a8] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center border border-[#00c2a8]/40 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
+          >
+            Contact
+          </a>
         </div>
+
         <button
-          className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
-          onClick={useActive.toggleMobileMenu}
+          type="button"
+          className="-mr-2 flex size-12 flex-col items-center justify-center gap-1.5 lg:hidden"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMenuOpen((open) => !open)}
         >
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-white"
-            animate={useActive.animateMobileMenuButtonSpan}
-            variants={{
-              open: { translateY: 8, transition: { delay: 0.1 } },
-              rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
-              closed: {
-                translateY: 0,
-                rotate: 0,
-                transition: { duration: 0.2 },
-              },
-            }}
+          <span
+            className={`h-0.5 w-6 bg-white transition-transform duration-300 ${
+              isMenuOpen ? "translate-y-2 rotate-45" : ""
+            }`}
           />
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-white"
-            animate={useActive.animateMobileMenu}
-            variants={{
-              open: { width: 0, transition: { duration: 0.1 } },
-              closed: {
-                width: "1.5rem",
-                transition: { delay: 0.3, duration: 0.2 },
-              },
-            }}
+          <span
+            className={`h-0.5 w-6 bg-white transition-opacity duration-200 ${
+              isMenuOpen ? "opacity-0" : ""
+            }`}
           />
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-white"
-            animate={useActive.animateMobileMenuButtonSpan}
-            variants={{
-              open: { translateY: -8, transition: { delay: 0.1 } },
-              rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
-              closed: {
-                translateY: 0,
-                rotate: 0,
-                transition: { duration: 0.2 },
-              },
-            }}
+          <span
+            className={`h-0.5 w-6 bg-white transition-transform duration-300 ${
+              isMenuOpen ? "-translate-y-2 -rotate-45" : ""
+            }`}
           />
         </button>
       </div>
-      <AnimatePresence>
-        <motion.div
-          variants={{ open: { height: "100dvh" }, close: { height: 0 } }}
-          animate={useActive.animateMobileMenu}
-          initial="close"
-          exit="close"
-          className="fixed inset-x-0 top-16 bottom-0 z-[998] overflow-hidden lg:hidden"
-          transition={{ duration: 0.4 }}
-        >
-          <motion.div
-            variants={{ open: { y: 0 }, close: { y: "-100%" } }}
-            animate={useActive.animateMobileMenu}
-            initial="close"
-            exit="close"
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0 block overflow-y-auto overscroll-contain border-b border-white/10 px-[5%] pb-8 pt-20 text-white [touch-action:pan-y]"
+
+      {isMenuOpen && (
+        <div id="mobile-menu" className="flex flex-col border-t border-white/10 pb-8 pt-4 lg:hidden">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={closeMenu}
+              className="py-4 text-lg font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#00c2a8]"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={closeMenu}
+            className="mt-2 self-start border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
           >
-            <div className="pointer-events-none absolute inset-0 bg-[#0b1c2d]/90 backdrop-blur-md" />
-            <div className="flex flex-col">
-              <Link to={localizedHashPath("about")} onClick={handleMobileNavClick("about")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
-                {t("nav.assets")}
-              </Link>
-              <Link to={localizedHashPath("solutions")} onClick={handleMobileNavClick("solutions")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
-                {t("nav.lending")}
-              </Link>
-              <Link to={localizedHashPath("yield")} onClick={handleMobileNavClick("yield")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
-                {t("nav.yield")}
-              </Link>
-              <Link to={localizedHashPath("faq")} onClick={handleMobileNavClick("faq")} className={`relative block py-4 text-lg font-semibold text-white transition-colors hover:text-[#00c2a8] ${isChinese ? "tracking-[0.06em]" : "uppercase tracking-wider"}`}>
-                {t("nav.faq")}
-              </Link>
-              <a
-                href="mailto:info@mero.tech"
-                onClick={useActive.closeMobileMenu}
-                className={`relative mt-2 inline-block border border-[#00c2a8]/60 py-3 text-sm font-semibold text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10 ${
-                  isChinese
-                    ? "min-w-[120px] px-7 tracking-[0.08em]"
-                    : "px-6 uppercase tracking-wider"
-                }`}
-              >
-                {t("nav.contact")}
-              </a>
-              {/* <div >
-                <button
-                  className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
-                  onClick={useActive.openOnMobileDropdownMenu}
-                >
-                  <span>Resources</span>
-                  <motion.span
-                    animate={useActive.animateDropdownMenuIcon}
-                    variants={{
-                      rotated: { rotate: 180 },
-                      initial: { rotate: 0 },
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <MaterialIcon name="expand_more" />
-                  </motion.span>
-                </button>
-                <AnimatePresence>
-                  <motion.nav
-                    variants={{
-                      open: {
-                        opacity: 1,
-                        height: "var(--height-open, auto)",
-                        display: "block",
-                      },
-                      close: {
-                        opacity: 0,
-                        height: "var(--height-close, 0)",
-                        display: "none",
-                      },
-                    }}
-                    animate={useActive.animateDropdownMenu}
-                    initial="close"
-                    exit="close"
-                    transition={{ duration: 0.2 }}
-                    className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden bg-background-primary lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
-                  >
-                    <div className="mx-auto flex size-full max-w-full items-center justify-between">
-                      <div className="flex w-full flex-col lg:flex-row">
-                        <div className="grid flex-1 grid-cols-1 content-start items-start gap-x-8 gap-y-6 py-4 md:grid-cols-2 md:py-8 lg:auto-cols-fr lg:grid-cols-4 lg:content-stretch lg:items-stretch lg:gap-y-0">
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Getting started
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="overview" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Overview</h5>
-                                <p className="hidden text-sm md:block">
-                                  Learn how Mero works and what makes it different
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="sdk" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Integration</h5>
-                                <p className="hidden text-sm md:block">
-                                  Deploy USDM into your infrastructure today
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="security" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Security</h5>
-                                <p className="hidden text-sm md:block">
-                                  Privacy-preserving blockchain built on Canton
-                                  Network
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="finance" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Compliance</h5>
-                                <p className="hidden text-sm md:block">
-                                  Institutional-grade standards for regulated
-                                  banks
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Use cases
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="vpn_lock" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Pensions</h5>
-                                <p className="hidden text-sm md:block">
-                                  Unlock yield for emerging market pension funds
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="savings" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Savings</h5>
-                                <p className="hidden text-sm md:block">
-                                  Stable returns backed by commodity reserves
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="partner_reports" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Yield</h5>
-                                <p className="hidden text-sm md:block">
-                                  Access indicative target APY through intended institutional products
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="savings" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Treasury</h5>
-                                <p className="hidden text-sm md:block">
-                                  Support capital preservation through target over-collateralisation
-                                  over-collateralisation
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Markets
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="globe" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Indonesia</h5>
-                                <p className="hidden text-sm md:block">
-                                  First market for institutional stablecoin
-                                  adoption
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="globe" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">India</h5>
-                                <p className="hidden text-sm md:block">
-                                  Expanding regional infrastructure and
-                                  integrations
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="globe" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Latin America</h5>
-                                <p className="hidden text-sm md:block">
-                                  Building institutional-grade stablecoin rails
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="globe" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Africa</h5>
-                                <p className="hidden text-sm md:block">
-                                  Bringing stable currency to emerging markets
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Company
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="metro" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">About</h5>
-                                <p className="hidden text-sm md:block">
-                                  The story behind Mero and our mission
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="finance" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Careers</h5>
-                                <p className="hidden text-sm md:block">
-                                  Join a team building the future of finance
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="contacts" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Contact</h5>
-                                <p className="hidden text-sm md:block">
-                                  Reach out to discuss integrations and
-                                  integration
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <MaterialIcon name="news" size={24} />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Press</h5>
-                                <p className="hidden text-sm md:block">
-                                  Latest news and announcements from Mero
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="relative mb-6 flex w-full flex-col items-start justify-between p-6 sm:items-center lg:mb-0 lg:flex-row lg:px-0 lg:py-4">
-                      <div className="absolute -left-[50vw] -right-[50vw] bottom-0 top-0 w-[200vw] bg-background-secondary" />
-                      <div className="relative mb-4 grid auto-cols-fr grid-cols-[max-content] grid-rows-[auto_auto] items-center gap-x-2 gap-y-4 lg:mb-0 lg:flex lg:items-center">
-                        <p>
-                          Ready to launch USDM?
-                          <a href="#" className="ml-1 underline">
-                            Request a platform walkthrough
-                          </a>
-                        </p>
-                      </div>
-                      <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
-                        <Button
-                          title="Button"
-                          variant="link"
-                          size="link"
-                        >
-                          <MaterialIcon name="search" className="mr-2" />
-                          Search
-                        </Button>
-                        <Button
-                          title="Menu"
-                          variant="link"
-                          size="link"
-                        >
-                          <MaterialIcon name="menu" className="mr-2" />
-                          Menu
-                        </Button>
-                      </div>
-                    </div>
-                  </motion.nav>
-                </AnimatePresence>
-              </div> */}
-              {/* Mobile menu actions removed - Contact now in main nav */}
-            </div>
-          </motion.div>
-        </motion.div>
-      </AnimatePresence>
+            Contact
+          </a>
+        </div>
+      )}
     </nav>
   );
 }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mero.io/sitemap.xml
+Sitemap: https://mero.tech/sitemap.xml
