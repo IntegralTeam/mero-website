@@ -1,12 +1,13 @@
 const ORBIT_LABELS = [
   { text: "AUTHENTICATE", arc: "coreOrbitOuterArc", from: 0, dur: 20, size: 9.5, opacity: 0.6 },
-  { text: "PLEDGE", arc: "coreOrbitMiddleArc", from: 120, dur: 26, size: 9, opacity: 0.6 },
-  { text: "MONITOR", arc: "coreOrbitInnerArc", from: 240, dur: 12, size: 9, opacity: 0.55 },
+  { text: "PLEDGE", arc: "coreOrbitMiddleArc", from: 90, dur: 26, size: 9, opacity: 0.6 },
+  { text: "ENFORCE", arc: "coreOrbitEnforceArc", from: 180, dur: 18, size: 9, opacity: 0.55 },
+  { text: "MONITOR", arc: "coreOrbitInnerArc", from: 270, dur: 12, size: 9, opacity: 0.55 },
 ] as const;
 
 function AbstractCore() {
   return (
-    <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
+    <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true" focusable="false" role="presentation">
       <defs>
         <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#00c2a8" stopOpacity="0.4" />
@@ -30,6 +31,7 @@ function AbstractCore() {
         <path id="coreOrbitOuterArc" d="M 88 85 A 144 144 0 0 1 312 85" fill="none" />
         <path id="coreOrbitMiddleArc" d="M 110 115 A 116 116 0 0 1 290 115" fill="none" />
         <path id="coreOrbitInnerArc" d="M 132 143 A 90 90 0 0 1 268 143" fill="none" />
+        <path id="coreOrbitEnforceArc" d="M 122 130 A 100 100 0 0 1 278 130" fill="none" />
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="coloredBlur" />
           <feMerge>
@@ -78,7 +80,7 @@ function AbstractCore() {
       </g>
 
       {ORBIT_LABELS.map((label) => (
-        <g key={label.text}>
+        <g key={label.text} aria-hidden="true">
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -87,7 +89,7 @@ function AbstractCore() {
             dur={`${label.dur}s`}
             repeatCount="indefinite"
           />
-          <text fontSize={label.size} letterSpacing="1.4" fill="url(#orbitTextGradient)" opacity={label.opacity}>
+          <text aria-hidden="true" fontSize={label.size} letterSpacing="1.4" fill="url(#orbitTextGradient)" opacity={label.opacity}>
             <textPath href={`#${label.arc}`} startOffset="50%" textAnchor="middle">
               {label.text}
             </textPath>
@@ -174,13 +176,14 @@ export function Header() {
 
             <p className="hero-in mb-10 max-w-[540px] [animation-delay:150ms] text-base leading-relaxed text-white/60 md:text-[1.1rem]">
               Banks and financial institutions use Mero to authenticate vaulted gold, record a pledge
-              with the custodian or depository that holds it, and monitor and enforce the loan. The
-              metal never leaves the vault.
+              with the custodian and depository, and monitor and enforce the loan. The pledge can be
+              created and monitored without moving the metal. Any sale or delivery following enforcement
+              follows the applicable custodian, depository and market procedures.
             </p>
 
             <div className="hero-in flex flex-wrap items-center gap-4 [animation-delay:300ms] sm:gap-6">
               <a
-                href="#who-it-is-for"
+                href="/#who-it-is-for"
                 className="group relative inline-flex items-center gap-3 bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#0b1c2d] transition-all duration-300 hover:gap-5 hover:bg-[#e6faf8]"
               >
                 <span>For banks and institutions</span>
@@ -196,7 +199,7 @@ export function Header() {
                 <span className="absolute -right-1 -top-1 h-2 w-2 bg-[#00c2a8]" />
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center border border-white/30 px-7 py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
               >
                 Contact us

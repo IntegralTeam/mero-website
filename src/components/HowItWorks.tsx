@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Icon, type IconName } from "./icons";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -49,9 +50,9 @@ function Chevron() {
   );
 }
 
-function Connector() {
+function Connector({ className = "" }: { className?: string }) {
   return (
-    <div aria-hidden="true" className="flex flex-col items-center xl:flex-row xl:self-center">
+    <div aria-hidden="true" className={`flex flex-col items-center xl:flex-row xl:self-center ${className}`}>
       <span className="flow-line-y h-6 w-px xl:hidden" />
       <span className="flow-line-x hidden h-px flex-1 xl:block" />
       <Chevron />
@@ -59,14 +60,14 @@ function Connector() {
   );
 }
 
-function Branch({ kind }: { kind: "split" | "merge" }) {
+function Branch({ kind, className = "" }: { kind: "split" | "merge"; className?: string }) {
   const paths =
     kind === "split"
       ? { release: "M0 50 C 30 50, 24 24, 56 24", enforce: "M0 50 C 30 50, 24 76, 56 76" }
       : { release: "M0 24 C 32 24, 26 50, 56 50", enforce: "M0 76 C 32 76, 26 50, 56 50" };
 
   return (
-    <div aria-hidden="true">
+    <div aria-hidden="true" className={className}>
       <div className="xl:hidden">
         <Connector />
       </div>
@@ -78,9 +79,17 @@ function Branch({ kind }: { kind: "split" | "merge" }) {
   );
 }
 
-function PhaseLabel({ label, className = "" }: { label: string; className?: string }) {
+function PhaseLabel({
+  label,
+  className = "",
+  style,
+}: {
+  label: string;
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-3 ${className}`} style={style}>
       <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#00c2a8]">{label}</span>
       <span className="h-px flex-1 bg-white/10" />
     </div>
@@ -115,58 +124,61 @@ export function HowItWorks() {
         </Reveal>
 
         <div className="mx-auto max-w-2xl xl:max-w-none">
-          <Reveal variant="stagger-x" className={`mb-6 hidden xl:grid ${FLOW_GRID}`}>
-            <PhaseLabel label="Phase 1" />
-            <PhaseLabel label="Phase 2" className="col-span-9 col-start-3" />
-          </Reveal>
-
           <Reveal variant="stagger-x" className={`flex flex-col xl:grid ${FLOW_GRID}`}>
-            <PhaseLabel label="Phase 1" className="mb-4 xl:hidden" />
+            <PhaseLabel label="Phase 1" className="mb-4 xl:col-start-1 xl:row-start-1 xl:mb-6 xl:self-end" />
             <FlowCard
               icon="authenticate"
               title="Authenticate receipts"
               description="Forensics, bar numbers, KYC clearance"
-              className="xl:self-center"
+              className="xl:col-start-1 xl:row-start-2 xl:self-center"
             />
-            <Connector />
-            <PhaseLabel label="Phase 2" className="my-4 xl:hidden" />
+            <Connector className="xl:col-start-2 xl:row-start-2" />
+            <PhaseLabel
+              label="Phase 2"
+              className="my-4 xl:row-start-1 xl:mb-6 xl:mt-0 xl:self-end"
+              style={{ gridColumn: "3 / -1" }}
+            />
             <FlowCard
               icon="pledge"
               title="Pledge recorded"
-              description="By the custodian or depository that holds the metal"
-              className="xl:self-center"
+              description="By the depository; the custodian holds the metal"
+              className="xl:col-start-3 xl:row-start-2 xl:self-center"
             />
-            <Connector />
+            <Connector className="xl:col-start-4 xl:row-start-2" />
             <FlowCard
               tone="gold"
               icon="lender"
               title="Lender funds"
               description="US dollar financing against the confirmed pledge"
-              className="xl:self-center"
+              className="xl:col-start-5 xl:row-start-2 xl:self-center"
             />
-            <Connector />
+            <Connector className="xl:col-start-6 xl:row-start-2" />
             <FlowCard
               icon="monitor"
               title="Monitoring and margin"
               description="Market price, margin calls, cure window"
-              className="xl:self-center"
+              className="xl:col-start-7 xl:row-start-2 xl:self-center"
             />
-            <Branch kind="split" />
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-1">
-              <FlowCard icon="release" title="Repay and release" description="Pledge released; record cancelled" />
+            <Branch kind="split" className="xl:col-start-8 xl:row-start-2" />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:col-start-9 xl:row-start-2 xl:grid-cols-1">
+              <FlowCard
+                icon="release"
+                title="Repay and release"
+                description="Active record cancelled; audit history retained"
+              />
               <FlowCard
                 tone="alert"
                 icon="enforce"
                 title="Enforce"
-                description="Transfer to the lender through the custodian or depository, then an ordinary sale"
+                description="The lender enforces through the custodian and depository, then a sale on an exchange or an ordinary sale"
               />
             </div>
-            <Branch kind="merge" />
+            <Branch kind="merge" className="xl:col-start-10 xl:row-start-2" />
             <FlowCard
               icon="reconcile"
               title="Reconcile and report"
               description="Every step evidenced"
-              className="xl:self-center"
+              className="xl:col-start-11 xl:row-start-2 xl:self-center"
             />
           </Reveal>
         </div>

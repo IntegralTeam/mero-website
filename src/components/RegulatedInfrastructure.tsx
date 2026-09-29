@@ -3,10 +3,9 @@ import { Icon, type IconName } from "./icons";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-const INSTITUTIONS: { icon: IconName; label: string }[] = [
-  { icon: "pledge", label: "Custodians" },
-  { icon: "lender", label: "Depositories" },
-  { icon: "monitor", label: "Exchanges" },
+const RECORD_ROLES: { icon: IconName; label: string; role: string }[] = [
+  { icon: "holders", label: "Custodians", role: "Hold and verify the metal" },
+  { icon: "pledge", label: "Depositories", role: "Ownership and pledge records" },
 ];
 
 const MERO_FUNCTIONS = ["Authenticate", "Monitor", "Reconcile"];
@@ -21,7 +20,40 @@ function LayerLink() {
 
 function LayerLabel({ children, className = "" }: { children: string; className?: string }) {
   return (
-    <p className={`mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] ${className}`}>{children}</p>
+    <p className={`mb-3 text-[10px] font-semibold uppercase leading-relaxed tracking-[0.18em] ${className}`}>
+      {children}
+    </p>
+  );
+}
+
+function PartyCard({
+  icon,
+  label,
+  detail,
+  tone,
+}: {
+  icon: IconName;
+  label: string;
+  detail?: string;
+  tone: "gold" | "neutral";
+}) {
+  const toneClass =
+    tone === "gold"
+      ? "border-[#C9A84C]/30 bg-[#C9A84C]/[0.07]"
+      : "border-white/10 bg-white/[0.04]";
+  const iconClass =
+    tone === "gold" ? "bg-[#C9A84C]/15 text-[#E8C96E]" : "bg-white/10 text-white/80";
+
+  return (
+    <div className={`flex items-center gap-4 border px-5 py-4 ${toneClass}`}>
+      <span className={`flex h-10 w-10 shrink-0 items-center justify-center ${iconClass}`}>
+        <Icon name={icon} className="h-5 w-5" />
+      </span>
+      <span className="min-w-0">
+        <span className="block font-display text-lg leading-snug text-white">{label}</span>
+        {detail && <span className="mt-1 block text-xs leading-relaxed text-white/55">{detail}</span>}
+      </span>
+    </div>
   );
 }
 
@@ -43,12 +75,12 @@ function InfrastructureStack() {
 
       <Reveal variant="stagger" className="relative">
         <LayerLabel className="text-white/40">Lenders</LayerLabel>
-        <div className="flex items-center gap-4 border border-white/10 bg-white/[0.04] px-5 py-4">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-white/10 text-white/80">
-            <Icon name="lender" className="h-5 w-5" />
-          </span>
-          <span className="font-display text-lg text-white">Banks and financial institutions</span>
-        </div>
+        <PartyCard
+          icon="lender"
+          label="Banks and financial institutions"
+          detail="Make financing and enforcement decisions"
+          tone="neutral"
+        />
 
         <LayerLink />
 
@@ -71,22 +103,19 @@ function InfrastructureStack() {
 
         <LayerLink />
 
-        <LayerLabel className="text-[#E8C96E]/70">Hold the metal and record title</LayerLabel>
-        <div className="grid grid-cols-3 gap-2 md:gap-3">
-          {INSTITUTIONS.map((institution) => (
-            <div
-              key={institution.label}
-              className="flex flex-col items-center gap-3 border border-[#C9A84C]/30 bg-[#C9A84C]/[0.07] px-2 py-5 text-center"
-            >
-              <span className="flex h-10 w-10 items-center justify-center bg-[#C9A84C]/15 text-[#E8C96E]">
-                <Icon name={institution.icon} className="h-5 w-5" />
-              </span>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-white/80 md:text-xs">
-                {institution.label}
-              </span>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {RECORD_ROLES.map((role) => (
+            <div key={role.label}>
+              <LayerLabel className="text-[#E8C96E]/70">{role.role}</LayerLabel>
+              <PartyCard icon={role.icon} label={role.label} tone="gold" />
             </div>
           ))}
         </div>
+
+        <LayerLink />
+
+        <LayerLabel className="text-white/40">Price and settle sales</LayerLabel>
+        <PartyCard icon="monitor" label="Exchanges" detail="Trading and clearing" tone="neutral" />
       </Reveal>
     </div>
   );
@@ -110,11 +139,19 @@ export function RegulatedInfrastructure() {
               eyebrow="Built on regulated infrastructure"
               title="Mero works through the institutions that already hold the metal"
             />
-            <p className="mt-8 text-lg leading-relaxed text-[#0b1c2d]/70">
-              Title and the lender's security are recorded by licensed custodians, depositories and
-              exchanges, not by Mero. Mero holds no client assets, keys or cash, does not lend, and never
-              instructs a depository.
-            </p>
+            <div className="mt-8 space-y-4 text-lg leading-relaxed text-[#0b1c2d]/70">
+              <p>
+                Title and the lender's security are recorded by licensed custodians and depositories, not
+                by Mero. Vault managers and custodians hold and verify the metal. Depositories maintain
+                the ownership and pledge records. Lenders make the financing and enforcement decisions,
+                and enforcement sales settle through regulated exchanges or ordinary sales.
+              </p>
+              <p>
+                Mero holds no client assets, keys or cash, and does not lend. Any instruction its software
+                transmits to a custodian or depository is authorised by the institution. Mero does not make
+                that decision in its own capacity.
+              </p>
+            </div>
             <div className="mt-8 flex gap-4 border-l-2 border-[#00c2a8] bg-[#00c2a8]/[0.06] px-5 py-5">
               <svg className="mt-0.5 h-5 w-5 shrink-0 text-[#00c2a8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
                 <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" strokeLinejoin="round" />

@@ -7,6 +7,8 @@ export const COMPANY = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "For institutions", href: "#who-it-is-for" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "For institutions", href: "/#who-it-is-for" },
 ] as const;
+
+export const CONTACT_HREF = "/#contact";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo-light.svg";
-import { NAV_LINKS } from "../lib/site";
+import { CONTACT_HREF, NAV_LINKS } from "../lib/site";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,7 +24,7 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex min-h-16 items-center justify-between md:min-h-18">
-        <a href="#top" className="flex items-center" onClick={closeMenu}>
+        <a href="/#top" className="flex items-center" onClick={closeMenu}>
           <img src={logo} alt="Mero Technologies" width={110} height={29} className="h-auto" />
         </a>
 
@@ -40,7 +40,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={CONTACT_HREF}
             className="inline-flex items-center justify-center border border-[#00c2a8]/40 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00c2a8] transition-all duration-300 hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
           >
             Contact
@@ -86,7 +86,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={CONTACT_HREF}
             onClick={closeMenu}
             className="mt-2 self-start border border-[#00c2a8]/60 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#00c2a8] transition-colors hover:border-[#00c2a8] hover:bg-[#00c2a8]/10"
           >

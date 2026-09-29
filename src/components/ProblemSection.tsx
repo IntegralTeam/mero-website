@@ -41,8 +41,9 @@ export function ProblemSection() {
                   The problem
                 </span>
               </div>
-              <h2 className="max-w-md font-display text-4xl font-light leading-[1.2] text-white md:text-5xl">
-                Vaulted gold is <span className="text-[#E8C96E]">dead capital</span>
+              <h2 className="max-w-xl font-display text-4xl font-light leading-[1.15] text-white md:text-5xl">
+                Vaulted gold is hard to{" "}
+                <span className="text-[#E8C96E]">verify, pledge and enforce</span>
               </h2>
             </Reveal>
           </div>
@@ -64,9 +65,8 @@ export function ProblemSection() {
           <Reveal variant="right" delay={300} className="relative max-w-xl">
             <span className="mb-8 block h-0.5 w-12 bg-gradient-to-r from-[#C9A84C] to-[#00c2a8]" />
             <p className="font-display text-2xl font-light leading-[1.5] text-white/85 md:text-[1.75rem]">
-              Gold held in vaults costs money to store and insure, and earns nothing. Lenders rarely
-              accept it as collateral. The receipt is hard to verify, pledges sit in side letters, and
-              enforcement means moving metal.
+              Using vaulted gold as collateral means verifying the metal and who owns it, recording a
+              pledge that will hold, monitoring it, and having a clear enforcement path.
             </p>
           </Reveal>
         </div>

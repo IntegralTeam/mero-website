@@ -13,7 +13,7 @@ const CAPABILITIES: { icon: IconName; title: string; description: string }[] = [
     icon: "pledge",
     title: "Pledge",
     description:
-      "The pledge is recorded by the custodian or depository that holds the metal. Mero's digital record exists only while that pledge exists.",
+      "The depository records the pledge. The custodian holds and verifies the metal. The active collateral record is cancelled when the pledge is released; the audit history is retained under applicable recordkeeping requirements.",
   },
   {
     icon: "monitor",
@@ -25,7 +25,7 @@ const CAPABILITIES: { icon: IconName; title: string; description: string }[] = [
     icon: "enforce",
     title: "Enforce and reconcile",
     description:
-      "On an uncured default, the lender enforces through the custodian or depository and an ordinary sale. Every step is reconciled and evidenced.",
+      "On an uncured default, the lender enforces through the custodian and depository. The sale settles on a regulated exchange or as an ordinary sale. Every step is reconciled and evidenced.",
   },
 ];
 

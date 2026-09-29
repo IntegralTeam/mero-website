@@ -16,9 +16,9 @@ const TEAM: TeamMember[] = [];
 
 const STATUS_ROWS = [
   { label: "Status", value: "Applicant" },
-  { label: "Preliminary stage", value: "Passed, July 2026" },
-  { label: "Testing", value: "In isolation" },
-  { label: "Live clients, funds or metal", value: "None" },
+  { label: "Final Application", value: "Pending Committee Approval" },
+  { label: "Regulator", value: "IFSCA" },
+  { label: "Built for", value: "Banks and institutions" },
 ] as const;
 
 export function BusinessModel() {
@@ -43,8 +43,8 @@ export function BusinessModel() {
                 <Icon name="reconcile" className="h-7 w-7" />
               </div>
               <p className="text-lg leading-relaxed text-white/70 md:text-xl">
-                <span className="font-semibold text-white">Flat-fee infrastructure.</span> Mero is paid for
-                the platform, never a share of any loan or return.
+                Mero is paid a licence fee and service fees by the institutions and venues it works with.
+                Its fees never depend on interest earned, loan performance or investment returns.
               </p>
             </div>
           </Reveal>
@@ -107,9 +107,8 @@ export function WhereWeAre() {
           <Reveal variant="up" className="lg:col-span-5">
             <SectionHeading eyebrow="Status" title="Where we are" tone="light" />
             <p className="mt-8 text-lg leading-relaxed text-white/60">
-              Mero Technologies is an applicant to the IFSCA FinTech Innovation Sandbox at GIFT IFSC,
-              having passed the preliminary stage in July 2026. Testing runs in isolation, with no live
-              clients, funds or metal, before any live pilot.
+              Mero Technologies is an applicant to the IFSCA FinTech Innovation Sandbox at GIFT IFSC.
+              The proposed sandbox testing would take place in an isolated environment.
             </p>
           </Reveal>
 
@@ -138,9 +137,9 @@ export function WhereWeAre() {
               </div>
               <dl className="divide-y divide-white/[0.06] px-6">
                 {STATUS_ROWS.map((row) => (
-                  <div key={row.label} className="flex items-center justify-between gap-6 py-4">
+                  <div key={row.label} className="flex items-start justify-between gap-6 py-4">
                     <dt className="text-sm text-white/45">{row.label}</dt>
-                    <dd className="text-right text-sm font-semibold text-white">
+                    <dd className="max-w-[14rem] text-right text-sm font-semibold leading-snug text-white">
                       {row.label === "Status" ? (
                         <span className="inline-flex items-center gap-2 border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-2.5 py-1 text-xs uppercase tracking-[0.15em] text-[#E8C96E]">
                           <span className="h-1.5 w-1.5 rounded-full bg-[#E8C96E]" />
@@ -306,7 +305,7 @@ export function Contact() {
         <Reveal variant="blur">
           <SectionHeading eyebrow="Contact" title="Talk to us" align="center" />
         </Reveal>
-        <Reveal variant="zoom" delay={250} className="mt-12">
+        <Reveal variant="zoom" delay={250} className="mt-12 flex flex-col items-center">
           <a
             ref={buttonRef}
             href={`mailto:${CONTACT_EMAIL}`}
@@ -328,6 +327,7 @@ export function Contact() {
               </span>
             </span>
           </a>
+          <p className="mt-6 text-center text-sm text-[#0b1c2d]/55">Enquiries from institutions only</p>
         </Reveal>
       </div>
     </section>
